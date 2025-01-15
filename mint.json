@@ -29,6 +29,10 @@
     {
       "name": "API Reference",
       "url": "api-reference"
+    },
+    {
+        "name": "ReadME - Test",
+        "url": "https://mintlify.com/docs/settings/navigation"
     }
   ],
   "anchors": [
