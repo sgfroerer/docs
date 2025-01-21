@@ -19,15 +19,15 @@
     {
       "name": "Gitbook",
       "url": "https://app.gitbook.com/"
-    }
+    },
     {
       "name": "Dashboard",
       "url": "https://kickzdontstopinv-9f466998.mintlify.app/Gitbook-dash"
-    }
+    },
     {
       "name": "annual-report",
       "url": "https://kickzdontstopinv-9f466998.mintlify.app/annual-report"
-    }
+    },
     {
       "name": "Dash-href",
       "href": "/Gitbook-dash"
@@ -43,8 +43,8 @@
       "url": "api-reference"
     },
     {
-        "name": "ReadME - Test",
-        "url": "https://mintlify.com/docs/settings/navigation"
+      "name": "ReadME - Test",
+      "url": "https://mintlify.com/docs/settings/navigation"
     }
   ],
   "anchors": [
