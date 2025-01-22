@@ -10,14 +10,14 @@ icon: "square-dashed"
 
 ***
 
-<AccordionGroup>
-  <Accordion title="New Accordion" defaultOpen="false" />
+<ResponseField name="user" type="User Object">
+  <Expandable title="Expandable Example">
+    <ResponseField name="full_name" type="string">
+      The full name of the user
+    </ResponseField>
 
-  <Accordion title="New Accordion" defaultOpen="false" />
-</AccordionGroup>
-
-<CardGroup cols="2">
-  <Card title="Card" icon="sparkles" />
-
-  <Card title="Card" icon="sparkles" />
-</CardGroup>
+    <ResponseField name="is_over_21" type="boolean">
+      Whether the user is over 21 years old
+    </ResponseField>
+  </Expandable>
+</ResponseField>
