@@ -1,0 +1,380 @@
+---
+title: "Projects"
+description: "Description of your new file."
+---
+
+<AccordionGroup>
+  <Accordion title="Calling Tools" defaultOpen={false}>
+    <Accordion title="Prompt" defaultOpen={false}>
+      I am a commercial real estate broker with a custom CRM for cold calls, but I struggle to consolidate my workflow for managing owner contacts and follow-ups. I often write down owner names and notes in various locations—Obsidian, Google Sheets, Chrome bookmarks, and more—creating scattered and inconsistent records.
+
+      I need an app or system to streamline this process with the following features:
+
+      1. **Owner Contact Management**:
+
+         * A place to store owner names, key notes about properties they own, and details like the last contact attempt and the method used (e.g., voicemail, conversation, no response).
+
+         * The ability to track the last call segment notes and dates to stay organized.
+
+      2. **Kanban View**:
+
+         * Visualize the contact workflow, such as stages like “To Contact,” “Follow-Up Needed,” “Contacted,” and “Closed.”
+
+         * Drag and drop contacts between stages for easy tracking.
+
+      3. **Customization and Integration**:
+
+         * Fields to add custom notes (e.g., property highlights or unique owner preferences).
+
+         * Option to integrate with existing tools like Google Sheets, Grist, or Obsidian for easy data syncing or exporting.
+
+      4. **Reminders and Notifications**:
+
+         * Automated reminders to follow up with owners based on the last contact date or custom schedules.
+
+         * Notifications for overdue follow-ups or important tasks.
+
+      5. **Advanced Features**:
+
+         * A simple search or filter system to find specific owners or properties quickly.
+
+         * A dashboard to visualize activity trends, like the number of calls made or follow-ups scheduled.
+
+         * Integration with calling tools or CRMs for quick dialing or note-taking during calls.
+
+      The app should be user-friendly, mobile-friendly, and flexible enough to adapt to my evolving needs as a commercial real estate broker. Add anything else you think would be useful for my workflow.
+    </Accordion>
+  </Accordion>
+
+  <Accordion title="Deepseek" defaultOpen={false}>
+
+
+    <CodeGroup>
+      ```javascript App.tsx
+      import React, { useState, useEffect, useRef } from 'react';
+
+      const mockContacts = [
+        { id: 1, name: 'John Doe', property: '123 Main St', lastContact: '2023-10-01', method: 'Conversation', notes: 'Interested in selling', stage: 'Follow-Up Needed' },
+        { id: 2, name: 'Jane Smith', property: '456 Elm St', lastContact: '2023-09-25', method: 'Voicemail', notes: 'Left message', stage: 'To Contact' },
+        { id: 3, name: 'Alice Johnson', property: '789 Oak St', lastContact: '2023-10-05', method: 'No Response', notes: 'No answer', stage: 'To Contact' },
+        { id: 4, name: 'Bob Brown', property: '101 Pine St', lastContact: '2023-10-02', method: 'Conversation', notes: 'Scheduled follow-up', stage: 'Follow-Up Needed' },
+      ];
+
+      const stages = ['To Contact', 'Follow-Up Needed', 'Contacted', 'Closed'];
+
+      const App: React.FC = () => {
+        const [contacts, setContacts] = useState(mockContacts);
+        const [darkMode, setDarkMode] = useState(false);
+        const [searchTerm, setSearchTerm] = useState('');
+        const [filteredContacts, setFilteredContacts] = useState(contacts);
+        const [notifications, setNotifications] = useState<string[]>([]);
+        const notificationRef = useRef<HTMLDivElement | null>(null);
+
+        useEffect(() => {
+          const filtered = contacts.filter(contact =>
+            contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            contact.property.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+          setFilteredContacts(filtered);
+        }, [searchTerm, contacts]);
+
+        useEffect(() => {
+          const interval = setInterval(() => {
+            const overdueContacts = contacts.filter(contact => {
+              const lastContactDate = new Date(contact.lastContact);
+              const today = new Date();
+              const diffTime = Math.abs(today - lastContactDate);
+              const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+              return diffDays > 7; // Assuming 7 days as the threshold for overdue follow-ups
+            });
+
+            if (overdueContacts.length > 0) {
+              setNotifications(prev => [...prev, `Overdue follow-ups for: ${overdueContacts.map(c => c.name).join(', ')}`]);
+            }
+          }, 86400000); // Check every 24 hours
+
+          return () => clearInterval(interval);
+        }, [contacts]);
+
+        useEffect(() => {
+          if (notifications.length > 0 && notificationRef.current) {
+            notificationRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+          }
+        }, [notifications]);
+
+        const handleDragStart = (e: React.DragEvent<HTMLDivElement>, id: number) => {
+          e.dataTransfer.setData('text/plain', id.toString());
+        };
+
+        const handleDrop = (e: React.DragEvent<HTMLDivElement>, stage: string) => {
+          e.preventDefault();
+          const id = parseInt(e.dataTransfer.getData('text/plain'), 10);
+          const updatedContacts = contacts.map(contact =>
+            contact.id === id ? { ...contact, stage } : contact
+          );
+          setContacts(updatedContacts);
+        };
+
+        const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+          e.preventDefault();
+        };
+
+        const toggleDarkMode = () => {
+          setDarkMode(prev => !prev);
+        };
+
+        return (
+          <div className={`${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} min- flex flex-col`}>
+            <header className="bg-blue-600 p-4 flex justify-between items-center">
+              <h1 className="text-2xl font-bold">Commercial Real Estate CRM</h1>
+              <button onClick={toggleDarkMode} className="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded">
+                {darkMode ? 'Light Mode' : 'Dark Mode'}
+              </button>
+            </header>
+            <main className="flex-1 p-4">
+              <div className="mb-4 flex justify-between items-center">
+                <input
+                  type="text"
+                  placeholder="Search contacts..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="border p-2 rounded w-full md:w-1/2"
+                />
+                <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded ml-2">
+                  Integrate with Google Sheets
+                </button>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {stages.map(stage => (
+                  <div
+                    key={stage}
+                    className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg shadow-md"
+                    onDrop={(e) => handleDrop(e, stage)}
+                    onDragOver={handleDragOver}
+                  >
+                    <h2 className="text-xl font-bold mb-2">{stage}</h2>
+                    {filteredContacts
+                      .filter(contact => contact.stage === stage)
+                      .map(contact => (
+                        <div
+                          key={contact.id}
+                          draggable
+                          onDragStart={(e) => handleDragStart(e, contact.id)}
+                          className="bg-white dark:bg-gray-700 p-3 mb-2 rounded-lg shadow-inner flex justify-between items-center"
+                        >
+                          <div>
+                            <p className="font-semibold">{contact.name}</p>
+                            <p className="text-sm">{contact.property}</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">Last Contact: {contact.lastContact} ({contact.method})</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-400">{contact.notes}</p>
+                          </div>
+                          <button className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded">
+                            Edit
+                          </button>
+                        </div>
+                      ))}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8">
+                <h2 className="text-xl font-bold mb-4">Notifications</h2>
+                <div ref={notificationRef} className="space-y-2">
+                  {notifications.map((notification, index) => (
+                    <div key={index} className="bg-red-100 dark:bg-red-800 p-3 rounded-lg shadow-md">
+                      {notification}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </main>
+            <footer className="bg-gray-200 dark:bg-gray-700 p-4 text-center">
+              <p>&copy; 2023 Commercial Real Estate CRM</p>
+            </footer>
+          </div>
+        );
+      };
+
+      export default App;
+      ```
+
+      ```
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Portfolio</title>
+          <script src="https://cdn.tailwindcss.com"></script>
+        </head>
+        <body>
+          <div id="root"></div>
+        </body>
+      </html>
+      ```
+
+      ```
+      ```
+    </CodeGroup>
+
+
+  </Accordion>
+
+  <Accordion title="Groq" defaultOpen={false}>
+    ```
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Commercial Real Estate Broker CRM</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
+    </head>
+    <body class="bg-gray-100 text-gray-800">
+        <header class="bg-white py-4">
+            <nav class="container mx-auto flex justify-between">
+                <h1 class="text-2xl font-bold">Commercial Real Estate Broker CRM</h1>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Owner</button>
+            </nav>
+        </header>
+        <main class="container mx-auto p-4">
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4">Owner Contact Management</h2>
+                <table class="w-full table-auto border-collapse border border-gray-300">
+                    <thead class="bg-gray-200">
+                        <tr>
+                            <th class="py-2 px-4 border border-gray-300">Owner Name</th>
+                            <th class="py-2 px-4 border border-gray-300">Property Notes</th>
+                            <th class="py-2 px-4 border border-gray-300">Last Contact Attempt</th>
+                            <th class="py-2 px-4 border border-gray-300">Method</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">John Doe</td>
+                            <td class="py-2 px-4 border border-gray-300">123 Main St, Anytown USA</td>
+                            <td class="py-2 px-4 border border-gray-300">2024-09-16</td>
+                            <td class="py-2 px-4 border border-gray-300">Voicemail</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-4 border border-gray-300">Jane Smith</td>
+                            <td class="py-2 px-4 border border-gray-300">456 Elm St, Othertown USA</td>
+                            <td class="py-2 px-4 border border-gray-300">2024-09-15</td>
+                            <td class="py-2 px-4 border border-gray-300">Conversation</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4">Kanban View</h2>
+                <div class="flex justify-between">
+                    <div class="bg-gray-200 p-4 w-1/4">
+                        <h3 class="text-lg font-bold mb-4">To Contact</h3>
+                        <ul>
+                            <li class="py-2 border-b border-gray-300">John Doe</li>
+                            <li class="py-2 border-b border-gray-300">Jane Smith</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-200 p-4 w-1/4">
+                        <h3 class="text-lg font-bold mb-4">Follow-Up Needed</h3>
+                        <ul>
+                            <li class="py-2 border-b border-gray-300">Bob Johnson</li>
+                            <li class="py-2 border-b border-gray-300">Alice Brown</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-200 p-4 w-1/4">
+                        <h3 class="text-lg font-bold mb-4">Contacted</h3>
+                        <ul>
+                            <li class="py-2 border-b border-gray-300">Mike Davis</li>
+                            <li class="py-2 border-b border-gray-300">Emily Chen</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-200 p-4 w-1/4">
+                        <h3 class="text-lg font-bold mb-4">Closed</h3>
+                        <ul>
+                            <li class="py-2 border-b border-gray-300</li>
+                            <li class="py-2 border-b border-gray-300">Sarah Kim</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4">Customization and Integration</h2>
+                <form>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="custom-notes">Custom Notes</label>
+                    <textarea id="custom-notes" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                    <label class="block text-gray-700 text-sm font-bold mb-2 mt-4" for="integration">Integration</label>
+                    <select id="integration" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <option>Google Sheets</option>
+                        <option>Grist</option>
+                        <option>Obsidian</option>
+                    </select>
+                </form>
+            </section>
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4">Reminders and Notifications</h2>
+                <form>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="reminder-date">Reminder Date</label>
+                    <input id="reminder-date" type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 mt-4" for="notification-preference">Notification Preference</label>
+                    <select id="notification-preference" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <option>Email</option>
+                        <option>Phone</option>
+                        <option>In-App Notification</option>
+                    </select>
+                </form>
+            </section>
+            <section class="mb-8">
+                <h2 class="text-xl font-bold mb-4">Advanced Features</h2>
+                <form>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="search">Search</label>
+                    <input id="search" type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 mt-4" for="filter">Filter</label>
+                    <select id="filter" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-2 px-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                        <option>Owner Name</option>
+                        <option>Property Notes</option>
+                        <option>Last Contact Attempt</option>
+                    </select>
+                </form>
+                <div class="mt-4">
+                    <h3 class="text-lg font-bold mb-4">Dashboard</h3>
+                    <div class="flex justify-between">
+                        <div class="bg-gray-200 p-4 w-1/2">
+                            <h4 class="text-lg font-bold mb-4">Activity Trends</h4>
+                            <ul>
+                                <li class="py-2 border-b border-gray-300">Calls Made: 10</li>
+                                <li class="py-2 border-b border-gray-300">Follow-Ups Scheduled: 5</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-200 p-4 w-1/2">
+                            <h4 class="text-lg font-bold mb-4">Calling Tools Integration</h4>
+                            <ul>
+                                <li class="py-2 border-b border-gray-300">Quick Dialing</li>
+                                <li class="py-2 border-b border-gray-300">Note-Taking during Calls</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="bg-white py-4">
+            <p class="container mx-auto text-gray-600 text-sm">Commercial Real Estate Broker CRM &copy; 2024</p>
+        </footer>
+    </body>
+    </html>
+    ```
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+
+  </Accordion>
+</AccordionGroup>
+
+```typescript
+```
+
+
+
+
+
+[App Link](https://appgen.groqlabs.com/apps/b0263e42-7db7-46f7-9f51-562b905465bd/d15dd9ca-6979-4eac-ac57-cab1845aa75e)
