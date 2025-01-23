@@ -4,21 +4,6 @@ description: 'Text, title, and styling in standard markdown'
 icon: 'text-size'
 ---
 
-## Titles
-
-Best used for section headers.
-
-```md
-## Titles
-```
-
-### Subtitles
-
-Best use to subsection headers.
-
-```md
-### Subtitles
-```
 
 <Tip>
 
@@ -38,13 +23,6 @@ We support most markdown formatting. Simply add `**`, `_`, or `~` around text to
 
 You can combine these. For example, write `**_bold and italic_**` to get **_bold and italic_** text.
 
-You need to use HTML to write superscript and subscript text. That is, add `<sup>` or `<sub>` around your text.
-
-| Text Size   | How to write it          | Result                 |
-| ----------- | ------------------------ | ---------------------- |
-| Superscript | `<sup>superscript</sup>` | <sup>superscript</sup> |
-| Subscript   | `<sub>subscript</sub>`   | <sub>subscript</sub>   |
-
 ## Linking to Pages
 
 You can add a link by wrapping text in `[]()`. You would write `[link to google](https://google.com)` to [link to google](https://google.com).
@@ -53,36 +31,76 @@ Links to pages in your docs need to be root-relative. Basically, you should incl
 
 Relative links like `[link to text](../text)` will open slower because we cannot optimize them as easily.
 
-## Blockquotes
 
-### Singleline
+<Accordion title="I am an Accordion.">
+  You can put any content in here.
+</Accordion>
 
-To create a blockquote, add a `>` in front of a paragraph.
 
-> Dorothy followed her through many of the beautiful rooms in her castle.
+## Embeds
 
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
+### Using Markdown
+```
+![title](/path/image.jpg)
 ```
 
-### Multiline
-
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
-
-```md
-> Dorothy followed her through many of the beautiful rooms in her castle.
->
-> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
+### Embeds
+```
+<img height="200" src="/path/image.jpg" />
 ```
 
-### LaTeX
+### Disable Image Zoom
+```
+<img height="200" noZoom src="/path/image.jpg" />
+```
 
-Mintlify supports [LaTeX](https://www.latex-project.org) through the Latex component.
+### Linking Images
+<Info>To link an image, for example to create a button on your docs, encompass the image in a link with the noZoom property. Images in a tags will automatically have a pointer cursor.</Info>
 
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
+```
+<a href="https://mintlify.com" target="_blank">
+  <img height="200" noZoom src="/path/image.jpg" />
+</a>
+```
 
-```md
-<Latex>8 x (vk x H1 - H2) = (0,1)</Latex>
+### Videos
+<Info>Mintlify supports HTML tags in Markdown. This is helpful if you prefer HTML tags to Markdown syntax, and lets you create documentation with infinite flexibility.</Info>
+
+> For YouTube videos use:
+```
+<iframe
+  width="560"
+  height="315"
+  src="https://www.youtube.com/embed/4KzFe50RQkQ"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+```
+> For other videos, use:
+```
+<video
+  controls
+  className="w-full aspect-video"
+  src="link-to-your-video.com"
+></video>
+```
+
+> To autoplay the video, use:
+```
+<video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full aspect-video"
+  src="link-to-your-video.com"
+></video>
+```
+
+### iFrames
+> Loads another HTML page within the document.
+```
+<iframe src="https://www.youtube.com/embed/4KzFe50RQkQ"> </iframe>
 ```
