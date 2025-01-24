@@ -27,6 +27,87 @@ description: "Scrape documentation frameworks to Mintlify docs"
     npx @mintlify/scraping@latest page [url]
     ```
   </CodeGroup>
+</Accordion>
+
+<Accordion title="JS & CSS Libraries" defaultOpen={false}>
+  To add custom JavaScript (JS) and CSS libraries to a Mintlify project synced with GitHub, you can follow these steps:
+
+
+
+  ### Use External Libraries
+
+  <Tip>
+    If you're adding an external library (like jQuery, Tailwind, or Chart.js), include their CDN links
+  </Tip>
+
+  ```markdown
+  <!-- In the <head> -->
+  <link href="https://cdn.jsdelivr.net/npm/library-name@version/library.min.css" rel="stylesheet">
+
+  <!-- Before </body> -->
+  <script src="https://cdn.jsdelivr.net/npm/library-name@version/library.min.js"></script>
+  ```
+
+  <Accordion title="Custom Components/Scripts" defaultOpen={false}>
+    <Tip>
+      If you're using React (Mintlify's default framework), you can import libraries directly in your React components
+    </Tip>
+
+        <Tabs>
+          <Tab title="Install">
+            *Install the library via npm*
+
+            ```
+            npm install library-name
+            ```
+          </Tab>
+
+          <Tab title="Import">
+            *Import it in your React files*
+
+            ```markdown
+            import 'library-name/dist/library.css';
+            import LibraryName from 'library-name';
+            ```
+          </Tab>
+
+          <Tab title="Sync">
+            *Sync Changes to GitHub*
+
+            ```bash
+            git add .
+            git commit -m "Add custom JS/CSS files"
+            git push
+            ```
+          </Tab>
+        </Tabs>
+  </Accordion>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </Accordion>
