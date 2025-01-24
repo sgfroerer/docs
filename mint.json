@@ -16,15 +16,15 @@
     }
   },
   "topbarLinks": [
-  {
-    "name": "Gitbook",
-    "url": "https://app.gitbook.com/"
-  },
-  {
-    "name": "Projects",
-    "url": "/gitbook/projects"
-  }
-],
+    {
+      "name": "Gitbook",
+      "url": "https://app.gitbook.com/"
+    },
+    {
+      "name": "Projects",
+      "url": "/gitbook/projects"
+    }
+  ],
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://dashboard.mintlify.com"
@@ -91,5 +91,17 @@
   ],
   "footerSocials": {
     "github": "https://github.com/mintlify"
-  }
+  },
+  "headLinks": [
+    {
+      "rel": "stylesheet",
+      "href": "https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css"
+    }
+  ],
+  "headScripts": [
+    {
+      "src": "https://cdn.tailwindcss.com",
+      "async": true
+    }
+  ]
 }
