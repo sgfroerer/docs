@@ -54,11 +54,13 @@
     {
       "group": "Gitbook",
       "pages": [
+        "gitbook/Mintlify",
+        "gitbook/docker",
         "gitbook/projects",
         "gitbook/dashboard",
         "gitbook/gitbook-note",
         "gitbook/annual-report",
-        "gitbook/Mintlify"
+        "gitbook/projects"
       ]
     },
     {
