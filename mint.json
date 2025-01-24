@@ -58,6 +58,7 @@
         "gitbook/dashboard",
         "gitbook/gitbook-note",
         "gitbook/annual-report",
+        "gitbook/Mintlify",
       ]
     },
     {
