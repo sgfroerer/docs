@@ -52,6 +52,15 @@
       ]
     },
     {
+      "group": "Gitbook",
+      "pages": [
+        "gitbook/projects",
+        "gitbook/dashboard",
+        "gitbook/gitbook-note",
+        "gitbook/annual-report",
+      ]
+    },
+    {
       "group": "Essentials",
       "pages": [
         "essentials/markdown",
