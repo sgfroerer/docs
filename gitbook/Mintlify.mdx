@@ -3,6 +3,8 @@ title: "Mintlify"
 description: "Scrape documentation frameworks to Mintlify docs"
 ---
 
+<Icon icon="check" color="#FF5733" />
+
 # Mintlify
 
 <Accordion title="Migration" defaultOpen={false}>
@@ -32,8 +34,6 @@ description: "Scrape documentation frameworks to Mintlify docs"
 <Accordion title="JS & CSS Libraries" defaultOpen={false}>
   To add custom JavaScript (JS) and CSS libraries to a Mintlify project synced with GitHub, you can follow these steps:
 
-
-
   ### Use External Libraries
 
   <Tip>
@@ -53,61 +53,33 @@ description: "Scrape documentation frameworks to Mintlify docs"
       If you're using React (Mintlify's default framework), you can import libraries directly in your React components
     </Tip>
 
-        <Tabs>
-          <Tab title="Install">
-            *Install the library via npm*
+    <Tabs>
+      <Tab title="Install">
+        *Install the library via npm*
 
-            ```
-            npm install library-name
-            ```
-          </Tab>
+        ```
+        npm install library-name
+        ```
+      </Tab>
 
-          <Tab title="Import">
-            *Import it in your React files*
+      <Tab title="Import">
+        *Import it in your React files*
 
-            ```markdown
-            import 'library-name/dist/library.css';
-            import LibraryName from 'library-name';
-            ```
-          </Tab>
+        ```markdown
+        import 'library-name/dist/library.css';
+        import LibraryName from 'library-name';
+        ```
+      </Tab>
 
-          <Tab title="Sync">
-            *Sync Changes to GitHub*
+      <Tab title="Sync">
+        *Sync Changes to GitHub*
 
-            ```bash
-            git add .
-            git commit -m "Add custom JS/CSS files"
-            git push
-            ```
-          </Tab>
-        </Tabs>
+        ```bash
+        git add .
+        git commit -m "Add custom JS/CSS files"
+        git push
+        ```
+      </Tab>
+    </Tabs>
   </Accordion>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </Accordion>
