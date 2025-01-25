@@ -60,7 +60,6 @@
       "pages": [
         "gitbook/Mintlify",
         "gitbook/docker",
-        "gitbook/daisyui",
         "gitbook/dashboard",
         "gitbook/gitbook-note",
         "gitbook/annual-report",
