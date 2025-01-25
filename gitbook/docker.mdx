@@ -7,7 +7,6 @@ icon: 'docker'
 <AccordionGroup>
   <Accordion title="Docker Network" defaultOpen={false} icon="docker">
     ###
-
     <Tabs>
       <Tab title="Network">
         ### Verify Docker Network Configuration
@@ -21,14 +20,7 @@ icon: 'docker'
         docker network connect my_network tooljet_container
         docker network connect my_network grist_container
         ```
-
         ###
-
-
-
-
-
-
       </Tab>
 
       <Tab title="Container Name as the Host">
@@ -37,15 +29,12 @@ icon: 'docker'
         <Tip>
           Within Docker, 127.0.0.1 refers to the container itself. To access another container, use its name (as defined in the docker-compose.yml file or docker run command) as the hostname
 
-
-
           Update your REST API configuration in Tooljet to use the Grist container name
         </Tip>
 
         ```arduino
         http://<grist_container_name>:8484
         ```
-
         ###
       </Tab>
 
@@ -60,23 +49,16 @@ icon: 'docker'
         docker network rm my_network
         docker network disconnect my_network grist_container
         ```
-
         <Tip>
           Before doing so, disconnect any remaining containers from the network
         </Tip>
       </Tab>
     </Tabs>
-
     ###
-
-
-
-
   </Accordion>
 
   <Accordion title="New Accordion" defaultOpen="false">
     docker network disconnect my\_network grist\_container
-
     ###
   </Accordion>
 </AccordionGroup>
