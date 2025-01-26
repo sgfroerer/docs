@@ -26,23 +26,54 @@ description: "External CSS & JavaScript Libraries"
 
         <Card title="Playground" icon="flask-vial" href="https://play.tailwindcss.com/wWndQ9FxeZ" />
 
-        <Card title="Components" icon="codepen" href="https://daisyui.com/components/">
-
-        </Card>
+        <Card title="Components" icon="codepen" href="https://daisyui.com/components/" />
       </CardGroup>
     </Accordion>
+
     <Accordion title="Bootstrap" defaultOpen={false}>
-      <Tip>
-        You don't need to install anything. Just add one of these to the \`head\` tag of your HTML
-      </Tip>
+      <Accordion title="Links" defaultOpen={false} icon="link">
+        <CardGroup cols={3}>
+          <Card title="Docs" icon="file-circle-question" href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">
 
-      *daisyUI \`4.12.23\` CSS file + Tailwind CSS CDN script*
+          </Card>
 
-      ```markdown
-      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+          <Card title="Github" icon="github" href="https://github.com/twbs/bootstrap">
 
-      <script src="https://cdn.tailwindcss.com"></script>
-      ```
+          </Card>
+
+          <Card title="Components" icon="codepen" href="https://getbootstrap.com/docs/4.1/components/alerts/">
+
+          </Card>
+        </CardGroup>
+
+        <Accordion title="Requirements" defaultOpen={false}>
+          Many of our components require the use of JavaScript to function. Specifically, they require [jQuery](https://jquery.com/), [Popper.js](https://popper.js.org/), and our own JavaScript plugins. Place the following `<script>`s near the end of your pages, right before the closing `</body>` tag, to enable them. jQuery must come first, then Popper.js, and then our JavaScript plugins.
+
+
+
+          We use [jQuery’s slim build](https://blog.jquery.com/2016/06/09/jquery-3-0-final-released/), but the full version is also supported.
+        </Accordion>
+      </Accordion>
+
+      <Tabs>
+        <Tab title="CSS">
+          <Tip>
+            Copy-paste the stylesheet \<link> into your \<head> before all other stylesheets to load our CSS
+
+            ```markdown
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            ```
+          </Tip>
+        </Tab>
+
+        <Tab title="JavaScript">
+          ```
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          ```
+        </Tab>
+      </Tabs>
     </Accordion>
   </Accordion>
 
