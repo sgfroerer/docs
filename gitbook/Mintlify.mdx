@@ -4,7 +4,23 @@ description: "Scrape documentation frameworks to Mintlify docs"
 icon: 'leaf'
 ---
 
-<Icon icon="docker" />
+<Accordion title="Gitbook Scrape" defaultOpen={false} icon="scraper">
+
+
+
+
+  ```
+  npx @mintlify/scraping@latest section https://cre-1.gitbook.io/tgg-docs/news/daily-or-news
+  ```
+
+
+
+
+</Accordion>
+
+
+
+
 
 <i class="fa-brands fa-docker" />
 
@@ -85,8 +101,6 @@ icon: 'leaf'
   </Accordion>
 </Accordion>
 
-
-
 <Accordion title="Adding External CSS & JavaScript Libraries" defaultOpen={false}>
   **Add the CSS Library to `headLinks`:**
 
@@ -120,8 +134,6 @@ icon: 'leaf'
 
   The `async` property can be set to `true` or `false` depending on whether you want the script to load asynchronously
 
-
-
   <Tabs>
     <Tab title="CSS">
       CSS libraries should typically go in `headLinks` since they are loaded in the `<head>`
@@ -131,6 +143,4 @@ icon: 'leaf'
       JavaScript libraries should be added to `headScripts`, which places them near the end of the body, just before `</body>`
     </Tab>
   </Tabs>
-
-
 </Accordion>
