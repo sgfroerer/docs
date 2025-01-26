@@ -95,19 +95,12 @@ description: "External CSS & JavaScript Libraries"
 
     <Accordion title="ECharts" defaultOpen={false} icon="chart-simple">
       <Info>
-        **Use From CDN**
-
-        ECharts is available on the following free CDNs:&#x20;
-
-        [jsDelivr](https://www.jsdelivr.com/package/npm/echarts)     |     [unpkg](https://unpkg.com/browse/echarts/)     |     [cdnjs](https://cdnjs.com/libraries/echarts)
+        [Download](https://echarts.apache.org/handbook/en/basics/download/)     |     [Import](https://echarts.apache.org/handbook/en/basics/import)     |    [Map Example](https://echarts.apache.org/examples/en/editor.html?c=map-usa-pie\&lang=js)                                                                        &#x20;
 
 
 
         <Accordion title="Including ECharts" defaultOpen={false}>
           Create a new `index.html` file in the directory where you just saved `echarts.js`, with the following content:
-
-
-
 
           ```markdown
           <!DOCTYPE html>
@@ -132,8 +125,6 @@ description: "External CSS & JavaScript Libraries"
           ```
 
           Then you can initialize an echarts instance with the [echarts.init](https://echarts.apache.org/api.html#echarts.init) method and set the echarts instance with [setOption](https://echarts.apache.org/api.html#echartsInstance.setOption) method to generate a simple bar chart. Here is the complete code.
-
-
 
           <Accordion title="Example" defaultOpen={false}>
             ```
@@ -181,18 +172,13 @@ description: "External CSS & JavaScript Libraries"
             </html>
             ```
           </Accordion>
-
-
-
-
-
         </Accordion>
-
-
       </Info>
 
       ```html
       <script src="https://cdn.jsdelivr.net/npm/echarts"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/echarts@5.6.0/dist/echarts.min.js"></script>
       ```
 
       <CardGroup cols={3}>
