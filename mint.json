@@ -58,8 +58,9 @@
     {
       "group": "Tools",
       "pages": [
-        "gitbook/tools/Index",
-        "gitbook/tools/apexcharts"
+        "gitbook/tools/index",
+        "gitbook/tools/apexcharts",
+        "gitbook/tools/libraries",
       ]
     },
     {
