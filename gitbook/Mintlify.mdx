@@ -4,13 +4,9 @@ description: "Scrape documentation frameworks to Mintlify docs"
 icon: 'leaf'
 ---
 
-<Icon icon="check" color="#FF5733" />
-
 <Icon icon="docker" />
 
-<i class="fa-brands fa-docker"></i>
-
-# Mintlify
+<i class="fa-brands fa-docker" />
 
 <Accordion title="Migration" defaultOpen={false}>
   <Note>
@@ -87,4 +83,54 @@ icon: 'leaf'
       </Tab>
     </Tabs>
   </Accordion>
+</Accordion>
+
+
+
+<Accordion title="Adding External CSS & JavaScript Libraries" defaultOpen={false}>
+  **Add the CSS Library to `headLinks`:**
+
+  <Tip>
+    In your `mint.json`, include the `link` tag as an object in the `headLinks` array
+  </Tip>
+
+  ```json
+  "headLinks": [
+      {
+          "rel": "stylesheet",
+          "href": "https://cdn.jsdelivr.net/npm/library-name@version/library.min.css"
+      }
+  ]
+  ```
+
+  **Add the JavaScript Library to `headScripts`:**
+
+  <Tip>
+    In your `mint.json`, include the `script` tag as an object in the `headScripts` array
+  </Tip>
+
+  ```json
+  "headScripts": [
+      {
+          "src": "https://cdn.jsdelivr.net/npm/library-name@version/library.min.js",
+          "async": false
+      }
+  ]
+  ```
+
+  The `async` property can be set to `true` or `false` depending on whether you want the script to load asynchronously
+
+
+
+  <Tabs>
+    <Tab title="CSS">
+      CSS libraries should typically go in `headLinks` since they are loaded in the `<head>`
+    </Tab>
+
+    <Tab title="JavaScript">
+      JavaScript libraries should be added to `headScripts`, which places them near the end of the body, just before `</body>`
+    </Tab>
+  </Tabs>
+
+
 </Accordion>
