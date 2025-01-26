@@ -56,6 +56,13 @@
       ]
     },
     {
+      "group": "Tools",
+      "pages": [
+        "gitbook/tools/Index",
+        "gitbook/tools/apexcharts"
+      ]
+    },
+    {
       "group": "Gitbook",
       "pages": [
         "gitbook/Mintlify",
