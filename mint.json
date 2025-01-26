@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Kickz Investments",
   "logo": {
-    "dark": "/logo/MM_logo2018_blue295.svg",
-    "light": "/logo/MM_logo2018_white.svg"
+    "dark": "/logo/MM_blue.svg",
+    "light": "/logo/MM_white.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
