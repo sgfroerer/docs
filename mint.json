@@ -60,7 +60,7 @@
       "pages": [
         "gitbook/tools/index",
         "gitbook/tools/apexcharts",
-        "gitbook/tools/libraries",
+        "gitbook/tools/libraries"
       ]
     },
     {
