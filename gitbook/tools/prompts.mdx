@@ -5,22 +5,107 @@ description: 'Description of your new file.'
 
 test
 
-
-
-
-
 # Grist
 
 <AccordionGroup>
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="New Accordion" defaultOpen="false" />
 
-  </Accordion>
+  <Accordion title="New Accordion" defaultOpen="false" />
 
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="Tables & Column Names" defaultOpen={false}>
 
-  </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
+
+
+
+
+    <Accordion title="New Accordion" defaultOpen="false">
+      ```markdown
+      I use Grist as a CRM with two tables, one for property owners and one for the properties. The Custom Widget Builder allows you to build custom widgets with HTML and JavaScript, right inside Grist. 
+
+      Here is the code view for my owners table so you can see what the column names and types are:
+      ## Owners_:
+      Call_Relationship = grist.ChoiceList() 
+      Constant_Call_VM_s = grist.Bool() 
+      Tranche = grist.ChoiceList() 
+      Profile_Image = grist.Text() 
+      Objection = grist.ChoiceList() 
+      Last_Call_Segment = grist.Choice() 
+      Opportunity = grist.ChoiceList() 
+      Past_Contact_ = grist.Bool() 
+      LinkedIn = grist.Text() 
+      Reminder_Note = grist.Text() 
+      Name = grist.Text() 
+      Owner_Full_Name = grist.Text() 
+      Accounts = grist.Text() 
+      Other_Owners = grist.Text() 
+      Email = grist.Text() 
+      Owner_Address = grist.Text() 
+      Age = grist.Text() 
+      Segment = grist.ChoiceList() 
+      Gender = grist.Choice() 
+      Title = grist.Text() 
+      Pref = grist.Text() 
+      Owner_Personality = grist.ChoiceList() 
+      Activity = grist.ChoiceList() 
+      VM_s = grist.Text() 
+      Call_no_VM = grist.Text() 
+      Date = grist.Date() 
+      Contact_1 = grist.Text() 
+      Contact_2 = grist.Text() 
+      Contact_3 = grist.Text() 
+      Extra_Notes = grist.Text() 
+      Concat = grist.Text() 
+      Next_Steps = grist.ChoiceList() 
+      Classify = grist.ChoiceList() 
+      Contact_4 = grist.Text() 
+      Plans_to_Buy = grist.Text() 
+      Plans_to_Sell = grist.Text() 
+      Phone_1_Notes = grist.Text() 
+      Phone_2_Notes = grist.Text() 
+      Phone_3_Notes = grist.Text() 
+      Phone_4_Notes = grist.Text() 
+      Phone = grist.Text() 
+      Phone_2 = grist.Text() 
+      Phone_3 = grist.Text() 
+      Phone_4 = grist.Text() 
+      Shit_ = grist.Bool() 
+      Other_Props = grist.Text() 
+      Buyer_Needs = grist.ChoiceList() 
+      Wrong_Phone = grist.Text() 
+      Spouse = grist.Text() 
+      Prop_Rate = grist.Choice() 
+      Properties_ = grist.ReferenceList('Properties_', reverse_of='Name')
+
+      Properties_:
+      Name = grist.ReferenceList('Owners_', reverse_of='Properties_') 
+      ImageURLs = grist.Text() 
+      Property_Id = grist.Text() 
+      Property_Address = grist.Text() 
+      City = grist.Choice() 
+      State = grist.Text() 
+      Zip = grist.Int() 
+      County_Name = grist.Choice() 
+      Parcel = grist.Text() 
+      Secondary_Type = grist.ChoiceList() 
+      Property_Type = grist.Choice() 
+      Last_Sale_Price = grist.Numeric() 
+      Last_Sale_Date = grist.Date() 
+      RBA = grist.Numeric() 
+      Land = grist.Numeric() 
+      Tenancy = grist.Choice() 
+      YearB = grist.Text() 
+      YearR = grist.Text() 
+      Building_Park = grist.Text() 
+      Property_Name = grist.Text() 
+      Tenants = grist.ChoiceList() 
+      Latitude = grist.Numeric() 
+      Longitude = grist.Numeric()
+      ```
+    </Accordion>
+
+
+
 
   </Accordion>
 </AccordionGroup>
