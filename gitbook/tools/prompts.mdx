@@ -9,7 +9,7 @@ test
 
 <AccordionGroup>
   <Accordion title="Grist-API" defaultOpen={false}>
-    as
+    Grist API
 
 
 
@@ -36,15 +36,7 @@ test
       ```
     </Accordion>
 
-
-
-
-
-
-
     d
-
-
   </Accordion>
 
   <Accordion title="Code View" defaultOpen={false}>
@@ -136,10 +128,6 @@ test
       Longitude = grist.Numeric()
       ```
     </Accordion>
-
-
-
-
 
     <Accordion title="New Accordion" defaultOpen="false">
       ```
@@ -239,10 +227,6 @@ test
         TextName = grist.Text()
       ```
     </Accordion>
-
-
-
-
 
     a
   </Accordion>
@@ -392,8 +376,193 @@ test
     	- ❄️ Liberal ❄️
     ```
 
-
-
     A
   </Accordion>
 </AccordionGroup>
+
+
+
+# Design/UI
+
+<AccordionGroup>
+  <Accordion title="Improvements" defaultOpen={false}>
+    A
+
+    ```markdown
+    I’d like to achieve the following improvements:
+
+    1. **Design Modernization**: Rewrite the pop-up layout to use **Tailwind CSS** for a sleek, responsive design with utility classes. For example:
+        - Use `flex` and `grid` for better alignment.
+        - Add hover effects for buttons.
+        - Use rounded corners and shadows for a card-like design.
+    2. **Enhanced Functionality**: Add dynamic features, such as collapsible sections for tenant lists or tooltips for buttons.
+    3. **Minimize White Space**: Reduce padding and space between elements to make the design more compact while maintaining readability.
+    4. **Optional Features**: If there are any external libraries (like **Tailwind CSS, or Popover.js**) that could enhance interactivity or aesthetics, feel free to suggest or implement them.
+    5. **Image Handling**: Ensure images are displayed elegantly (e.g., as thumbnails with a lightbox preview on click) or use placeholders if no image is available.
+
+    Please provide a code rewrite that incorporates these improvements and explains how to integrate it into the map.
+    ```
+
+    A
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+
+  </Accordion>
+</AccordionGroup>
+
+#
+
+<Accordion title="Grist Developer Docs" defaultOpen={false}>
+  A
+
+  ```markdown
+  ##### Developers
+
+  - Power tools - Take it to the next level with our [open-source](https://github.com/gristlabs/grist-core) spreadsheet-database tool.
+  - Super-charged formulas
+  	- Fully supports Python syntax and standard library in formulas.
+  	- Includes many familiar Excel functions.
+  - Extensible
+  	- Connect to anything via REST API, webhooks, or integrators.
+  	- Create your own custom widgets.
+  - Unprecedented control
+  	- Can be self-managed, for intranet operation or compliance.
+  	- Uses SQLite format, great for portability and backups.
+  - Built-in drag-and-drop dashboards, support for custom-coded views, Python formulas, and more.
+  - Easily input data in a familiar spreadsheet UI, all while maintaining a relational SQLite file.
+  - Link data visually in productive layouts that streamline your team’s workflows.
+
+  ### Python formulas + Excel-like functions
+  - Grist’s formula language is Python – a data scientist favorite with a robust library and intuitive syntax.
+  - Don’t know Python? The internet is ready to teach you, as is [our community](https://community.getgrist.com/).
+  - Got SUM() and AVERAGE() in muscle memory? We’ve got you; use many Excel-style functions.
+
+  ### Take your data everywhere
+  - Download Grist spreadsheets as SQLite files — a widely-used database, favored even by the [US Library of Congress!](https://www.loc.gov/preservation/digital/formats/fdd/fdd000461.shtml)
+  - Use Grist everywhere: as a hosted service, in corporate networks, old desktops, CI tests, open-source projects, or even CDN-backed websites viewed by millions!
+  - Use the [Grist CSV Viewer](https://www.getgrist.com/grist-csv-viewer/) to let your users preview and interact with CSV files hosted on your website, without downloading them.
+  - Data portability and autonomy is in our open source DNA. Harness Grist’s power to build bespoke solutions for your team.
+
+  ### Collaborate on your data your way
+  - Write custom widgets in HTML/CSS/JS to suit your team’s needs.
+  - Share one copy of data with granular permissions, controlling read/write access down to each cell.
+  - Build custom data views with standard widgets, including [Grist calendar](https://www.getgrist.com/calendar/).
+  - Set rules by role, limiting who can see what, from CEO to intern.
+
+  ### More features
+  - **Version control and backups**  `Developers used to git will enjoy the ability to do three-way comparisons and find common ancestors.`
+  - **A powerful API**  `Access and edit your data and the structure of your spreadsheets, workspaces, and sites.`
+  - **Incremental imports**  `Grist lets you import data, then import the next version of it in a sensible way.`
+
+  ### These are some of the bigger features that landed in 2024:
+  - **Admin console** **for self-hosters** – There is now an [ever-expanding admin console](https://support.getgrist.com/newsletters/2024-05/#self-hosting-admin-console-improvements) to help _console admins_ (sorry).
+  - **Cumulative functions** – it turns out Grist’s unique structure uniquely benefits from a comprehensive set of [cumulative functions](https://support.getgrist.com/newsletters/2024-07/#cumulative-functions-previous-next-and-rank) (`PREV()` & `RANK()`) and `find` methods.
+  - **[Two-way references](https://support.getgrist.com/col-refs/#two-way-references)** – a feature that required a _lot_ of plumbing, but adds a lot of flexibility to Grist’s relational nature. As they say, two ways are better than one!
+  - You can now use [**rich formatting via Markdown**](https://support.getgrist.com/newsletters/2024-08/#markdown-cell-formatting) within text columns. _**Nice.**_
+  - It’s now easier than ever to [**add custom widgets to the built-in list**](https://support.getgrist.com/self-managed/#how-do-i-list-custom-widgets) in self-hosted installations. Want to be included in the main gallery, [let us know](https://www.getgrist.com/blog/grist-2024-year-in-review/#gallery)!
+  - Our new [**custom widget builder custom widget**](https://community.getgrist.com/t/new-community-widget-custom-widget-builder/6803) may indeed be a major feature, as we’ve already seen several [advanced widgets](https://community.getgrist.com/t/tutorial-building-santas-workshop-dashboard-with-custom-widget-builder-a-step-by-step-guide-to-advanced-visualization-in-grist/7478) making use of the very meta tool with a mouthful of a name.
+  ```
+
+
+
+  A
+</Accordion>
+
+<Accordion title="Grist-API Repo" defaultOpen={false} icon="github">
+  a
+
+  <AccordionGroup>
+    <Accordion title="Nodejs Client" defaultOpen={false} icon="node">
+      a
+
+      ```markdown
+      On their github for Usage Example of the grist-api, (NodeJS client for interacting with Grist), they provide this template:
+      Installation
+      npm install grist-api
+      Usage Example
+      const {GristDocAPI} = require('grist-api');
+
+      // Put here the URL of your document.
+      const DOC_URL = "https://docs.getgrist.com/123456789abc/My-Document";
+
+      async function main() {
+        const api = new GristDocAPI(DOC_URL);
+        // Add some rows to a table
+        await api.addRecords('Food', [
+          {Name: 'eggs', AmountToBuy: 12},
+          {Name: 'beets', AmountToBuy: 1},
+        ]);
+
+        // Fetch all rows.
+        const data = await api.fetchTable('Food');
+        console.log(data);
+
+        // Sync data by a key column.
+        await api.syncTable('Food', [{Name: 'eggs', AmountToBuy: 0}], ['Name']);
+      }
+
+      main();
+      To run this, first prepare a Grist doc to play with:
+
+      Create a Grist doc
+      Add a table named Food with columns Name and AmountToBuy
+      Set DOC_URL in the code above to that of your document (the part after doc ID doesn't matter).
+      To use the API, you need to get your API key in Grist from Profile Settings. This API key may be provided to GristDocAPI in several ways, and is looked for in this order:
+
+      As a constructor argument: new GristDocAPI(DOC_URL, {apiKey: 'XXX'}).
+      In an environment variable: GRIST_API_KEY=<key>.
+      In the ~/.grist-api-key file.
+      Public documents may be accessed without an API key, or with an empty string for the API key (to stop searching the locations above).
+
+      Classes and methods
+      new GristDocAPI(docUrlOrId, options)
+      Create an API instance. You may specify either a doc URL, or just the doc ID (the part of the URL after "/doc/"). If you specify a URL, then options.server is unneeded and ignored.
+
+      The options are:
+
+      apiKey (string) The API key, available in Grist from Profile Settings. If omitted, will be taken from GRIST_API_KEY env var, or ~/.grist-api-key file.
+      server (string) The server URL, i.e. the part of the document URL before "/doc/". Ignored if you specify a full URL for the first argument.
+      dryrun (boolean) If set, will not make any changes to the doc. You may run with DEBUG=grist-api to see what calls it would make.
+      chunkSize (number, default: 500) Split large requests into smaller one, each limited to chunkSize rows. If your requests are very large and hit size limits, try using a smaller value.
+      fetchTable(tableName, filters?)
+      Fetch all data in the table by the given name, returning a list of records with attributes corresponding to the columns in that table.
+
+      If filters is given, it should be an object mapping column names to array values, to fetch only records that match. For example {Name: ['eggs']}.
+
+      addRecords(tableName, records)
+      Adds new records to the given table. The data is a list of objects, with attributes corresponding to the columns in the table. Returns a list of added rowIds.
+
+      deleteRecords(tableName, recordIds)
+      Deletes records from the given table. The data is a list of record IDs.
+
+      updateRecords(tableName, records)
+      Update existing records in the given table. The data is a list of objects, with attributes corresponding to the columns in the table. Each object must contain the key "id" with the rowId of the row to update.
+
+      If records aren't all for the same set of columns, then a single-call update is impossible, so we'll make multiple calls.
+
+      syncTable(tableName, records, keyColIds, {filters?})
+      Updates Grist table with new data, updating existing rows or adding new ones, matching rows on the given key columns. (This method does not remove rows from Grist.)
+
+      The records parameter is a list of objects with column IDs as attributes.
+
+      The keyColIds parameter lists primary-key columns, which must be present in the given records.
+
+      If options.filters is given, it should be an object mapping colIds to arrays of values. Only records matching these filters will be matched as candidates for existing rows to update. New records whose columns don't match filters will be ignored.
+      ```
+    </Accordion>
+
+    <Accordion title="New Accordion" defaultOpen="false">
+
+    </Accordion>
+  </AccordionGroup>
+
+
+
+  ```markdown
+  ```
+
+
+
+  a
+</Accordion>
