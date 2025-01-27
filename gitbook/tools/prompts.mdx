@@ -233,6 +233,199 @@ test
   <Accordion title="Tables & Column Names" defaultOpen={false} icon="table">
     <Accordion title="Prompt" defaultOpen={false}>
       ```markdown
+      My table names are Properties_ and Owners_ here is the code view:
+      @grist.UserTable
+      class Owners_:
+        Source_Grist = grist.ChoiceList()
+        MyMarket = grist.ChoiceList()
+        Reminder_Date = grist.Date()
+        Reminder_Title = grist.Text()
+        def defaultLast_updated_at(rec, table, value, user):
+          return NOW()
+        Last_updated_at = grist.DateTime('America/Los_Angeles')
+        Call_Relationship = grist.ChoiceList()
+        Constant_Call_VM_s = grist.Bool()
+        Tranche = grist.ChoiceList()
+        Profile_Image = grist.Text()
+        Objection = grist.ChoiceList()
+        Last_Call_Segment = grist.Choice()
+        Opportunity = grist.ChoiceList()
+        PastContact = grist.Bool()
+        LinkedIn = grist.Text()
+        Reminder_Note = grist.Text()
+        Name = grist.Text()
+        Owner_Full_Name = grist.Text()
+        Accounts = grist.Text()
+        Other_Owners = grist.Text()
+        Email = grist.Text()
+        Owner_Address = grist.Text()
+        Age = grist.Text()
+        Segment = grist.ChoiceList()
+        Gender = grist.Choice()
+        Title = grist.Text()
+        Pref = grist.Text()
+        Owner_Personality = grist.ChoiceList()
+        Activity = grist.ChoiceList()
+        VM_s = grist.Text()
+        Call_no_VM = grist.Text()
+        Date = grist.Date()
+        Contact_1 = grist.Text()
+        Contact_2 = grist.Text()
+        Contact_3 = grist.Text()
+        Extra_Notes = grist.Text()
+        Concat = grist.Text()
+        Next_Steps = grist.ChoiceList()
+        A = grist.Text()
+        Classify = grist.ChoiceList()
+        Contact_4 = grist.Text()
+        Plans_to_Buy = grist.Text()
+        Plans_to_Sell = grist.Text()
+        Phone_1_Notes = grist.Text()
+        Phone_2_Notes = grist.Text()
+        Phone_3_Notes = grist.Text()
+        Phone_4_Notes = grist.Text()
+        Phone = grist.Text()
+        Phone_2 = grist.Text()
+        Phone_3 = grist.Text()
+        Phone_4 = grist.Text()
+        Other_Props = grist.Text()
+        Buyer_Needs = grist.ChoiceList()
+        Wrong_Phone = grist.Text()
+        Website = grist.Text()
+        Pronounce = grist.Text()
+        Department = grist.Text()
+        Spouse = grist.Text()
+        PropRate = grist.Choice()
+        Properties = grist.ReferenceList('Properties_', reverse_of='Name')
+
+      @grist.UserTable
+      class Properties:
+        Name = grist.ReferenceList('Owners', reverseof='Properties')
+        ImageURLs = grist.Text()
+        Property_Id = grist.Text()
+        Property_Address = grist.Text()
+        City = grist.Choice()
+        State = grist.Text()
+        Zip = grist.Int()
+        County_Name = grist.Text()
+        Parcel = grist.Text()
+        Secondary_Type = grist.ChoiceList()
+        Property_Type = grist.Choice()
+        Last_Sale_Price = grist.Numeric()
+        Last_Sale_Date = grist.Date()
+        RBA = grist.Numeric()
+        Land = grist.Numeric()
+        Tenancy = grist.Choice()
+        Year_Built = grist.Text()
+        Year_Renovated = grist.Text()
+        Building_Park = grist.Text()
+        Property_Name = grist.Text()
+        Tenants = grist.ChoiceList()
+        Latitude = grist.Numeric()
+        Longitude = grist.Numeric()
+        Market_Name = grist.Text()
+        Submarket_Name = grist.Text()
+        Source_Grist = grist.ChoiceList()
+        TextName = grist.Text()
+
+      Here are the correct options for each of my choice list columns:
+
+      - Source Grist:
+      	- ❗DNC ❗
+      	- ✖️ Never ✖️
+      	- 🟢 Main 🟢
+      	- 💷 IPA 💷
+      	- 🗺️ Out of Market 🗺️
+      	- ➕ New ➕
+      	- 🖥️ Local 🖥️
+      	- 🖥️ Tenants 10/14 🖥️
+      	- 🗣️ Eric 🗣️
+
+      - Last Call Segment:
+      	- 📠 VM 📠
+      	- 🗣️ Contact 🗣️
+      	- ✖️ No VM ✖️
+
+      - Segment:
+      	- EH
+      	- Call Again
+      	- VM
+      	- Contact
+      	- Not Interested
+      	- DNC
+      	- Wrong
+      	- Never
+      	- X
+      	- Not Primary
+
+      - Classify:
+      	- Mom & Pop
+      	- 2-4 Properties
+      	- Tier 2 Investor
+      	- Developer
+      	- Operator | Owner User
+      	- Company
+      	- IPA
+      	- Eric
+      	- 🧑‍💼 Broker 🧑‍💼
+
+      - Call Relationship:
+      	- Updates
+      	- Deals/Buy Side
+      	- Check-in's
+      	- IG Required
+      	- Interest Rates
+      	- Portland BS
+      	- Oregon BS
+
+      - Activity:
+      	- Nothing
+      	- 💲Buy💲
+      	- 💲Sell💲
+      	- Just Holding
+      	- Exchange
+      	- Waiting
+
+      - Objection
+      	- Hold Long Term
+      	- Pass Down to Kids
+      	- Already has Broker
+      	- Not Wanting Anything
+      	- Bring an Offer
+      	- Waiting for Market
+
+      - Opportunity
+      	- 🛒 Buy-Side 🛒
+      	- Valuation
+      	- Meeting
+      	- Lead
+      	- Re-Finance
+      	- Lease Renewal
+
+
+      - Tranche
+      	- Out of State
+      	- Owned 20+ years
+      	- Age Under 40
+      	- Age 40-60
+      	- Age 60+
+      	- Age 70+
+      	- Age 80+
+      	- Retire Soon
+      	- UO - Duck
+      	- SAE
+      	- OSU
+
+      - Owner Personality
+      	- Talkative
+      	- Very Friendly
+      	- Polite - Didn't Want to Talk
+      	- 🖕Rude🖕
+      	- 😡 Angry 😡
+      	- ❗DNC❗
+      	- Friendly
+      	- 🐘 Republican 🐘
+      	- ❄️ Liberal ❄️
       ```
     </Accordion>
   </Accordion>
@@ -403,7 +596,11 @@ test
     A
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false" />
+  <Accordion title="New Accordion" defaultOpen="false">
+    ```
+    Test
+    ```
+  </Accordion>
 </AccordionGroup>
 
 #
