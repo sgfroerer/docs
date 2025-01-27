@@ -60,7 +60,7 @@
       "pages": [
         "gitbook/tools/index",
         "gitbook/tools/apexcharts",
-        "gitbook/streamlit",
+        "gitbook/tools/prompts",
         "gitbook/tools/libraries"
       ]
     },
@@ -68,7 +68,7 @@
       "group": "Gitbook",
       "pages": [
         "gitbook/Mintlify",
-        "gitbook/prompts",
+        "gitbook/streamlit",
         "gitbook/docker",
         "gitbook/dashboard",
         "gitbook/gitbook-note",
