@@ -8,23 +8,56 @@ test
 # Grist
 
 <AccordionGroup>
-  <Accordion title="New Accordion" defaultOpen="false" />
-
-  <Accordion title="New Accordion" defaultOpen="false" />
-
-  <Accordion title="Tables & Column Names" defaultOpen={false}>
+  <Accordion title="Grist-API" defaultOpen={false}>
+    as
 
 
 
+    <Accordion title="Examples & My Instance" defaultOpen={false}>
+      ```
+      # Grist-API
+      Here are a few examples of use with the grist-api:
+      - /docs/{docId}/tables/{tableId}/records
+          - GET - Fetch records from a table
+      - /docs/{docId}/tables/{tableId}/columns
+          - GET - List columns in a table
+      - /docs/{docId}/sql
+          - GET - Run an SQL query against a document
+      ---
+      For my instance, 
+      This fetches the records in my table titled "Properties":
+      - http://localhost:8484/o/docs/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties/records
+      This does the same but for my table titled "Owners":
+      - http://localhost:8484/o/docs/api/docs/6627doqoUdusJLxaciaTXC/tables/Owners/records
+      For my local grist instance, 
+      - My API Key is: c36a6046399de44226d26a9c328688882e20b63f
+      - My Base URL to my document is: http://localhost:8484/o/docs/api/docs/6627doqoUdusJLxaciaTXC
+      - My Document_ID or "docId" is: 6627doqoUdusJLxaciaTXC
+      ```
+    </Accordion>
 
 
 
-    <Accordion title="New Accordion" defaultOpen="false">
-      ```markdown
+
+
+
+
+    d
+
+
+  </Accordion>
+
+  <Accordion title="Code View" defaultOpen={false}>
+    <Tip>
+      Tables & Column Names
+    </Tip>
+
+    <Accordion title="Prompt" defaultOpen={false}>
+      ```
       I use Grist as a CRM with two tables, one for property owners and one for the properties. The Custom Widget Builder allows you to build custom widgets with HTML and JavaScript, right inside Grist. 
 
       Here is the code view for my owners table so you can see what the column names and types are:
-      ## Owners_:
+      # Owners_:
       Call_Relationship = grist.ChoiceList() 
       Constant_Call_VM_s = grist.Bool() 
       Tranche = grist.ChoiceList() 
@@ -77,7 +110,7 @@ test
       Prop_Rate = grist.Choice() 
       Properties_ = grist.ReferenceList('Properties_', reverse_of='Name')
 
-      Properties_:
+      # Properties_:
       Name = grist.ReferenceList('Owners_', reverse_of='Properties_') 
       ImageURLs = grist.Text() 
       Property_Id = grist.Text() 
@@ -107,5 +140,260 @@ test
 
 
 
+
+    <Accordion title="New Accordion" defaultOpen="false">
+      ```
+      My table names are Properties_ and Owners_ here is the code view:
+      @grist.UserTable
+      class Owners_:
+        Source_Grist = grist.ChoiceList()
+        MyMarket = grist.ChoiceList()
+        Reminder_Date = grist.Date()
+        Reminder_Title = grist.Text()
+        def defaultLast_updated_at(rec, table, value, user):
+          return NOW()
+        Last_updated_at = grist.DateTime('America/Los_Angeles')
+        Call_Relationship = grist.ChoiceList()
+        Constant_Call_VM_s = grist.Bool()
+        Tranche = grist.ChoiceList()
+        Profile_Image = grist.Text()
+        Objection = grist.ChoiceList()
+        Last_Call_Segment = grist.Choice()
+        Opportunity = grist.ChoiceList()
+        PastContact = grist.Bool()
+        LinkedIn = grist.Text()
+        Reminder_Note = grist.Text()
+        Name = grist.Text()
+        Owner_Full_Name = grist.Text()
+        Accounts = grist.Text()
+        Other_Owners = grist.Text()
+        Email = grist.Text()
+        Owner_Address = grist.Text()
+        Age = grist.Text()
+        Segment = grist.ChoiceList()
+        Gender = grist.Choice()
+        Title = grist.Text()
+        Pref = grist.Text()
+        Owner_Personality = grist.ChoiceList()
+        Activity = grist.ChoiceList()
+        VM_s = grist.Text()
+        Call_no_VM = grist.Text()
+        Date = grist.Date()
+        Contact_1 = grist.Text()
+        Contact_2 = grist.Text()
+        Contact_3 = grist.Text()
+        Extra_Notes = grist.Text()
+        Concat = grist.Text()
+        Next_Steps = grist.ChoiceList()
+        A = grist.Text()
+        Classify = grist.ChoiceList()
+        Contact_4 = grist.Text()
+        Plans_to_Buy = grist.Text()
+        Plans_to_Sell = grist.Text()
+        Phone_1_Notes = grist.Text()
+        Phone_2_Notes = grist.Text()
+        Phone_3_Notes = grist.Text()
+        Phone_4_Notes = grist.Text()
+        Phone = grist.Text()
+        Phone_2 = grist.Text()
+        Phone_3 = grist.Text()
+        Phone_4 = grist.Text()
+        Other_Props = grist.Text()
+        Buyer_Needs = grist.ChoiceList()
+        Wrong_Phone = grist.Text()
+        Website = grist.Text()
+        Pronounce = grist.Text()
+        Department = grist.Text()
+        Spouse = grist.Text()
+        PropRate = grist.Choice()
+        Properties = grist.ReferenceList('Properties_', reverse_of='Name')
+
+      @grist.UserTable
+      class Properties:
+        Name = grist.ReferenceList('Owners', reverseof='Properties')
+        ImageURLs = grist.Text()
+        Property_Id = grist.Text()
+        Property_Address = grist.Text()
+        City = grist.Choice()
+        State = grist.Text()
+        Zip = grist.Int()
+        County_Name = grist.Text()
+        Parcel = grist.Text()
+        Secondary_Type = grist.ChoiceList()
+        Property_Type = grist.Choice()
+        Last_Sale_Price = grist.Numeric()
+        Last_Sale_Date = grist.Date()
+        RBA = grist.Numeric()
+        Land = grist.Numeric()
+        Tenancy = grist.Choice()
+        Year_Built = grist.Text()
+        Year_Renovated = grist.Text()
+        Building_Park = grist.Text()
+        Property_Name = grist.Text()
+        Tenants = grist.ChoiceList()
+        Latitude = grist.Numeric()
+        Longitude = grist.Numeric()
+        Market_Name = grist.Text()
+        Submarket_Name = grist.Text()
+        Source_Grist = grist.ChoiceList()
+        TextName = grist.Text()
+      ```
+    </Accordion>
+
+
+
+
+
+    a
+  </Accordion>
+
+  <Accordion title="Tables & Column Names" defaultOpen={false}>
+    <Accordion title="Prompt" defaultOpen={false}>
+      ```markdown
+      ```
+    </Accordion>
+  </Accordion>
+
+  <Accordion title="Postman" defaultOpen={false}>
+    asdas
+
+    ```markdown
+    ### Get document data
+    GET: http://localhost:8484/o/docs/api/docs/6627doqoUdusJLxaciaTXC
+    Bearer Token: c36a6046399de44226d26a9c328688882e20b63f
+
+    ### Fetch Owners_
+    GET: http://localhost:8484/o/docs/api/docs/6627doqoUdusJLxaciaTXC/tables/Owners_/records
+    Bearer Token: c36a6046399de44226d26a9c328688882e20b63f
+
+    ### Fetch Properties_
+    GET: http://localhost:8484/o/docs/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/records
+    Bearer Token: c36a6046399de44226d26a9c328688882e20b63f
+    ```
+
+    dfsdf
+  </Accordion>
+
+  <Accordion title="Daily Tab & Owner Visuals " defaultOpen={false}>
+    a
+
+    ```
+    Add a Daily tab that shows visuals that filter owners by date column being (today) relative to whatever day it is. This can be how many Calls, (how many times (segment) or (last call segment) was changed today), a breakdown of last call segment and owner personality, etc. For today it should just check the data column, if the date in the column is =TODAY() then that counts as a call. 
+
+    Please do more visuals for location/property based visuals too, like a map of oregon that shows different shaded areas depending on if the owners of the properties in that area I talked to already, maybe shaded purple for properties owned by "IPA" in classify column, shaded green for owners I've never spoken with, etc.
+
+    Can you make a tab for owner visuals so as a broker I can see how many i have contacted, haven't contacted, show the different columns like classify or segment or how many are buy in activity column, etc. 
+    ```
+
+    a
+  </Accordion>
+
+  <Accordion title="Choice List Columns" defaultOpen={false}>
+    A
+
+    ```markdown
+    Here are the correct options for each of my choice list columns:
+
+    - Source Grist:
+    	- ❗DNC ❗
+    	- ✖️ Never ✖️
+    	- 🟢 Main 🟢
+    	- 💷 IPA 💷
+    	- 🗺️ Out of Market 🗺️
+    	- ➕ New ➕
+    	- 🖥️ Local 🖥️
+    	- 🖥️ Tenants 10/14 🖥️
+    	- 🗣️ Eric 🗣️
+
+    - Last Call Segment:
+    	- 📠 VM 📠
+    	- 🗣️ Contact 🗣️
+    	- ✖️ No VM ✖️
+
+    - Segment:
+    	- EH
+    	- Call Again
+    	- VM
+    	- Contact
+    	- Not Interested
+    	- DNC
+    	- Wrong
+    	- Never
+    	- X
+    	- Not Primary
+
+    - Classify:
+    	- Mom & Pop
+    	- 2-4 Properties
+    	- Tier 2 Investor
+    	- Developer
+    	- Operator | Owner User
+    	- Company
+    	- IPA
+    	- Eric
+    	- 🧑‍💼 Broker 🧑‍💼
+
+    - Call Relationship:
+    	- Updates
+    	- Deals/Buy Side
+    	- Check-in's
+    	- IG Required
+    	- Interest Rates
+    	- Portland BS
+    	- Oregon BS
+
+    - Activity:
+    	- Nothing
+    	- 💲Buy💲
+    	- 💲Sell💲
+    	- Just Holding
+    	- Exchange
+    	- Waiting
+
+    - Objection
+    	- Hold Long Term
+    	- Pass Down to Kids
+    	- Already has Broker
+    	- Not Wanting Anything
+    	- Bring an Offer
+    	- Waiting for Market
+
+    - Opportunity
+    	- 🛒 Buy-Side 🛒
+    	- Valuation
+    	- Meeting
+    	- Lead
+    	- Re-Finance
+    	- Lease Renewal
+
+
+    - Tranche
+    	- Out of State
+    	- Owned 20+ years
+    	- Age Under 40
+    	- Age 40-60
+    	- Age 60+
+    	- Age 70+
+    	- Age 80+
+    	- Retire Soon
+    	- UO - Duck
+    	- SAE
+    	- OSU
+
+    - Owner Personality
+    	- Talkative
+    	- Very Friendly
+    	- Polite - Didn't Want to Talk
+    	- 🖕Rude🖕
+    	- 😡 Angry 😡
+    	- ❗DNC❗
+    	- Friendly
+    	- 🐘 Republican 🐘
+    	- ❄️ Liberal ❄️
+    ```
+
+
+
+    A
   </Accordion>
 </AccordionGroup>
