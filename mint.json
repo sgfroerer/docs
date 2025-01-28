@@ -67,6 +67,12 @@
       ]
     },
     {
+      "group": "Docs",
+      "pages": [
+        "gitbook/docs/react"
+      ]
+    },
+    {
       "group": "Gitbook",
       "pages": [
         "gitbook/Mintlify",
