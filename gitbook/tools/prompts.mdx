@@ -605,7 +605,262 @@ test
   </Accordion>
 </AccordionGroup>
 
-#
+
+
+# 🔄 Call Tool 🤳
+
+<AccordionGroup>
+  <Accordion title="Grist-API" defaultOpen={false} icon="data">
+    **Document ID**
+
+    ```bash
+    xcyo77k2zPgFSP7Lyt4yQN
+    ```
+
+    **Base doc URL**
+
+    ```bash
+    https://docs.getgrist.com/api/docs/xcyo77k2zPgFSP7Lyt4yQN
+    ```
+
+    **API**
+
+    ```bash
+    1ad7e6e5369fbff5d6addbe79a19d3b65455a96e
+    ```
+
+    h
+  </Accordion>
+
+  <Accordion title="API Console" defaultOpen={false}>
+    aa
+
+    ```
+    From within my document, I go to API Console at https://docs.getgrist.com/apiconsole?docId=xcyo77k2zPgFSP7Lyt4yQN&workspaceId=77419&orgId=docs
+
+    For records (Tables contain collections of records), I here is an example GET to fetch records from a table:
+    GET
+    /docs/{docId}/tables/{tableId}/records
+
+    docId - xcyo77k2zPgFSP7Lyt4yQN
+    tableId - CallTool
+
+    Responses:
+    Curl:
+
+    curl -X 'GET' \
+      'https://docs.getgrist.com/api/docs/xcyo77k2zPgFSP7Lyt4yQN/tables/CallTool/records' \
+      -H 'accept: application/json' \
+      -H 'Authorization: Bearer XXXXXXXXXXX'
+
+
+    Request URL:
+    https://docs.getgrist.com/api/docs/xcyo77k2zPgFSP7Lyt4yQN/tables/CallTool/records
+
+    Server response:
+    {
+      "records": [
+        {
+          "id": 1,
+          "fields": {
+            "ID2": 836194,
+            "Name": "Karen Graves",
+            "Property": "The Home Depot",
+            "Last_Contact_Date": 1767139200,
+            "Last_Contact_Notes": "Confirmed Mobile",
+            "Priority": "",
+            "Opportunity": null,
+            "Last_Segment": "✖️ No VM ✖️",
+            "Classify": "2-4 Properties",
+            "Next_Action_Date": null,
+            "Next_Action_Description": null,
+            "Note": null,
+            "Image_URL": "https://ahprd1cdn.csgpimgs.com/i2/3J013XOWZIvv7s96hMxPCEuPt7nxT6shDWQQFauyy9w/116/image.jpg"
+          }
+        },
+        {
+          "id": 2,
+          "fields": {
+            "ID2": 735789,
+            "Name": "Jamie Trieu",
+            "Property": "The Boyer Center",
+            "Last_Contact_Date": 1735516800,
+            "Last_Contact_Notes": "P3 I had as Wrong number, i wrote \"Lady Answered",
+            "Priority": "",
+            "Opportunity": null,
+            "Last_Segment": "✖️ No VM ✖️",
+            "Classify": "2-4 Properties",
+            "Next_Action_Date": null,
+            "Next_Action_Description": null,
+            "Note": null,
+            "Image_URL": "http://localhost:3004/u/chrome_bdNlvpeZ9j.png"
+          }
+        },
+        {
+          "id": 3,
+          "fields": {
+            "ID2": 6673442,
+            "Name": "Roman Sabunchak",
+            "Property": "Bi-Mart",
+            "Last_Contact_Date": 1735603200,
+            "Last_Contact_Notes": "Never, X",
+            "Priority": "",
+            "Opportunity": null,
+            "Last_Segment": "✖️ No VM ✖️",
+            "Classify": "Mom & Pop",
+            "Next_Action_Date": null,
+            "Next_Action_Description": null,
+            "Note": null,
+            "Image_URL": "https://img1.wsimg.com/isteam/ip/11ebee0a-0f01-48ad-af98-0fe91568ffd2/bimart.jpg/:/cr=t:31.27%25,l:0%25,w:100%25,h:37.45%25/rs=w:600,h:300,cg:true"
+          }
+        },
+        {
+          "id": 4,
+          "fields": {
+            "ID2": 6578899,
+            "Name": "Brent Clifford",
+            "Property": "Bi-Mart",
+            "Last_Contact_Date": 1736208000,
+            "Last_Contact_Notes": "Call Again, Contact",
+            "Priority": "",
+            "Opportunity": null,
+            "Last_Segment": "✖️ No VM ✖️",
+            "Classify": "Mom & Pop",
+            "Next_Action_Date": null,
+            "Next_Action_Description": null,
+            "Note": null,
+            "Image_URL": "https://ahprd1cdn.csgpimgs.com/i2/gWQhR3HOjlT2ABQ_3t3tzEtxZnT4iy-ZDJ3iI80R8hI/116/image.jpg"
+          }
+        },
+        {
+          "id": 5,
+          "fields": {
+            "ID2": 9730678,
+            "Name": "Benjamin Hathaway",
+            "Property": "Coastal Plaza - Tillamook",
+            "Last_Contact_Date": 1733788800,
+            "Last_Contact_Notes": "Call Again, Never",
+            "Priority": "",
+            "Opportunity": null,
+            "Last_Segment": "✖️ No VM ✖️",
+            "Classify": "2-4 Properties",
+            "Next_Action_Date": null,
+            "Next_Action_Description": null,
+            "Note": null,
+            "Image_URL": "http://localhost:3004/u/chrome_VZCau7WnYZ.png"
+          }
+        }
+      ]
+    }
+
+    Response headers:
+     access-control-allow-credentials: true 
+     access-control-allow-headers: Authorization,Content-Type,X-Requested-With 
+     access-control-allow-methods: GET,PATCH,PUT,POST,DELETE,OPTIONS 
+     cache-control: no-cache 
+     content-language: en-US 
+     content-type: application/json; charset=utf-8 
+     date: Tue,28 Jan 2025 06:47:11 GMT 
+     x-powered-by: Express
+    ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    s
+  </Accordion>
+
+  <Accordion title="Code View" defaultOpen={false}>
+    ```
+    Here is the code view for my online Grist document:
+
+    @grist.UserTable
+    class CallTool:
+      ID2 = grist.Numeric()
+      Name = grist.Text()
+      Property = grist.Text()
+      Last_Contact_Date = grist.Date()
+      Last_Contact_Notes = grist.Text()
+      Priority = grist.Choice()
+      Opportunity = grist.ChoiceList()
+      Last_Segment = grist.Choice()
+      Classify = grist.Choice()
+      Next_Action_Date = grist.Any()
+      Next_Action_Description = grist.Any()
+      Note = grist.Any()
+      Image_URL = grist.Text()
+    ```
+  </Accordion>
+
+  <Accordion title="You can clean up unnecessary files with:" defaultOpen={false}>
+    ```
+    # Create a temporary directory for backup
+    mkdir ../sandbox-backup
+
+    # Move essential files to backup
+    cp -r src ../sandbox-backup/
+    cp -r public ../sandbox-backup/
+    cp package.json tsconfig.json vite.config.ts postcss.config.js tailwind.config.js .gitignore ../sandbox-backup/
+
+    # Remove all files from current directory
+    rm -rf *
+
+    # Move backed up files back
+    cp -r ../sandbox-backup/* .
+
+    # Remove backup
+    rm -rf ../sandbox-backup
+    ```
+  </Accordion>
+
+  <Accordion title="CORS issues" defaultOpen={false}>
+
+
+    ```javascript
+    You might also need to configure CORS on your local Grist instance. Add these headers to your Grist server configuration:
+
+    Access-Control-Allow-Origin: http://localhost:3000
+    Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS
+    Access-Control-Allow-Headers: Authorization, Content-Type, Accept
+    Access-Control-Allow-Credentials: true
+    ```
+
+
+
+
+  </Accordion>
+</AccordionGroup>
+
+aas
+
+**1/28**
+
+pnpm dev
+
+
 
 <Accordion title="Grist Developer Docs" defaultOpen={false} icon="book">
   A
