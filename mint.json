@@ -69,7 +69,8 @@
     {
       "group": "Projects",
       "pages": [
-        "gitbook/projects/CallTool"
+        "gitbook/projects/CallTool",
+        "gitbook/projects/gristmaps"
       ]
     },
     {
