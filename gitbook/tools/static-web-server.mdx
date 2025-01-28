@@ -2,3 +2,177 @@
 title: "static-web-server"
 description: "Description of your new file."
 ---
+
+<CardGroup cols={3}>
+  <Card title="Github" icon="github" href="https://github.com/static-web-server/static-web-server">
+
+  </Card>
+
+  <Card title="Docs" icon="book" href="https://static-web-server.net/getting-started/">
+
+  </Card>
+
+  <Card title="Docker" icon="docker" color="blue" href="https://hub.docker.com/r/joseluisq/static-web-server/">
+
+  </Card>
+</CardGroup>
+
+
+
+<AccordionGroup>
+  <Accordion title="Docker Compose" defaultOpen={false} icon="docker">
+    a
+
+    Example using [Docker Compose](https://docs.docker.com/compose/).
+
+    ```yaml
+    version: "3.3"
+
+    services:
+      website:
+        image: joseluisq/static-web-server:2-alpine
+        container_name: "website"
+        ports:
+          - 80:80
+        restart: unless-stopped
+        environment:
+          # Note: those envs are customizable but also optional
+          - SERVER_ROOT=/var/public
+          - SERVER_CONFIG_FILE=/etc/config.toml
+        volumes:
+          - ./public:/var/public
+          - ./config.toml:/etc/config.toml
+    ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    a
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+    a
+
+
+
+    ```bash
+    C:\Users\Admin\static-web-server
+    ```
+
+    http://localhost/
+
+
+
+    a
+  </Accordion>
+
+  <Accordion title="Getting Started" defaultOpen={false}>
+    # Getting Started
+
+    [Download and install](https://static-web-server.net/download-and-install/) the binary for your specific platform and then type
+
+    `static-web-server --port 8787 --root `./my-public-dir
+
+
+    Or if you use [Docker](https://www.docker.com/) just try
+
+    `docker run --rm -it -p 8787:80 `joseluisq/static-web-server:2
+
+
+    Docker Tip
+
+    You can specify a Docker volume like `-v $HOME/my-public-dir:/public` to overwrite the default root directory. See [Docker examples](https://static-web-server.net/features/docker/).
+
+    * Type `static-web-server --help` or see the [Command-line arguments](https://static-web-server.net/configuration/command-line-arguments/) section.
+
+    * See how to configure the server using a [configuration file](https://static-web-server.net/configuration/config-file/).
+
+    * Have a look at [the features](https://static-web-server.net/features/http1/) section for more advanced examples.
+  </Accordion>
+</AccordionGroup>
+
+
+
+
+
+<Accordion title="React project built into static files" defaultOpen={false}>
+  <Tip>
+    A React project can be built into static files. This process is commonly referred to as Static Site Generation (SSG)
+  </Tip>
+
+  **How it works:**
+
+  * **Building the project:**
+    You use a build tool like webpack or Parcel, often bundled with tools like Create React App or Next.js, to compile your React code, JavaScript, CSS, and other assets into static HTML, CSS, and JavaScript files.
+
+  * **Output:**
+    The build process generates a folder (typically named `build` or `out`) containing these static files, which represent your entire React application.
+
+  * **Deployment:**
+    You can deploy these static files to any web server that can serve static content, such as Netlify, Vercel, AWS S3, GitHub Pages, or even a simple Node.js server.
+
+  **Popular tools for building static React sites:**
+
+  * **Create React App:**
+    The most popular way to start a new React project, with a built-in build command for generating static files.
+
+  * **Next.js:**
+    A React framework that offers both SSG and Server-Side Rendering (SSR) capabilities.
+
+  * **Gatsby:**
+    A React framework specifically designed for building static sites, with a focus on performance and data fetching.
+
+  * **React Static:**
+    A lightweight SSG framework for React, ideal for smaller projects.
+
+</Accordion>
+
+`npm run build` creates a `build` directory with a production build of your app. Inside the `build/static` directory will be your JavaScript and CSS files
+
+
+
+<AccordionGroup>
+  <Accordion title="Create React App" defaultOpen={false}>
+    [Link](https://create-react-app.dev/docs/deployment/)
+
+
+
+    `npm run build` creates a `build` directory with a production build of your app. Set up your favorite HTTP server so that a visitor to your site is served `index.html`, and requests to static paths like `/static/js/main.<hash>.js` are served with the contents of the `/static/js/main.<hash>.js` file. For more information see the [production build](https://create-react-app.dev/docs/production-build) section.
+
+
+  </Accordion>
+
+  <Accordion title="Deployment" defaultOpen={false}>
+    ## Static Server[​](https://create-react-app.dev/docs/deployment/#static-server "Direct link to heading")
+
+    For environments using [Node](https://nodejs.org/), the easiest way to handle this would be to install [serve](https://github.com/vercel/serve) and let it handle the rest:
+
+    `npm install -g serve`
+    `serve -s build`
+
+
+    The last command shown above will serve your static site on the port **3000**. Like many of [serve](https://github.com/vercel/serve)’s internal settings, the port can be adjusted using the `-l` or `--listen` flags:
+
+    `serve -s build -l 4000`
+
+
+    Run this command to get a full list of the options available:
+
+    `serve -h`
+
+
+
+  </Accordion>
+</AccordionGroup>
