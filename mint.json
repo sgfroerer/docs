@@ -67,6 +67,12 @@
       ]
     },
     {
+      "group": "Projects",
+      "pages": [
+        "gitbook/projects/CallTool"
+      ]
+    },
+    {
       "group": "Docs",
       "pages": [
         "gitbook/docs/react"
