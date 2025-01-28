@@ -11,10 +11,10 @@ description: "Description of your new file."
   <Card title="Docker" icon="docker" color="blue" href="https://hub.docker.com/r/joseluisq/static-web-server/" />
 </CardGroup>
 
+***
+
 <AccordionGroup>
   <Accordion title="Docker Compose" defaultOpen={false} icon="docker">
-    a
-
     Example using [Docker Compose](https://docs.docker.com/compose/).
 
     ```yaml
@@ -36,10 +36,10 @@ description: "Description of your new file."
           - ./config.toml:/etc/config.toml
     ```
 
-    a
+
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="Folder" defaultOpen={false} icon="folder">
     a
 
     ```bash
@@ -47,22 +47,20 @@ description: "Description of your new file."
     ```
 
     http://localhost/
-
-    a
   </Accordion>
 
   <Accordion title="Getting Started" defaultOpen={false}>
-    # Getting Started
-
     [Download and install](https://static-web-server.net/download-and-install/) the binary for your specific platform and then type
 
-    `static-web-server --port 8787 --root `./my-public-dir
+    ```
+    static-web-server --port 8787 --root ./my-public-dir
+    ```
 
     Or if you use [Docker](https://www.docker.com/) just try
 
-    `docker run --rm -it -p 8787:80 `joseluisq/static-web-server:2
-
-    Docker Tip
+    ```
+    docker run --rm -it -p 8787:80 joseluisq/static-web-server:2
+    ```
 
     You can specify a Docker volume like `-v $HOME/my-public-dir:/public` to overwrite the default root directory. See [Docker examples](https://static-web-server.net/features/docker/).
 
@@ -73,6 +71,8 @@ description: "Description of your new file."
     * Have a look at [the features](https://static-web-server.net/features/http1/) section for more advanced examples.
   </Accordion>
 </AccordionGroup>
+
+***
 
 <Accordion title="React project built into static files" defaultOpen={false}>
   <Tip>
@@ -115,22 +115,30 @@ description: "Description of your new file."
   </Accordion>
 
   <Accordion title="Deployment" defaultOpen={false}>
-    ## Static Server[​](https://create-react-app.dev/docs/deployment/#static-server "Direct link to heading")
+    **Static Server**[**​**](https://create-react-app.dev/docs/deployment/#static-server "Direct link to heading")
 
     For environments using [Node](https://nodejs.org/), the easiest way to handle this would be to install [serve](https://github.com/vercel/serve) and let it handle the rest:
 
-    `npm install -g serve`
-    `serve -s build`
+    ```bash
+    npm install -g serve
+    serve -s build
+    ```
 
     The last command shown above will serve your static site on the port **3000**. Like many of [serve](https://github.com/vercel/serve)’s internal settings, the port can be adjusted using the `-l` or `--listen` flags:
 
-    `serve -s build -l 4000`
+    ```bash
+    serve -s build -l 4000
+    ```
 
     Run this command to get a full list of the options available:
 
-    `serve -h`
+    ```bash
+    serve -h
+    ```
   </Accordion>
 </AccordionGroup>
+
+***
 
 <AccordionGroup>
   <Accordion title="React" defaultOpen={false} icon="react">
@@ -150,13 +158,9 @@ description: "Description of your new file."
 
     Copy the contents of the `build` folder into the `Public` folder for `static-web-server`:
 
-
-
     `cp` -R build/\* Public/
 
     Now, the `Public` folder should look like this:
-
-
 
     `Public`/
     &#x20; ├── index.html
