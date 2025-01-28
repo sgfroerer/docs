@@ -2,3 +2,97 @@
 title: "React"
 description: "Description of your new file."
 ---
+
+
+
+
+
+
+
+<AccordionGroup>
+  <Accordion title="Build & Run React App" defaultOpen={false} icon="REACT">
+    <AccordionGroup>
+      <Accordion title="1. Install Dependencies" defaultOpen={false}>
+        <Tip>
+          Since the app uses `pnpm`, you’ll need to install the dependencies first.
+        </Tip>
+
+        #### Install `pnpm` (if not installed already)
+
+        Run this command to install `pnpm` globally:
+
+        ```bash
+        npm install -g pnpm
+        ```
+
+        #### Install the Project Dependencies
+
+        Navigate to the root directory of the project and install dependencies:
+
+        ```bash
+        pnpm install
+        ```
+      </Accordion>
+
+      <Accordion title="2. Run the React App (Development Mode)" defaultOpen={false}>
+        To run the app in development mode (with hot reloading):
+
+        ```bash
+        pnpm dev
+        ```
+
+        By default, it will start the development server (typically on [http://localhost:3000]()).
+
+
+      </Accordion>
+
+      <Accordion title="3. Build the React App (Production)" defaultOpen={false}>
+        To build the React app into a static site:
+
+        ```
+        pnpm build
+        ```
+
+        This will generate a `dist` folder (or similar, depending on the `vite.config.ts` or `next.config.js` if it uses Vite/Next.js). Inside this folder, you'll find the static files ready to be served.
+      </Accordion>
+
+      <Accordion title="4. Prepare the Files | static-web-server" defaultOpen={false}>
+        Copy the contents of the `dist` folder into the `Public` folder of your `static-web-server` setup:
+
+        ```bash
+        cp -R dist/* Public/
+        ```
+
+        Your `Public` folder should now look like this:
+
+        ```vbnet
+        Public/
+          ├── index.html
+          ├── assets/
+          └── other-static-files
+        ```
+
+        Update the `config.toml` file to include the `spa = true` setting if the React app uses client-side routing.
+
+
+      </Accordion>
+
+      <Accordion title="Serve the Built App" defaultOpen={false}>
+        Run the `static-web-server` using Docker Compose or another method, as described earlier, to serve the built React app.
+      </Accordion>
+
+      <Accordion title="Additional Notes - Tailwind CSS & TypeScript" defaultOpen={false}>
+        **Using Tailwind CSS**: Since your app uses `tailwind.config.js` and `postcss.config.js`, ensure the `build` command processes your Tailwind styles correctly. This is usually handled automatically by Vite or CRA (Create React App), but verify your Tailwind setup in `package.json`
+
+
+
+        **TypeScript**: The presence of `.tsx` files means you’re using TypeScript. Ensure there are no type errors before building by running:
+
+
+        ```bash
+        pnpm tsc --noEmit
+        ```
+      </Accordion>
+    </AccordionGroup>
+  </Accordion>
+</AccordionGroup>
