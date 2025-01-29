@@ -4,12 +4,6 @@ description: "Description of your new file."
 icon: 'react'
 ---
 
-
-
-
-
-
-
 <AccordionGroup>
   <Accordion title="Build & Run React App" defaultOpen={false} icon="REACT">
     <AccordionGroup>
@@ -43,8 +37,6 @@ icon: 'react'
         ```
 
         By default, it will start the development server (typically on [http://localhost:3000]()).
-
-
       </Accordion>
 
       <Accordion title="3. Build the React App (Production)" defaultOpen={false}>
@@ -55,6 +47,21 @@ icon: 'react'
         ```
 
         This will generate a `dist` folder (or similar, depending on the `vite.config.ts` or `next.config.js` if it uses Vite/Next.js). Inside this folder, you'll find the static files ready to be served.
+
+
+
+        **If errors and need to restart, after making changes:**
+
+        * Run `pnpm build`
+
+        * Serve the built files using a static server:
+
+        ```bash
+        pnpm add -D serve
+        pnpm serve dist
+        ```
+
+        * You don't need to delete the dist folder - running pnpm build will clean and recreate it automatically.
       </Accordion>
 
       <Accordion title="4. Prepare the Files | static-web-server" defaultOpen={false}>
@@ -74,8 +81,6 @@ icon: 'react'
         ```
 
         Update the `config.toml` file to include the `spa = true` setting if the React app uses client-side routing.
-
-
       </Accordion>
 
       <Accordion title="Serve the Built App" defaultOpen={false}>
@@ -85,10 +90,7 @@ icon: 'react'
       <Accordion title="Additional Notes - Tailwind CSS & TypeScript" defaultOpen={false}>
         **Using Tailwind CSS**: Since your app uses `tailwind.config.js` and `postcss.config.js`, ensure the `build` command processes your Tailwind styles correctly. This is usually handled automatically by Vite or CRA (Create React App), but verify your Tailwind setup in `package.json`
 
-
-
         **TypeScript**: The presence of `.tsx` files means you’re using TypeScript. Ensure there are no type errors before building by running:
-
 
         ```bash
         pnpm tsc --noEmit
