@@ -19,7 +19,61 @@ This API allows you to interact with your Grist database using RESTful endpoints
 
 All API requests require a Bearer token for authentication. Use your API key in the `Authorization` header:
 
-
 ```http
 Authorization: Bearer YOUR_API_KEY
 ```
+
+
+
+<AccordionGroup>
+  <Accordion title="API Console" defaultOpen={false}>
+    **GET /docs/\{docId} Describe a document**[](#get-docs-docid-describe-a-document)
+
+    * **Curl**
+
+    ```bash
+    curl -X 'GET' \
+      'http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC' \
+      -H 'accept: application/json' \
+      -H 'Authorization: Bearer XXXXXXXXXXX'
+    ```
+
+    * **Request URL**
+
+    ```bash
+    http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC
+    ```
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+
+  </Accordion>
+
+  <Accordion title="Resources" defaultOpen={false} icon="link">
+    <CardGroup cols={3}>
+      <Card title="Github" icon="github" href="https://github.com/gristlabs/grist-api">
+        NodeJS client for interacting with Grist
+      </Card>
+
+      <Card title="API Usage" icon="sparkles" href="https://support.getgrist.com/rest-api/">
+        Introduction to using the API
+      </Card>
+
+      <Card title="API Reference" icon="sparkles" href="https://support.getgrist.com/api/">
+        Documentation of all available endpoints
+      </Card>
+
+      <Card title="API Console" icon="sparkles" href="https://docs.getgrist.com/apiconsole">
+        Make API calls from the browser
+      </Card>
+
+      <Card title="grist-plugin-api" icon="sparkles" href="https://support.getgrist.com/code/modules/grist_plugin_api/">
+
+      </Card>
+    </CardGroup>
+  </Accordion>
+</AccordionGroup>
