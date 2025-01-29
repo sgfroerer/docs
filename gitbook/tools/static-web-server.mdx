@@ -35,8 +35,6 @@ description: "Description of your new file."
           - ./public:/var/public
           - ./config.toml:/etc/config.toml
     ```
-
-
   </Accordion>
 
   <Accordion title="Folder" defaultOpen={false} icon="folder">
@@ -158,16 +156,20 @@ description: "Description of your new file."
 
     Copy the contents of the `build` folder into the `Public` folder for `static-web-server`:
 
-    `cp` -R build/\* Public/
+    ```bash
+    cp -R build/* Public/
+    ```
 
     Now, the `Public` folder should look like this:
 
-    `Public`/
-    &#x20; ├── index.html
-    &#x20; ├── static/
-    &#x20; ├── asset-manifest.json
-    &#x20; ├── favicon.ico
-    &#x20; └── manifest.json
+    ```vbnet
+    Public/
+      ├── index.html
+      ├── static/
+      ├── asset-manifest.json
+      ├── favicon.ico
+      └── manifest.json
+    ```
 
     ***
   </Accordion>
