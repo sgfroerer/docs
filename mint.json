@@ -77,7 +77,9 @@
     {
       "group": "Docs",
       "pages": [
-        "gitbook/docs/react"
+        "gitbook/docs/react",
+        "gitbook/docs/grist",
+        "gitbook/docs/docker"
       ]
     },
     {
@@ -86,7 +88,6 @@
         "gitbook/Mintlify",
         "gitbook/ai-llms",
         "gitbook/streamlit",
-        "gitbook/docker",
         "gitbook/dashboard",
         "gitbook/annual-report",
         "gitbook/projects"
