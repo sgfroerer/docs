@@ -39,9 +39,9 @@
         }
       }
     },
-    "/docs/{docId}/tables/{tableId}/records": {
+    "/docs/{docId}/tables/{tableId}/columns": {
       "get": {
-        "description": "Fetch records from a specified table",
+        "description": "List columns in a table",
         "parameters": [
           {
             "name": "docId",
@@ -62,7 +62,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Records from the table",
+            "description": "Columns from the table",
             "content": {
               "application/json": {}
             }
