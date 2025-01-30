@@ -60,7 +60,24 @@ Authorization: Bearer c36a6046399de44226d26a9c328688882e20b63f
     ```
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false" />
+  <Accordion title="List columns in a table" defaultOpen={false}>
+    **GET**  `/docs/{docId}/tables/{tableId}/columns`
+
+    #### Curl
+
+    ```
+    curl -X 'GET' \
+      'http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/columns' \
+      -H 'accept: application/json' \
+      -H 'Authorization: Bearer XXXXXXXXXXX'
+    ```
+
+    #### Request URL
+
+    ```
+    http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/columns
+    ```
+  </Accordion>
 
   <Accordion title="Resources" defaultOpen={false} icon="link">
     <CardGroup cols={3}>
