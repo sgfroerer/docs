@@ -5,8 +5,6 @@ description: "Description of your new file. 01/29"
 
 <AccordionGroup>
   <Accordion title="New Accordion" defaultOpen="false">
-
-
     ```
     websockets - Can we open a websocket with the server
 
@@ -15,18 +13,44 @@ description: "Description of your new file. 01/29"
     ws://localhost:8484/
 
     ```
-
-
-
-
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="Fix GET Requests" defaultOpen={false}>
     ```
     I have custom map widgets that I use in Grist and they react to the records, like when I tap an owner, the map will go to their property, etc.  I've attached my third custom map project which I'm trying to make as a standalone map, that gets it's data from Grist > So can you make it so that this makes GET request's with grist-api to just get the records to use as data instead?
 
+    I have custom map widgets that I use in Grist and they react to the records, like when I tap an owner, the map will go to their property, etc.  This is my standalone map project, I basically just want the map to be it's own app that gets it's data from Grist. Please reference how the other project works to successfully get the data from Grist, and help fix this standalone map project. Here is the console for it:
+    Failed to load resource: net::ERR_BLOCKED_BY_CLIENT
+
+    maps.googleapis.com/…204?csp_test=true:1 
+     Failed to load resource: net::ERR_BLOCKED_BY_CLIENT
+    localhost/:1 Access to fetch at 'https://api.getgrist.com/api/docs/qXeQztrSZ1qrtNmXwBsWRV/tables/Properties_/records' from origin 'http://localhost' has been blocked by CORS policy: Request header field authorization is not allowed by Access-Control-Allow-Headers in preflight response.
+    api.getgrist.com/api…operties_/records:1 
+     Failed to load resource: net::ERR_FAILED
+    standalone-map.js:123 Error fetching data from Grist: TypeError: Failed to fetch
+        at fetchGristData (standalone-map.js:119:28)
+        at HTMLDocument.<anonymous> (standalone-map.js:281:25)
+    www.google.com/maps/…_reqid=65263&rt=j:1 
+     Failed to load resource: net::ERR_BLOCKED_BY_CLIENT
+    ```
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+
+
+
+
+    j
+
+
 
     ```
+    The index js file is from the calltool which works and correctly gets data from my instance of Grist. The standalone-map.js is the current project I am working on. 
+    ```
+
+
+
+    j
   </Accordion>
 </AccordionGroup>
 
