@@ -30,3 +30,113 @@ description: "Description of your new file."
 </AccordionGroup>
 
 Both still have the older Pop-ups
+
+
+
+<AccordionGroup>
+  <Accordion title="New Accordion" defaultOpen="false">
+    ````
+    <Note>
+      This API documentation covers how to interact with your locally hosted Grist instance.
+    </Note>
+    This API allows you to interact with your Grist database using RESTful endpoints. You can fetch records, list columns, and execute SQL queries.
+    <Card title="Grist API Reference" icon="database" href="https://github.com/your-repo/grist-api-docs">
+      View API Documentation
+    </Card>
+
+    ## Authentication
+    All API requests require a Bearer token for authentication. Use your API key in the `Authorization` header:
+    ```http
+    Authorization: Bearer c36a6046399de44226d26a9c328688882e20b63f
+    ```
+
+    <AccordionGroup>
+      <Accordion title="API Console" defaultOpen={false}>
+        **GET /docs/\{docId} Describe a document**[](#get-docs-docid-describe-a-document)
+
+        * **Curl**
+        ```bash
+        curl -X 'GET' \
+          'http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC' \
+          -H 'accept: application/json' \
+          -H 'Authorization: Bearer XXXXXXXXXXX'
+        ```
+        
+        * **Request URL**
+        ```bash
+        http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC
+        ```
+      </Accordion>
+
+      <Accordion title="Fetch records from a table" defaultOpen={false}>
+        **GET** `/docs/{docId}/tables/{tableId}/records`
+
+        #### Curl
+        ```
+        curl -X 'GET' \
+    'http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/records' \
+          -H 'accept: application/json' \
+          -H 'Authorization: Bearer XXXXXXXXXXX'
+        ```
+
+        #### Request URL
+        ```
+    http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/records
+        ```
+      </Accordion>
+
+      <Accordion title="List columns in a table" defaultOpen={false}>
+        **GET**  `/docs/{docId}/tables/{tableId}/columns`
+
+        #### Curl
+        ```
+        curl -X 'GET' \
+    'http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/columns' \
+          -H 'accept: application/json' \
+          -H 'Authorization: Bearer XXXXXXXXXXX'
+        ```
+        #### Request URL
+        ```
+    http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/columns
+        ```
+      </Accordion>
+
+      <Accordion title="Resources" defaultOpen={false} icon="link">
+        <CardGroup cols={3}>
+          <Card title="Github" icon="github" href="https://github.com/gristlabs/grist-api">
+            NodeJS client for interacting with Grist
+          </Card>
+
+          <Card title="API Usage" icon="sparkles" href="https://support.getgrist.com/rest-api/">
+            Introduction to using the API
+          </Card>
+
+          <Card title="API Reference" icon="sparkles" href="https://support.getgrist.com/api/">
+            Documentation of all available endpoints
+          </Card>
+
+          <Card title="API Console" icon="sparkles" href="https://docs.getgrist.com/apiconsole">
+            Make API calls from the browser
+          </Card>
+
+          <Card title="grist-plugin-api" icon="sparkles" href="https://support.getgrist.com/code/modules/grist_plugin_api/" />
+        </CardGroup>
+      </Accordion>
+    </AccordionGroup>
+
+    # Postman
+    <Tabs>
+      <Tab title="Document/Tables">
+        | Postman |         baseurl                   | Description                 |         
+        | ---- | ------------------------------------ | ----------------------------|
+        | GET  | /docs/\{docId}/download| Content of document, as an Sqlite file    |
+        | GET  | /docs/\{docId}/download/xlsx | Content of document, as Excel file  |
+        | GET  | /docs/\{docId}/download/csv | Content of table, as a CSV file      |
+        | GET  | /docs/\{docId}/download/table-schema | The schema of a table       |
+    ````
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+
+  </Accordion>
+</AccordionGroup>
