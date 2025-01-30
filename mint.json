@@ -83,10 +83,10 @@
       "group": "Gitbook",
       "pages": [
         "gitbook/Mintlify",
+        "gitbook/ai-llms",
         "gitbook/streamlit",
         "gitbook/docker",
         "gitbook/dashboard",
-        "gitbook/gitbook-note",
         "gitbook/annual-report",
         "gitbook/projects"
       ]
