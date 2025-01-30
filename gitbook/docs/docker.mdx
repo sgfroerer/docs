@@ -319,4 +319,49 @@ icon: "docker"
 
     ````
   </Accordion>
+
+  <Accordion title="Ask Gordon - docker ai" defaultOpen={false}>
+    <Tip>
+      Ask Gordon is your personal AI assistant embedded in Docker Desktop and the Docker CLI. It's designed to streamline your workflow and help you make the most of the Docker ecosystem.
+    </Tip>
+
+    **What data does Gordon access?**
+
+    * Local files: If you use the `docker ai` command, Ask Gordon can access files and directories in the current working directory where the command is executed. In Docker Desktop, if you ask about a specific file or directory in the **Ask Gordon** view, you'll be prompted to select the relevant context.
+
+    * Local images: Gordon integrates with Docker Desktop and can view all images in your local image store. This includes images you've built or pulled from a registry.
+
+    <Accordion title="Enable the feature" defaultOpen={false}>
+      1. Open the **Settings** view in Docker Desktop.
+
+      2. Navigate to **Features in development**.
+
+      3. Check the **Enable Docker AI** checkbox.
+         The Docker AI terms of service agreement is displayed. You must agree to the terms before you can enable the feature. Review the terms and select **Accept and enable** to continue.
+
+      4. Select **Apply & restart**.
+    </Accordion>
+
+
+
+    **Using Ask Gordon**
+
+    * The primary interfaces to Docker's AI capabilities are through the **Ask Gordon** view in Docker Desktop, or if you prefer to use the CLI: the `docker ai` CLI command.
+
+    * Once you've enabled the Docker AI features, you'll also find references to **Ask Gordon** in various other places throughout the Docker Desktop user interface. Whenever you encounter a button with the "sparkles" (✨) icon in the user interface, you can use the button to get contextual support from Ask Gordon.
+
+    ## [Example workflows](https://docs.docker.com/desktop/features/gordon/#example-workflows)
+
+    Ask Gordon is a general-purpose AI assistant created to help you with all your Docker-related tasks and workflows. If you need some inspiration, here are a few ways things you can try:
+
+    * [Troubleshoot a crashed container](https://docs.docker.com/desktop/features/gordon/#troubleshoot-a-crashed-container)
+
+    * [Get help with running a container](https://docs.docker.com/desktop/features/gordon/#get-help-with-running-a-container)
+
+    * [Improve a Dockerfile](https://docs.docker.com/desktop/features/gordon/#improve-a-dockerfile)
+  </Accordion>
 </AccordionGroup>
+
+[Meet Gordon: An AI Agent for Docker](https://www.docker.com/blog/meet-gordon-an-ai-agent-for-docker/)
+
+[Ask Gordon](https://docs.docker.com/desktop/features/gordon/)
