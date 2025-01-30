@@ -176,3 +176,29 @@ description: "Description of your new file."
 </AccordionGroup>
 
 ***
+
+```
+version: "3.3"
+
+services:
+  website:
+    image: joseluisq/static-web-server:2-alpine
+    container_name: "website"
+    ports:
+      - 80:80
+    restart: unless-stopped
+    environment:
+      # Note: those envs are customizable but also optional
+      - SERVER_ROOT=/var/public
+      - SERVER_CONFIG_FILE=/etc/config.toml
+      - SERVER_CONFIG_FILE=/etc/server-config.yaml
+    volumes:
+      - ./public:/var/public
+      - ./config.toml:/etc/config.toml
+      - ./server-config.yaml:/etc/server-config.yaml
+    networks:
+      - my_network  # Connect to the existing network
+networks:
+  my_network:
+    external: true  # Use the existing network where your Grist container is running
+```
