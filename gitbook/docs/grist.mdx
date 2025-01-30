@@ -2,3 +2,54 @@
 title: "grist"
 description: "Description of your new file."
 ---
+
+<AccordionGroup>
+  <Accordion title="New Accordion" defaultOpen="false">
+
+  </Accordion>
+
+  <Accordion title="Check if grist-api is installed in Grist container" defaultOpen={false}>
+    ```
+
+
+
+    ```
+  </Accordion>
+</AccordionGroup>
+
+1️⃣ Open a Shell Inside the Container
+
+> Run this command to start an interactive shell session inside the Grist container:
+
+```
+docker exec -it Grist sh
+```
+
+> (If `sh` doesn't work, try `bash`:
+
+```
+docker exec -it Grist bash
+```
+
+> However, some lightweight containers might not have `bash` installed.)
+
+### 2️⃣ Check If `grist-api` Exists
+
+> Once inside the container, try running:
+
+```
+command -v grist-api
+```
+
+> If it returns a path (`e.g.`, `/usr/local/bin/grist-api`), then grist-api is installed.
+> If there's no output, it's not installed.
+
+### 3️⃣ Try Running It
+
+> You can also attempt to run it directly:
+
+```
+grist-api --help
+```
+
+> If the command exists, it should return usage instructions. Otherwise, you'll get a "command not found" error.
