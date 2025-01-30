@@ -7,8 +7,6 @@ description: "Example section for showcasing API endpoints"
   This API documentation covers how to interact with your locally hosted Grist instance.
 </Note>
 
-## Welcome
-
 This API allows you to interact with your Grist database using RESTful endpoints. You can fetch records, list columns, and execute SQL queries.
 
 <Card title="Grist API Reference" icon="database" href="https://github.com/your-repo/grist-api-docs">
@@ -22,8 +20,6 @@ All API requests require a Bearer token for authentication. Use your API key in 
 ```http
 Authorization: Bearer YOUR_API_KEY
 ```
-
-
 
 <AccordionGroup>
   <Accordion title="API Console" defaultOpen={false}>
@@ -45,13 +41,26 @@ Authorization: Bearer YOUR_API_KEY
     ```
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="Fetch records from a table" defaultOpen={false}>
+    **GET** `/docs/{docId}/tables/{tableId}/records`
 
+    #### Curl
+
+    ```
+    curl -X 'GET' \
+      'http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/records' \
+      -H 'accept: application/json' \
+      -H 'Authorization: Bearer XXXXXXXXXXX'
+    ```
+
+    #### Request URL
+
+    ```
+    http://localhost:8484/api/docs/6627doqoUdusJLxaciaTXC/tables/Properties_/records
+    ```
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
-
-  </Accordion>
+  <Accordion title="New Accordion" defaultOpen="false" />
 
   <Accordion title="Resources" defaultOpen={false} icon="link">
     <CardGroup cols={3}>
@@ -71,9 +80,7 @@ Authorization: Bearer YOUR_API_KEY
         Make API calls from the browser
       </Card>
 
-      <Card title="grist-plugin-api" icon="sparkles" href="https://support.getgrist.com/code/modules/grist_plugin_api/">
-
-      </Card>
+      <Card title="grist-plugin-api" icon="sparkles" href="https://support.getgrist.com/code/modules/grist_plugin_api/" />
     </CardGroup>
   </Accordion>
 </AccordionGroup>
