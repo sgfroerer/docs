@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://docs.getgrist.com/api/docs/"
+      "url": "https://docs.getgrist.com/api/"
     }
   ],
   "security": [
