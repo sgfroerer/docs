@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8484/o/docs/api"
+      "url": "https://docs.getgrist.com/api/docs/"
     }
   ],
   "security": [
