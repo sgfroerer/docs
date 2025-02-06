@@ -89,8 +89,7 @@
         "gitbook/ai-llms",
         "gitbook/streamlit",
         "gitbook/dashboard",
-        "gitbook/annual-report",
-        "gitbook/projects"
+        "gitbook/annual-report"
       ]
     },
     {
