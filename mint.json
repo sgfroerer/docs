@@ -28,30 +28,26 @@
     { "name": "Tools", "url": "gitbook/tools" }
   ],
   "anchors": [
-    { "name": "Documentation", "icon": "book-open-cover", "url": "https://mintlify.com/docs" }
+    {
+      "name": "Documentation",
+      "icon": "book-open-cover",
+      "url": "https://mintlify.com/docs"
+    }
   ],
   "navigation": [
     {
-      "group": "Gitbook",
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "development"
+      ]
+    },
+    {
+      "group": "M&M",
       "pages": [
         "gitbook/MM/brokerageResearch",
         "gitbook/MM/retail"
-      ]
-    },
-    {
-      "group": "Docs",
-      "pages": [
-        "gitbook/docs/docker",
-        "gitbook/docs/grist",
-        "gitbook/docs/react"
-      ]
-    },
-    {
-      "group": "Projects",
-      "pages": [
-        "gitbook/projects/CallTool",
-        "gitbook/projects/gristmaps",
-        "gitbook/projects/standalone-map"
       ]
     },
     {
@@ -66,6 +62,33 @@
       ]
     },
     {
+      "group": "Projects",
+      "pages": [
+        "gitbook/projects/CallTool",
+        "gitbook/projects/standalone-map",
+        "gitbook/projects/gristmaps"
+      ]
+    },
+    {
+      "group": "Docs",
+      "pages": [
+        "gitbook/docs/docker",
+        "gitbook/docs/grist",
+        "gitbook/docs/react"
+      ]
+    },
+    {
+      "group": "Gitbook",
+      "pages": [
+        "gitbook/Mintlify",
+        "gitbook/ai-llms",
+        "gitbook/streamlit",
+        "gitbook/dashboard",
+        "gitbook/annual-report",
+        "gitbook/projects"
+      ]
+    },
+    {
       "group": "Additional Notes",
       "pages": [
         "gitbook/Mintlify",
@@ -74,6 +97,31 @@
         "gitbook/dashboard",
         "gitbook/projects",
         "gitbook/streamlit"
+      ]
+    },
+    {
+      "group": "Essentials",
+      "pages": [
+        "essentials/markdown",
+        "essentials/code",
+        "essentials/images",
+        "essentials/settings",
+        "essentials/navigation",
+        "essentials/reusable-snippets"
+      ]
+    },
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/introduction"
+      ]
+    },
+    {
+      "group": "Endpoint Examples",
+      "pages": [
+        "api-reference/endpoint/get",
+        "api-reference/endpoint/create",
+        "api-reference/endpoint/delete"
       ]
     }
   ],
@@ -87,7 +135,13 @@
     }
   ],
   "headScripts": [
-    { "src": "https://cdn.tailwindcss.com", "async": true },
-    { "src": "https://cdn.jsdelivr.net/npm/apexcharts", "async": true }
+    {
+      "src": "https://cdn.tailwindcss.com",
+      "async": true
+    },
+    {
+      "src": "https://cdn.jsdelivr.net/npm/apexcharts",
+      "async": true
+    }
   ]
 }
