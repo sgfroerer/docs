@@ -37,6 +37,47 @@ description: "Description of your new file."
     PS C:\Users\Admin\Downloads\projects-from-download\Standalone-Map\Gemini-Take1> python -m http.server 8000
     ```
   </Tab>
+
+  <Tab title="Bolt.new">
+    1\. **Extract the ZIP file**
+
+
+
+    2\. **Open a Terminal or Command Prompt**
+
+    Navigate to the extracted folder in your terminal:
+
+
+
+    `cd "C:\Users\Admin\Downloads\sb1-lrucsybk"`
+
+
+    3\. **Install Dependencies**
+
+    Run the following command to install the necessary dependencies:
+
+
+
+    `npm install`
+
+
+    This will read `package.json` and install all required packages.
+
+
+
+    4\. **Run the Project**
+
+    Since your project has a `vite.config.ts`, it's likely using Vite as the development server. Start the project with:
+
+    `npm run dev`
+
+
+    This will start a local server, and Vite should provide a URL (e.g., `http://localhost:5173/`) to access your project.
+
+
+
+
+  </Tab>
 </Tabs>
 
 <AccordionGroup>
@@ -230,8 +271,6 @@ test
 
 <AccordionGroup>
   <Accordion title="grist-property-mapper" defaultOpen={false}>
-
-
     ```bash
     npm install
     npm run dev
@@ -259,13 +298,7 @@ test
 
       ```
     </Accordion>
-
-
-
-
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
-
-  </Accordion>
+  <Accordion title="New Accordion" defaultOpen="false" />
 </AccordionGroup>
