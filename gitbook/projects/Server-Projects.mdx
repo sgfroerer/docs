@@ -1,0 +1,53 @@
+---
+title: "Server-Projects"
+description: "Description of your new file."
+---
+
+<AccordionGroup>
+  <Accordion title="ECharts" defaultOpen={false}>
+    Install Dependencies
+  </Accordion>
+
+  <Accordion title="Echarts Sales Dashboard" defaultOpen={false}>
+
+  </Accordion>
+
+  <Accordion title="Streamlit-Dashboard" defaultOpen={false}>
+    ```
+    streamlit run app.py
+    ```
+  </Accordion>
+</AccordionGroup>
+
+
+
+<Tip>
+  PS C:\Users\Admin> cd Desktop\Server-Projects\Streamlit-Dashboard
+
+  PS C:\Users\Admin\Desktop\Server-Projects\Streamlit-Dashboard> streamlit run app.py
+</Tip>
+
+```
+file:///C:/Users/Admin/Downloads/Grist%20CRM%20Dashboard%20(2_5_2025%209%EF%BC%9A24%EF%BC%9A28%20PM).html
+```
+
+The map actually works though,&#x20;
+
+![](/image.png)
+
+
+
+<Accordion title="KeyError" defaultOpen={false}>
+  ```
+  KeyError: 'Last Call Segment'
+  Traceback:
+  File "C:\Users\Admin\Desktop\Server-Projects\Streamlit-Dashboard\app.py", line 285, in <module>
+      last_call_changes = len(today_data[today_data['Last Call Segment'].notna()])
+                                         ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\frame.py", line 3761, in __getitem__
+      indexer = self.columns.get_loc(key)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python312\Lib\site-packages\pandas\core\indexes\base.py", line 3654, in get_loc
+      raise KeyError(key) from err
+  ```
+</Accordion>
