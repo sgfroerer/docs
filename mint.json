@@ -16,43 +16,42 @@
     }
   },
   "topbarLinks": [
-    {
-      "name": "Gitbook",
-      "url": "https://app.gitbook.com/"
-    },
-    {
-      "name": "Projects",
-      "url": "/gitbook/projects"
-    }
+    { "name": "Gitbook", "url": "https://app.gitbook.com/" },
+    { "name": "Projects", "url": "/gitbook/projects" }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://dashboard.mintlify.com"
   },
   "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    },
-    {
-      "name": "Tools",
-      "url": "gitbook"
-    }
+    { "name": "API Reference", "url": "api-reference" },
+    { "name": "Tools", "url": "gitbook/tools" }
   ],
   "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    }
+    { "name": "Documentation", "icon": "book-open-cover", "url": "https://mintlify.com/docs" }
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Gitbook",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "gitbook/MM/brokerageResearch",
+        "gitbook/MM/retail"
+      ]
+    },
+    {
+      "group": "Docs",
+      "pages": [
+        "gitbook/docs/docker",
+        "gitbook/docs/grist",
+        "gitbook/docs/react"
+      ]
+    },
+    {
+      "group": "Projects",
+      "pages": [
+        "gitbook/projects/CallTool",
+        "gitbook/projects/gristmaps",
+        "gitbook/projects/standalone-map"
       ]
     },
     {
@@ -67,56 +66,14 @@
       ]
     },
     {
-      "group": "Projects",
-      "pages": [
-        "gitbook/projects/CallTool",
-        "gitbook/projects/standalone-map",
-        "gitbook/projects/gristmaps"
-      ]
-    },
-    {
-      "group": "Docs",
-      "pages": [
-        "gitbook/docs/API-Keys",
-        "gitbook/docs/react",
-        "gitbook/docs/grist",
-        "gitbook/docs/docker"
-      ]
-    },
-    {
-      "group": "Gitbook",
+      "group": "Additional Notes",
       "pages": [
         "gitbook/Mintlify",
         "gitbook/ai-llms",
-        "gitbook/streamlit",
-        "gitbook/dashboard",
         "gitbook/annual-report",
-        "gitbook/projects"
-      ]
-    },
-    {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "gitbook/dashboard",
+        "gitbook/projects",
+        "gitbook/streamlit"
       ]
     }
   ],
@@ -130,13 +87,7 @@
     }
   ],
   "headScripts": [
-    {
-      "src": "https://cdn.tailwindcss.com",
-      "async": true
-    },
-    {
-      "src": "https://cdn.jsdelivr.net/npm/apexcharts",
-      "async": true
-    }
+    { "src": "https://cdn.tailwindcss.com", "async": true },
+    { "src": "https://cdn.jsdelivr.net/npm/apexcharts", "async": true }
   ]
 }
