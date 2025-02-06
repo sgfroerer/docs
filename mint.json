@@ -25,7 +25,11 @@
   },
   "tabs": [
     { "name": "API Reference", "url": "api-reference" },
-    { "name": "Tools", "url": "gitbook/tools" }
+    { "name": "Tools", "url": "gitbook/tools" },
+    { "name": "M&M", "url": "gitbook/MM" },
+    { "name": "Projects", "url": "gitbook/projects" },
+    { "name": "Docs", "url": "gitbook/docs" },
+    { "name": "Gitbook", "url": "gitbook" }
   ],
   "anchors": [
     {
@@ -66,7 +70,8 @@
       "pages": [
         "gitbook/projects/CallTool",
         "gitbook/projects/standalone-map",
-        "gitbook/projects/gristmaps"
+        "gitbook/projects/gristmaps",
+        "gitbook/projects"
       ]
     },
     {
@@ -86,17 +91,6 @@
         "gitbook/dashboard",
         "gitbook/annual-report",
         "gitbook/projects"
-      ]
-    },
-    {
-      "group": "Additional Notes",
-      "pages": [
-        "gitbook/Mintlify",
-        "gitbook/ai-llms",
-        "gitbook/annual-report",
-        "gitbook/dashboard",
-        "gitbook/projects",
-        "gitbook/streamlit"
       ]
     },
     {
