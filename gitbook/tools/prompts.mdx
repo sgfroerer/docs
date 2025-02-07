@@ -598,14 +598,47 @@ test
     A
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="This is the prompt I gave chatGPT" defaultOpen={false}>
     ```
-    Test
+    This is the prompt I gave chatGPT: I use Grist as a CRM, and have made several custom widgets that I host in a GitHub repo. I am trying to get this map widget working, I have two separate folders/projects/widgets for the map widget as I tried different functionality and such. These two are Dropbox-Embed and Grist-GIS. I've attached both of their JavaScript files so you can see what works great in one that is lacking in the other. (I've titled the JavaScript files by their names rather than "page.js"). Here is a breakdown of what either of them do well and poorly: 
+
+    Grist-GIS
+
+    - Does have working Search
+    - Does have working Change base Layer functionality
+    - Google MyMaps mini-map is synced to main Map
+    - Only shows around 1,320 properties
+
+    Dropbox-Embed
+
+    - Source control under map, scrollable
+    - No search
+    - No base layer changer
+    - Shows all 10,000+ properties correctly
+
+    I took it's output and created the "SearchBar-Map" as the combined one to isolate it as I try to properly merge the map widgets. Please fix searchbar-map and get it to work properly.
+    Here was the last prompt I was going to give chatgpt before just moving the folders in here to ask you:
+    The map doesn't load now, but the buttons in the corners still show up.  Am I supposed to change anything in the other files ?
+
+    This is from the console:
+
+    Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'Geocoding')
+    at updateMap (page.js:250:32)
+    at page.js:449:5
+    at Rpc.eval (grist-plugin-api.ts:297:5)
+    page.js:250 Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'Geocoding')
+    at updateMap (page.js:250:32)
+    at page.js:449:5
+    at Rpc.eval (grist-plugin-api.ts:297:5)
+    updateMap	@	page.js:250
+    (anonymous)	@	page.js:449
+    eval	@	grist-plugin-api.ts:297
+    await in eval
+    window.onmessage	@	grist-plugin-api.ts:376
+     
     ```
   </Accordion>
 </AccordionGroup>
-
-
 
 # 🔄 Call Tool 🤳
 
@@ -764,32 +797,6 @@ test
      x-powered-by: Express
     ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     s
   </Accordion>
 
@@ -837,8 +844,6 @@ test
   </Accordion>
 
   <Accordion title="CORS issues" defaultOpen={false}>
-
-
     ```javascript
     You might also need to configure CORS on your local Grist instance. Add these headers to your Grist server configuration:
 
@@ -847,10 +852,6 @@ test
     Access-Control-Allow-Headers: Authorization, Content-Type, Accept
     Access-Control-Allow-Credentials: true
     ```
-
-
-
-
   </Accordion>
 </AccordionGroup>
 
@@ -859,8 +860,6 @@ aas
 **1/28**
 
 pnpm dev
-
-
 
 <Accordion title="Grist Developer Docs" defaultOpen={false} icon="book">
   A
