@@ -17,52 +17,83 @@ description: "ai-llms"
   <Accordion title="AI Builders" defaultOpen={false}>
     [Trae](https://www.trae.ai/download)
 
-    [SuperCoder](https://superagi.com/supercoder/) - superagi    [github](https://github.com/TransformerOptimus/SuperCoder)
+    [SuperCoder](https://superagi.com/supercoder/) - superagi    [github](https://github.com/TransformerOptimus/SuperCoder)   (docker-compose)
+
+
 
     [Genie](https://cosine.sh/) - Cosine
 
     [Fine](https://www.fine.dev/)  -  Paid
 
     [Replit Agent](https://docs.replit.com/replitai/agent)
-
-
   </Accordion>
 
-  <Accordion title="OpenHands" defaultOpen={false}>
+  <Accordion title="OpenHands" defaultOpen={false} icon="check">
     🙌 [OpenHands](https://github.com/All-Hands-AI/OpenHands): Code Less, Make More
 
-
-
     [Docs](https://dashboard.mintlify.com/kickzdontstopinv-9f466998/kickzdontstopinv-9f466998/editor/main#openhands) - OpenRouter
+
+
+
+    You can also [connect OpenHands to your local filesystem](https://docs.all-hands.dev/modules/usage/runtimes#connecting-to-your-filesystem), run OpenHands in a scriptable [headless mode](https://docs.all-hands.dev/modules/usage/how-to/headless-mode), interact with it via a [friendly CLI](https://docs.all-hands.dev/modules/usage/how-to/cli-mode), or run it on tagged issues with [a github action](https://docs.all-hands.dev/modules/usage/how-to/github-action).
+
+
+
+    <Accordion title="OpenRouter" defaultOpen={false} icon="robot">
+      **Configuration**[​](https://docs.all-hands.dev/modules/usage/llms/openrouter#configuration "Direct link to Configuration")
+
+      * `LLM Provider` to `OpenRouter`
+
+      * `LLM Model` to the model you will be using. [Visit here to see a full list of OpenRouter models](https://openrouter.ai/models).&#x20;
+
+      * If the model is not in the list, toggle `Advanced Options`, and enter it in `Custom Model` (e.g. openrouter/\<model-name> like `openrouter/anthropic/claude-3.5-sonnet`).
+
+      * `API Key` to your OpenRouter API key.
+
+
+
+      **Models**
+
+
+
+      `google/gemini-2.0-flash-thinking-exp:free`
+
+      `google/gemini-2.0-flash-exp:free`
+
+      `deepseek/deepseek-r1-distill-llama-70b:free`
+
+      `qwen/qwen2.5-vl-72b-instruct:free`
+
+      `deepseek/deepseek-r1:free`
+
+      `meta-llama/llama-3.1-405b-instruct:free`
+
+      [
+      ](https://docs.all-hands.dev/modules/usage/llms/openai-llms)
+    </Accordion>
+
+
 
     ```bash
     docker pull docker.all-hands.dev/all-hands-ai/runtime:0.23-nikolaik
 
-    docker run -it --rm --pull=always \
-        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.23-nikolaik \
-        -e LOG_ALL_EVENTS=true \
-        -v /var/run/docker.sock:/var/run/docker.sock \
-        -v ~/.openhands-state:/.openhands-state \
+    docker run -it --rm --pull=always `
+        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.23-nikolaik `
+        -e LOG_ALL_EVENTS=true `
+        -v /var/run/docker.sock:/var/run/docker.sock `
+        -v ~/.openhands-state:/.openhands-state `
         -p 3000:3000 \
-        --add-host host.docker.internal:host-gateway \
-        --name openhands-app \
+        --add-host host.docker.internal:host-gateway `
+        --name openhands-app `
         docker.all-hands.dev/all-hands-ai/openhands:0.23
     ```
   </Accordion>
 
-  <Accordion title="Aide" defaultOpen={false}>
+  <Accordion title="Aide" defaultOpen={false} icon="check">
     [Aide](https://aide.dev/)  -  The open-source AI-native IDE &#x20;
 
     [Github](https://github.com/codestoryai/aide)
 
-
-
     * Upto 50 chat & agentic invocations/month
-
-
-
-
-
-
   </Accordion>
 </AccordionGroup>
