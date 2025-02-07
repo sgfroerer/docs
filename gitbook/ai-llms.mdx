@@ -13,40 +13,58 @@ description: "ai-llms"
 | [Gemini 1.5 Pro](https://www.aitoolssme.com/comparison/language-models#Geminiformerbard) | Accuracy (less hallucinations) | gemini.google.com |
 | [Llama 3](https://www.aitoolssme.com/comparison/language-models#Llama3)                  | Fluency                        | groq.com          |
 
-[**5 Best LLMs You Can Use for Free**](https://www.whytryai.com/p/best-free-llms)
+<AccordionGroup>
+  <Accordion title="AI Builders" defaultOpen={false}>
 
-* **Claude 3.5 Sonnet** (Anthropic)
 
-  * It’s [the #1 LLM on ](https://x.com/alexandr_wang/status/1807828398523249099)[*Instruction Following*](https://x.com/alexandr_wang/status/1807828398523249099)[ and ](https://x.com/alexandr_wang/status/1807828398523249099)[*Coding*](https://x.com/alexandr_wang/status/1807828398523249099) as measured by the [independent SEAL Leaderboard](https://www.whytryai.com/i/145021019/ai-random).
+    [Trae](https://www.trae.ai/download)
 
-  * **Standout features:** Best scores on most LLM benchmarks, interactive “Artifacts” window, great at summarizing long docs.
 
-  * **Where to try:** [Claude.ai](https://claude.ai/)
 
-* **Gemini 1.5 Pro** (Google)
+    [SuperCoder](https://superagi.com/supercoder/) - superagi
 
-  * The Google AI Studio has some downsides:
 
-    * The interface is not quite as intuitive (but isn’t too difficult to get used to).
 
-    * The models inside it can’t browse the Internet directly.
+    [Genie](https://cosine.sh/) - Cosine
 
-  * **Where to try:** [aistudio.google.com](https://aistudio.google.com/)\*\*\*\* or [notebooklm.google.com](https://notebooklm.google.com/)
 
-* **GPT-4o** (OpenAI)
 
-  * The latest model from OpenAI is still hanging on to its #1 rank on the LMSYS Chatbot Arena.
+    [Fine](https://www.fine.dev/)  -  Paid
 
-  * Even as a free ChatGPT user, you get to access GPT-4o, [Code Interpreter / Advanced Data Analysis](https://www.whytryai.com/p/chatgpt-code-interpreter-getting-started), and the ability to browse the web, upload files, and use other people’s [Custom GPTs](https://www.whytryai.com/p/build-gpts).
 
-* **Llama 3 70B Instruct** (Meta)
 
-  * **Where to try:** [Meta.ai](https://www.meta.ai/), one of the 100+ spaces on [Hugging Face](https://huggingface.co/meta-llama), or [GitHub](https://github.com/huggingface/blog/blob/main/llama3.md).
+    [Aide](https://aide.dev/)  -  The open-source AI-native IDE.
 
-* **Pi / Inflection 2.5** (Inflection AI)
 
-  * Pi is perhaps the most emotionally intelligent chatbot around. It has an encouraging, compassionate, supportive tone.&#x20;
 
-  * Pi also supports voice conversations and is one of the most natural voice chat experiences I’ve had with an LLM
 
-  * **Where to try:** [Pi.ai](https://pi.ai/talk)
+
+
+  </Accordion>
+
+  <Accordion title="OpenHands" defaultOpen={false}>
+    🙌 [OpenHands](https://github.com/All-Hands-AI/OpenHands): Code Less, Make More
+
+
+
+    ```bash
+    docker pull docker.all-hands.dev/all-hands-ai/runtime:0.23-nikolaik
+
+    docker run -it --rm --pull=always \
+        -e SANDBOX_RUNTIME_CONTAINER_IMAGE=docker.all-hands.dev/all-hands-ai/runtime:0.23-nikolaik \
+        -e LOG_ALL_EVENTS=true \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v ~/.openhands-state:/.openhands-state \
+        -p 3000:3000 \
+        --add-host host.docker.internal:host-gateway \
+        --name openhands-app \
+        docker.all-hands.dev/all-hands-ai/openhands:0.23
+    ```
+
+
+
+
+
+
+  </Accordion>
+</AccordionGroup>
