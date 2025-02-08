@@ -62,7 +62,8 @@
         "gitbook/tools/codepen",
         "gitbook/tools/apexcharts",
         "gitbook/tools/prompts",
-        "gitbook/tools/libraries"
+        "gitbook/tools/libraries",
+        "gitbook/tools/lobehub"
       ]
     },
     {
@@ -71,6 +72,8 @@
         "gitbook/projects/CallTool",
         "gitbook/projects/standalone-map",
         "gitbook/projects/gristmaps",
+        "gitbook/projects/projects-download",
+        "gitbook/projects/Server-Projects",
         "gitbook/projects"
       ]
     },
@@ -79,7 +82,9 @@
       "pages": [
         "gitbook/docs/docker",
         "gitbook/docs/grist",
-        "gitbook/docs/react"
+        "gitbook/docs/react",
+        "gitbook/docs/maptiler",
+        "gitbook/docs/Aide/Aide"
       ]
     },
     {
