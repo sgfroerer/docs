@@ -9,6 +9,8 @@ description: "Description of your new file."
 
 
 
+
+
     <CodeGroup>
       ```javascript html.js
       <html lang="en">
@@ -113,6 +115,106 @@ description: "Description of your new file."
 
       ```
       console.log("Hello World");
+      ```
+
+      ```
+      const errorDiv = document.getElementById("error");
+      const errorTitle = document.getElementById("error-title");
+      const errorDescription = document.getElementById("error-description");
+      const iframe = document.getElementById("rendered");
+      const loadingDiv = document.getElementById("loading");
+
+      function showError(title, description) {
+          if (!title) {
+              errorDiv.style.display = "none";
+              return;
+          }
+
+          errorTitle.textContent = title;
+          errorDescription.textContent = description || "";
+          errorDiv.style.display = "flex";
+          hideLoading();
+      }
+
+      function showLoading() {
+          loadingDiv.style.display = "block";
+          iframe.style.display = "none";
+      }
+
+      function hideLoading() {
+          loadingDiv.style.display = "none";
+          iframe.style.display = "block";
+      }
+
+      function resetIframe() {
+          iframe.src = "about:blank";
+          iframe.style.display = "none";
+          hideLoading();
+      }
+
+      function renderUrl(url) {
+          if (!url) {
+              showError(
+                  "Error: No valid URL found",
+                  "Make sure the column contains a correct URL."
+              );
+              resetIframe();
+              return;
+          }
+
+          try {
+              new URL(url);
+          } catch (e) {
+              showError(
+                  "Error: Invalid URL",
+                  "The value found in the cell is not a valid URL."
+              );
+              resetIframe();
+              return;
+          }
+
+          showError(null);
+          showLoading();
+
+          iframe.onload = hideLoading;
+          iframe.src = url;
+      }
+
+      function initGrist() {
+          grist.ready({
+              columns: [{ name: "UrlColumn", title: "URL Column", type: "Text" }],
+              requiredAccess: "read table",
+              allowSelectBy: true,
+          });
+
+          grist.onRecord((record) => {
+              const mapped = grist.mapColumnNames(record);
+
+              if (!mapped || typeof mapped.UrlColumn === "undefined") {
+                  showError(
+                      "Error: Column not configured",
+                      "Please select a column containing URLs in the configuration panel."
+                  );
+                  resetIframe();
+                  return;
+              }
+
+              const url = mapped.UrlColumn;
+
+              if (!url) {
+                  showError(
+                      "Error: No valid URL found",
+                      "The cell is empty or does not contain a value."
+                  );
+                  resetIframe();
+                  return;
+              }
+
+              renderUrl(url);
+          });
+      }
+
+      document.addEventListener("DOMContentLoaded", initGrist);
       ```
     </CodeGroup>
   </Accordion>
