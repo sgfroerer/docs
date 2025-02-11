@@ -3,6 +3,556 @@ title: "standalone-map"
 description: "Description of your new file. 01/29"
 ---
 
+Standalone Map - Major Strides (02/10)
+
+
+
+<Accordion title="DeepSeek" defaultOpen={false}>
+  <AccordionGroup>
+    <Accordion title="HTML" defaultOpen={false}>
+      ```
+      HTML:
+      <html>
+        <head>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <!-- Leaflet CSS -->
+          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+          <!-- MarkerCluster CSS -->
+          <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+          <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+          <!-- Geocoder CSS -->
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet.esri.geocoder/2.1.0/esri-leaflet-geocoder.css" />
+          <!-- Tippy.js CSS -->
+          <link rel="stylesheet" href="https://unpkg.com/tippy.js@6.3.7/dist/tippy.css" />
+          <!-- Tailwind CSS -->
+          <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"/>
+          <!-- Custom CSS -->
+          <link rel="stylesheet" href="screen.css" />
+        </head>
+        <body class="bg-[#B9DFF8] min-h-screen">
+          <!-- Map Containers -->
+          <div id="map" class="w-full h-screen"></div>
+          <div id="minimap-container">
+            <iframe id="googleMap" src="https://www.google.com/maps/d/embed?mid=1XYqZpHKr3L0OGpTWlkUah7Bf4v0tbhA" allowfullscreen></iframe>
+            <button id="toggleMinimap">Toggle Minimap</button>
+          </div>
+          <!-- Add this near other controls if needed -->
+      <div id="clear-filter" class="leaflet-control-clearfilter" style="display: none;">
+        <button onclick="clearFilter()">Show All</button>
+      </div>
+
+          <!-- Leaflet JS -->
+          <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+          <!-- MarkerCluster JS -->
+          <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+          <!-- ESRI Leaflet Geocoder JS -->
+          <script src="https://cdn.jsdelivr.net/leaflet.esri/2.0.0/esri-leaflet.js"></script>
+          <script src="https://cdn.jsdelivr.net/leaflet.esri.geocoder/2.1.0/esri-leaflet-geocoder.js"></script>
+          <!-- Leaflet Sync JS -->
+          <script src="https://unpkg.com/leaflet-sync/dist/leaflet.sync.js"></script>
+          <!-- Tippy.js JS -->
+          <script src="https://unpkg.com/tippy.js@6.3.7/dist/tippy.umd.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+          <script src='https://unpkg.com/@turf/turf@6/turf.min.js'></script> 
+          <!-- Custom JS -->
+          <script src="standalone-map.js"></script>
+        </body>
+      </html>
+      ```
+    </Accordion>
+
+    <Accordion title="CSS" defaultOpen={false}>
+      ```
+      CSS:
+      /* Updated styles for map and controls */
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        width: 100vw; 
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+
+      #minimap-container {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        width: 300px;
+        height: 250px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        overflow: hidden;
+        z-index: 1000;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        transition: height 0.3s ease; /* Smooth transition for height change */
+      }
+
+      #googleMap {
+        width: 100%;
+        height: 130%;
+        border: none;
+        margin-top: -60px; /* Adjust this value to fully hide the top bar */
+      }
+
+      /* Geocoder control styling */
+      .leaflet-control-geocoder {
+        background: white;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+        border-radius: 4px;
+        max-width: 300px;
+      }
+
+      .leaflet-control-geocoder input {
+        font-size: 14px;
+        padding: 8px;
+        width: calc(100% - 16px);
+        border: none;
+        outline: none;
+        border-radius: 4px;
+      }
+
+      .leaflet-control-geocoder-expanded {
+        width: 300px;
+        padding: 5px;
+      }
+
+      /* Marker cluster styling */
+      .marker-cluster {
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        text-align: center;
+        line-height: 40px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #000;
+      }
+
+      .marker-cluster-small {
+        width: 40px;
+        height: 40px;
+      }
+
+      .marker-cluster-medium {
+        width: 50px;
+        height: 50px;
+      }
+
+      .marker-cluster-large {
+        width: 60px;
+        height: 60px;
+      }
+
+      #settings {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: white;
+        padding: 10px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        display: none; /* Initially hidden */
+        z-index: 1000; /* Ensure it sits above the map */
+      }
+
+      #btnClose {
+        cursor: pointer;
+        color: red;
+      }
+
+      #btnClose:hover {
+        text-decoration: underline;
+      }
+
+      #lblText {
+        min-width: 25px;
+        display: inline-block;
+      }
+
+      /* JV: Needed to highlight selected cluster */
+      .marker-cluster-selected {
+        border: 3px solid #16b378;
+      }
+
+      /* Image Styling */
+      .leaflet-popup-content img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      /* Popup Buttons */
+      .popup-buttons {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+      }
+
+      .popup-button {
+        display: inline-block;
+        padding: 4px 6px;
+        background-color: #DBEFDC;
+        color: white;
+        text-decoration: none;
+        border-radius: 1px;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .popup-button:hover {
+        background-color: #A5D7A7;
+      }
+
+      /* Popup Header and Text */
+      .leaflet-popup-content h3 {
+        font-size: 25px;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      .marker-cluster-selected {
+        border: 3px solid #FFD700; /* Highlight selected cluster with a gold border */
+      }
+
+      .leaflet-popup-content h4 {
+        font-size: 14px;
+        margin: 5px;
+        color: #555;
+      }
+
+      .leaflet-popup-content b {
+        font-weight: bold;
+      }
+
+      /* Popup Header and Text */
+      .leaflet-popup-content h3 {
+        font-size: 20px;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      /* Add to CSS file */
+      .leaflet-control-clearfilter {
+        background: white;
+        padding: 8px;
+        border-radius: 4px;
+        box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .leaflet-control-clearfilter:hover {
+        background-color: #f4f4f4;
+      }
+      ```
+    </Accordion>
+
+    <Accordion title="JavaScript" defaultOpen={false}>
+      ```
+      JavaScript:
+      "use strict";
+
+      let amap;
+      let markersLayer; // Global variable to store markers
+      let drawnItems;
+      let originalData;
+      const geoJSONUrl = "https://raw.githubusercontent.com/sgfroerer/gmaps-grist-widgets/master/geojson/Refined.geojson";
+
+      const selectedIcon = new L.Icon({
+        iconUrl: 'marker-icon-green.png',
+        iconRetinaUrl: 'marker-icon-green-2x.png',
+        shadowUrl: 'marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      const defaultIcon = new L.Icon.Default();
+
+      // Create a custom gold icon for search results
+      const searchIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+      });
+
+      const baseLayers = {
+        "Google Hybrid": L.tileLayer('http://mt0.google.com/vt/lyrs=y&hl=en&x={x}&y={y}&z={z}', {
+          attribution: ''
+        }),
+        "MapTiler Satellite": L.tileLayer('https://api.maptiler.com/tiles/satellite-v2/{z}/{x}/{y}.jpg?key=TbsQ5qLxJHC20Jv4Th7E', {
+          attribution: ''
+        }),
+        "ArcGIS": L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+          attribution: ''
+        }),
+        "openstreetmap": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: ''
+        })
+      };
+
+      const overlayLayers = {};
+
+      function initializeMap() {
+        amap = L.map('map', {
+          layers: [baseLayers["Google Hybrid"]],
+          center: [45.5283, -122.8081], // Default center (USA)
+          zoom: 4, // Default zoom level
+          wheelPxPerZoomLevel: 90
+        });
+
+        // Attach the load event listener after the map is initialized
+        amap.on('load', function () {
+          console.log("Map is fully loaded and ready for interaction");
+        });
+
+        L.control.layers(baseLayers, overlayLayers, { position: 'topright', collapsed: true }).addTo(amap);
+
+        const searchControl = L.esri.Geocoding.geosearch({
+          providers: [L.esri.Geocoding.arcgisOnlineProvider()],
+          position: 'topleft'
+        }).addTo(amap);
+        
+        const searchResults = L.layerGroup().addTo(amap);
+        searchControl.on('results', function(data) {
+          searchResults.clearLayers();
+          for (let i = data.results.length - 1; i >= 0; i--) {
+            searchResults.addLayer(L.marker(data.results[i].latlng));
+          }
+        });
+        overlayLayers["Search Results"] = searchResults;
+
+        // Draw controls setup
+        drawnItems = new L.FeatureGroup();
+        amap.addLayer(drawnItems);
+
+        const drawControl = new L.Control.Draw({
+          draw: {
+            polygon: true,
+            polyline: false,
+            rectangle: false,
+            circle: false,
+            marker: false,
+            circlemarker: false
+          },
+          edit: {
+            featureGroup: drawnItems
+          }
+        });
+        amap.addControl(drawControl);
+
+        // Clear filter control
+        L.Control.ClearFilter = L.Control.extend({
+          onAdd: function(map) {
+            const container = L.DomUtil.create('div', 'leaflet-control-clearfilter');
+            container.innerHTML = '<button title="Clear Filter" onclick="clearFilter()">Show All</button>';
+            return container;
+          }
+        });
+        new L.Control.ClearFilter({ position: 'topleft' }).addTo(amap);
+
+        // Draw event handler
+        amap.on(L.Draw.Event.CREATED, function(e) {
+          drawnItems.clearLayers();
+          const layer = e.layer;
+          drawnItems.addLayer(layer);
+          
+          const drawnPolygon = layer.toGeoJSON();
+          const filteredFeatures = originalData.features.filter(feature => {
+            const point = turf.point(feature.geometry.coordinates);
+            return turf.booleanPointInPolygon(point, drawnPolygon);
+          });
+          
+          updateMap({ type: 'FeatureCollection', features: filteredFeatures });
+        });
+
+        // Synchronize with Google Map
+        var googleMapIframe = document.getElementById('googleMap');
+
+        // Function to sync Leaflet map with Google MyMap
+        function syncMaps() {
+          // Sync the Leaflet map with the iframe's view
+          amap.on('moveend', function() {
+            var center = amap.getCenter();
+            var zoom = amap.getZoom();
+            var ll = center.lat + ',' + center.lng;
+            googleMapIframe.src = "https://www.google.com/maps/d/embed?mid=1XYqZpHKr3L0OGpTWlkUah7Bf4v0tbhA&ll=" + ll + "&z=" + zoom;
+          });
+        }
+
+        syncMaps();
+
+        // Collapsible minimap logic
+        const minimapContainer = document.getElementById('minimap-container');
+        const toggleButton = document.getElementById('toggleMinimap');
+
+        if (toggleButton && minimapContainer) {
+          toggleButton.addEventListener('click', function () {
+            minimapContainer.classList.toggle('collapsed');
+          });
+        }
+
+        return amap;
+      }
+
+      function fetchGeoJSON(url, callback) {
+        fetch(url)
+          .then(response => response.json())
+          .then(data => callback(data))
+          .catch(error => console.error("Error fetching GeoJSON:", error));
+      }
+
+      function updateMap(data) {
+        if (!amap) {
+          amap = initializeMap();
+        }
+
+        // Create marker cluster group if it doesn't exist
+        if (!markersLayer) {
+          markersLayer = L.markerClusterGroup();
+          amap.addLayer(markersLayer);
+        } else {
+          markersLayer.clearLayers();
+        }
+
+        data.features.forEach(feature => {
+          const record = feature.properties;
+          const coordinates = feature.geometry.coordinates;
+
+          const marker = L.marker([coordinates[1], coordinates[0]], {
+            title: record.Name,
+            icon: defaultIcon
+          });
+
+          const popupContent = `
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden" style="max-width: 200px;">
+              <!-- Header -->
+              <div class="p-3 border-b border-gray-200">
+                <h3 class="text-sm font-semibold text-gray-800">${record.Name}</h3>
+              </div>
+
+              <!-- Image Section -->
+              <div class="relative">
+                ${record["Pop-up IMG"] ? `
+                  <img src="${record["Pop-up IMG"]}" alt="Property Image" class="w-full h-24 object-cover cursor-pointer hover:opacity-90" onclick="openLightbox('${record["Pop-up IMG"]}')" />
+                ` : `
+                  <div class="w-full h-24 bg-gray-100 flex items-center justify-center text-gray-500 text-xs">
+                    No Image Available
+                  </div>
+                `}
+              </div>
+
+              <!-- Property Details -->
+              <div class="p-3 space-y-2">
+                <div class="text-xs text-gray-700">
+                  <strong>Address:</strong> ${record["Property Address"]}
+                </div>
+                <div class="text-xs text-gray-700">
+                  <strong>City:</strong> ${record.City}
+                </div>
+                <div class="text-xs text-gray-700">
+                  <strong>Type:</strong> ${record["Property Type"]}
+                </div>
+
+                <!-- Collapsible Tenants Section -->
+                <div class="text-xs text-gray-700">
+                  <div class="flex items-center justify-between cursor-pointer" onclick="toggleTenants(this)">
+                    <strong>Tenants:</strong>
+                    <span class="text-gray-500">▼</span>
+                  </div>
+                  <div class="mt-1 hidden">
+                    ${record.Tenants || "No tenants listed"}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Buttons -->
+              <div class="p-3 bg-gray-50 flex gap-2">
+                <a href="${record["CoStar URL"]}" class="popup-button costar-button text-xs px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors" target="_blank">CoStar</a>
+                <a href="${record["County Prop Search"]}" class="popup-button county-button text-xs px-2 py-1 bg-green-600 text-white rounded hover:bg-green-700 transition-colors" target="_blank">County</a>
+                <a href="${record.GIS}" class="popup-button gis-button text-xs px-2 py-1 bg-yellow-400 text-gray-800 rounded hover:bg-yellow-500 transition-colors" target="_blank">GIS</a>
+              </div>
+            </div>
+          `;
+
+          marker.bindPopup(popupContent);
+          markersLayer.addLayer(marker);
+        });
+
+        // Initialize Tippy.js for buttons
+        tippy('.popup-button', {
+          content: (reference) => {
+            if (reference.classList.contains('costar-button')) {
+              return 'Open in CoStar';
+            } else if (reference.classList.contains('county-button')) {
+              return 'Open in County Property Search';
+            } else if (reference.classList.contains('gis-button')) {
+              return 'Open in GIS';
+            }
+          },
+          placement: 'top',
+          arrow: true,
+          animation: 'fade',
+        });
+      }
+
+      // Lightbox function for image preview
+      function openLightbox(imageUrl) {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50';
+        lightbox.innerHTML = `
+          <div class="relative">
+            <img src="${imageUrl}" alt="Full-size Image" class="max-w-full max-h-full" />
+            <button onclick="this.parentElement.parentElement.remove()" class="absolute top-2 right-2 bg-white rounded-full p-1 hover:bg-gray-200">
+              ✕
+            </button>
+          </div>
+        `;
+        document.body.appendChild(lightbox);
+      }
+
+      // Toggle tenants section
+      function toggleTenants(element) {
+        const tenantsSection = element.nextElementSibling;
+        tenantsSection.classList.toggle('hidden');
+      }
+
+      // Initialize map when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        const minimapContainer = document.getElementById('minimap-container');
+        const toggleButton = document.getElementById('toggleMinimap');
+
+        // Toggle minimap visibility
+        toggleButton.addEventListener('click', function () {
+          minimapContainer.classList.toggle('collapsed');
+        });
+
+      // Modify fetchGeoJSON callback in DOMContentLoaded
+      fetchGeoJSON(geoJSONUrl, function (data) {
+        originalData = data; // Store original data
+        updateMap(data);
+      });
+      });
+      ```
+    </Accordion>
+  </AccordionGroup>
+</Accordion>
+
+
+
+tEST
+
 <AccordionGroup>
   <Accordion title="websockets" defaultOpen={false}>
     ```
@@ -36,13 +586,9 @@ description: "Description of your new file. 01/29"
   </Accordion>
 
   <Accordion title="New Accordion" defaultOpen="false">
-    j
-
     ```
     The index js file is from the calltool which works and correctly gets data from my instance of Grist. The standalone-map.js is the current project I am working on. 
     ```
-
-
 
     ```bash
     /public
@@ -73,24 +619,5 @@ description: "Description of your new file. 01/29"
     /tsconfig.json
     /vite.config.ts
     ```
-
-
   </Accordion>
 </AccordionGroup>
-
-<Accordion title="Error" defaultOpen={false}>
-  ```
-  Failed to load resource: net::ERR_BLOCKED_BY_CLIENT
-
-  maps.googleapis.com/…204?csp_test=true:1 
-   Failed to load resource: net::ERR_BLOCKED_BY_CLIENT
-  localhost/:1 Access to fetch at 'https://api.getgrist.com/api/docs/qXeQztrSZ1qrtNmXwBsWRV/tables/Properties_/records' from origin 'http://localhost' has been blocked by CORS policy: Request header field authorization is not allowed by Access-Control-Allow-Headers in preflight response.
-  api.getgrist.com/api…operties_/records:1 
-   Failed to load resource: net::ERR_FAILED
-  standalone-map.js:123 Error fetching data from Grist: TypeError: Failed to fetch
-      at fetchGristData (standalone-map.js:119:28)
-      at HTMLDocument.<anonymous> (standalone-map.js:281:25)
-  www.google.com/maps/…_reqid=65263&rt=j:1 
-   Failed to load resource: net::ERR_BLOCKED_BY_CLIENT
-  ```
-</Accordion>
