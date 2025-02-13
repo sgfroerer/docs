@@ -87,19 +87,19 @@ description: "Streamlit"
   <Accordion title="Owner Engagement & Contact Status (Bar Chart or Pie Chart)" defaultOpen={false}>
     **Why?**&#x20;
 
-    * This will help visualize how many owners have been contacted, the status of those contacts, and their level of interest. Fields like 
+    * This will help visualize how many owners have been contacted, the status of those contacts, and their level of interest. Fields like
 
-      **"Last_Call_Segment"**
+      **"Last\_Call\_Segment"**
 
-      , 
+      ,
 
-      **"Past_Contact_"**
+      **"Past\_Contact\_"**
 
-      , and 
+      , and
 
       **"Segment"**
 
-       (e.g., Not Interested, Never, Not Primary) can be used to categorize responses.
+      (e.g., Not Interested, Never, Not Primary) can be used to categorize responses.
 
     **How to use it?**&#x20;
 
@@ -109,11 +109,11 @@ description: "Streamlit"
   <Accordion title="Properties by Type & Tenancy (Stacked Bar or Tree Map)" defaultOpen={false}>
     **Why?**&#x20;
 
-    * Understanding the mix of property types (e.g., 
+    * Understanding the mix of property types (e.g.,
 
       **"Freestanding Retail"**
 
-      , 
+      ,
 
       **"Auto Repair"**
 
@@ -121,36 +121,56 @@ description: "Streamlit"
 
     **How to use it?**&#x20;
 
-    * A 
+    * A
 
       **stacked bar chart**
 
-       can display the proportion of different property types, with tenancy status layered on top. A 
+      can display the proportion of different property types, with tenancy status layered on top. A
 
       **tree map**
 
-       can show property categories based on size (e.g., land area or rentable building area).
+      can show property categories based on size (e.g., land area or rentable building area).
   </Accordion>
 
   <Accordion title="Owner Portfolio Size & Concentration (Histogram or Bubble Chart)" defaultOpen={false}>
     **Why?**&#x20;
 
-    * Some owners hold multiple properties (as seen in the 
+    * Some owners hold multiple properties (as seen in the
 
-      **"Properties_"**
+      **"Properties\_"**
 
-       field), so visualizing the number of properties per owner can identify high-value prospects.
+      field), so visualizing the number of properties per owner can identify high-value prospects.
 
     **How to use it?**&#x20;
 
-    * A 
+    * A
 
       **histogram**
 
-       can show the frequency distribution of owners by property count. A 
+      can show the frequency distribution of owners by property count. A
 
       **bubble chart**
 
-       can display owners where bubble size represents the total value of properties owned.
+      can display owners where bubble size represents the total value of properties owned.
   </Accordion>
 </AccordionGroup>
+
+# Daily Stats
+
+<AccordionGroup>
+  <Accordion title="Call #" defaultOpen={false}>
+    Show running count of every row in which the "Date" column shows today's date
+
+
+  </Accordion>
+
+  <Accordion title="Segment Breakdown" defaultOpen={false}>
+    A breakdown of the Last Call Segments for calls made today
+  </Accordion>
+
+  <Accordion title="Map View" defaultOpen={false}>
+    A map view that shows the locations of properties - for owners that I called today
+  </Accordion>
+</AccordionGroup>
+
+#
