@@ -34,7 +34,7 @@ description: "Streamlit"
 # Charts & Components
 
 <AccordionGroup>
-  <Accordion title="Contact Segments Breakdown" defaultOpen={false} icon="chart-pie">
+  <Accordion title="Last Call Segment" defaultOpen={false} icon="chart-pie">
     **Metric:** 
 
     * Bar/Donut chart showing distribution of owners across “Last Call Segment” values (e.g., 🗣️ Contact 🗣️, ✖️ No VM ✖️). 
@@ -42,7 +42,6 @@ description: "Streamlit"
     **Why:** 
 
     * Understanding how contacts are segmented based on engagement can help identify the effectiveness of outreach efforts and highlight which segment needs more attention.
-
   </Accordion>
 
   <Accordion title="Property Portfolio Analysis" defaultOpen={false} icon="building">
@@ -53,7 +52,6 @@ description: "Streamlit"
     **Why:** 
 
     * Visualizing the geographic distribution of properties provides insights into market coverage and helps identify areas with potential opportunities or overrepresentation.
-
   </Accordion>
 
   <Accordion title="Age Demographics of Owners" defaultOpen={false} icon="children">
@@ -64,7 +62,6 @@ description: "Streamlit"
     **Why:** 
 
     * Age demographics can reveal patterns in investment or selling behavior and help tailor communication strategies for different age groups.
-
   </Accordion>
 
   <Accordion title="Engagement History" defaultOpen={false} icon="timeline">
@@ -75,7 +72,6 @@ description: "Streamlit"
     **Why:** 
 
     * This allows you to track historical contact frequency and identify periods of inactivity, enabling targeted follow-ups to maintain relationships.
-
   </Accordion>
 
   <Accordion title="Objection & Opportunity Analysis" defaultOpen={false} icon="table-list">
@@ -86,6 +82,75 @@ description: "Streamlit"
     **Why:** 
 
     * Summarizing recurring objections (e.g., “Not Wanting Anything”) and opportunities helps refine the sales approach and prioritize key pain points or areas for potential growth.
+  </Accordion>
 
+  <Accordion title="Owner Engagement & Contact Status (Bar Chart or Pie Chart)" defaultOpen={false}>
+    **Why?**&#x20;
+
+    * This will help visualize how many owners have been contacted, the status of those contacts, and their level of interest. Fields like 
+
+      **"Last_Call_Segment"**
+
+      , 
+
+      **"Past_Contact_"**
+
+      , and 
+
+      **"Segment"**
+
+       (e.g., Not Interested, Never, Not Primary) can be used to categorize responses.
+
+    **How to use it?**&#x20;
+
+    * A pie chart can show the distribution of engagement status, while a bar chart can break it down further by segment.
+  </Accordion>
+
+  <Accordion title="Properties by Type & Tenancy (Stacked Bar or Tree Map)" defaultOpen={false}>
+    **Why?**&#x20;
+
+    * Understanding the mix of property types (e.g., 
+
+      **"Freestanding Retail"**
+
+      , 
+
+      **"Auto Repair"**
+
+      ) and their tenancy status (single vs. multi-tenant) can help focus marketing efforts.
+
+    **How to use it?**&#x20;
+
+    * A 
+
+      **stacked bar chart**
+
+       can display the proportion of different property types, with tenancy status layered on top. A 
+
+      **tree map**
+
+       can show property categories based on size (e.g., land area or rentable building area).
+  </Accordion>
+
+  <Accordion title="Owner Portfolio Size & Concentration (Histogram or Bubble Chart)" defaultOpen={false}>
+    **Why?**&#x20;
+
+    * Some owners hold multiple properties (as seen in the 
+
+      **"Properties_"**
+
+       field), so visualizing the number of properties per owner can identify high-value prospects.
+
+    **How to use it?**&#x20;
+
+    * A 
+
+      **histogram**
+
+       can show the frequency distribution of owners by property count. A 
+
+      **bubble chart**
+
+       can display owners where bubble size represents the total value of properties owned.
   </Accordion>
 </AccordionGroup>
