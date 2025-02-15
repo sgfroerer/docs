@@ -1701,9 +1701,157 @@ test
     2. Combine Owners & Properties into 1 Sheet  |  Download CSV
 
     3. Convert CSV file to geoJSON via [csvjson](https://csvjson.com/csv2json)
+
+    a
+
+    <Accordion title="List of Grist Columns to Delete" defaultOpen={false}>
+      **👨‍🦳 Owners 👨‍🦳**
+
+      Source Grist&#x9;
+
+      Last Name
+
+      My Market?&#x9;
+
+      Reminder Date
+
+      Reminder Title
+
+      Reminder Note
+
+      Last updated at
+
+      LinkedIn
+
+      Contact 1&#x9;
+
+      Contact 2&#x9;
+
+      Contact 3&#x9;
+
+      Extra Notes&#x9;
+
+      Concat&#x9;
+
+      Next Steps
+
+      Contact 4&#x9;
+
+      Plans to Buy&#x9;
+
+      Plans to Sell&#x9;
+
+      Phone 1 Notes&#x9;
+
+      Phone 2 Notes&#x9;
+
+      Phone 3 Notes&#x9;
+
+      Phone 4 Notes&#x9;
+
+      Phone	Phone 2&#x9;
+
+      Phone 3&#x9;
+
+      Phone 4&#x9;
+
+      🗑️ Shit 🗑️&#x9;
+
+      Other Props
+
+      Wrong Phone&#x9;
+
+      Spouse&#x9;
+
+      Prop Rate&#x9;
+
+      Row #&#x9;
+
+      🏬 Properties 🏬&#x9;
+
+      🏬 Properties 🏬\_Tenants
+
+      Constant Call - VM's
+
+      Email&#x9;
+
+      Owner Address&#x9;
+
+      Age
+
+      Call Relationship&#x9;
+
+      Tranche&#x9;
+
+      Profile Image&#x9;
+
+      Objection
+
+      Opportunity
+
+      Owner Full Name&#x9;
+
+      Accounts&#x9;
+
+      Other Owners
+
+      Gender
+
+      Title&#x9;
+
+      Pref&#x9;
+
+      Owner Personality
+
+      Buyer Needs
+
+
+
+      **🏬 Properties 🏬**
+
+      PDF's
+
+      Tenant | Type
+
+      Priority Property
+
+      Last updated at
+
+      Source Grist
+
+      YearB
+
+      YearR
+
+      Change `"County Prop Search"` to `"County"`, then delete `"County"`
+
+      **CoStar URL**
+    </Accordion>
+
+
+
+
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="Google Sheet instructions" defaultOpen={false}>
+
+
+    Formula to match tables:
+
+    ```
+    =INDEX('🔢 Owners 👨‍🦳'!$C:$D, MATCH(C2, '🔢 Owners 👨‍🦳'!$C:$C, 0), 1)
+    ```
+
+    For all properties where owners are 2+
+
+    1. &#x20;Copy to new sheet, duplicate Owner column
+
+    2. Split column by delimitator
+
+    3. Start with furthest column and work inwards
+
+    4. Copy single column of the main (2) owner to the owner column in Properties table
+
 
   </Accordion>
 </AccordionGroup>
