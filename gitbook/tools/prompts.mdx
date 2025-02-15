@@ -1605,7 +1605,9 @@ test
 
 <Card title="Dashboard" icon="bolt" href="../dashboard" />
 
-# Github Widget  -  Dashboard/Index
+
+
+# Github -  Repo Index
 
 <AccordionGroup>
   <Accordion title="Google Sheet" defaultOpen={false} icon="google">
@@ -1693,7 +1695,7 @@ test
 
 #
 
-# Stand-alone Map
+# Stand-alone Map&#x20;
 
 Tileset ID: `sgfroerer.bvnacg2o`
 
@@ -1880,8 +1882,6 @@ API
   </Accordion>
 </AccordionGroup>
 
-#
-
 <Accordion title="csvjson" defaultOpen={false}>
   Embed all the functionality of csv**json** in any web application with [Flatfile](https://flatfile.com/get-started?utm_source=csvjson\&utm_medium=owned_site\&utm_campaign=q1-2022-csvjson-redesign). Auto-match columns, validate data fields, and provide an intuitive CSV import experience.
 
@@ -1897,5 +1897,60 @@ API
 
   [EOL: `CRLF`](https://www.convertcsv.com/csv-to-geojson.htm)
 </Accordion>
+
+#
+
+# Convert Standalone To Grist Widget Map
+
+<AccordionGroup>
+  <Accordion title="These are the contents of my Grist custom Map widget" defaultOpen={false}>
+
+
+    ```
+    These are the contents of my Grist custom Map widget, I want you to just look through them to understand the functionality and interaction between the Map and my Grist document.
+
+    This is a Grist custom widget that creates an interactive map with the following key features:
+
+    1. Map Visualization
+    - Uses Leaflet.js with multiple base layer options (Google Hybrid, MapTiler Satellite, ArcGIS, OpenStreetMap)
+    - Supports marker clustering for multiple locations
+    - Includes a synchronized Google Maps minimap
+
+    2. Data Integration
+    - Required fields: Name, Longitude, Latitude
+    - Optional fields: Property_Type, Tenants, Secondary_Type, ImageURL, CoStar_URL, County_Hyper, GIS
+    - Supports geocoding via Address field
+    - Tracks geocoded addresses to prevent redundant processing
+
+    3. Interaction Features
+    - Search functionality via ESRI Geocoder
+    - Custom popups with property details and external links
+    - Supports both single and multi-location viewing modes
+    - Selected locations highlighted with green markers
+
+    4. Grist Integration
+    - Syncs with Grist record selection
+    - Supports write access for geocoding updates
+    - Configurable options for map source and copyright
+    - Column mappings for flexible data structure
+    ```
+
+
+
+
+  </Accordion>
+
+  <Accordion title="Convert" defaultOpen={false}>
+
+
+    ```
+    This is the map that I want you to convert into a functioning widget for Grist. Use the other widget I showed you as reference to understand how the functionality/integration with grist works, and convert this standalone map project from using the geojson file to using the data in my Grist document as a functioning grist widget please.
+    ```
+
+
+
+
+  </Accordion>
+</AccordionGroup>
 
 #
