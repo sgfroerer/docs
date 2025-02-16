@@ -61,3 +61,45 @@ mode: "wide"
 [Industry Trends](https://analytics.placer.ai/labs/industry-trends)
 
 <script src="https://embedded-widget.placer.ai/ew.js" async />
+
+<AccordionGroup>
+  <Accordion title="Prompts" defaultOpen={false}>
+    ```
+    Ok you know what, that didn't work but I found out that my custom widget: https://sgfroerer.github.io/gmaps-grist-widgets/webframe/
+
+    The webframe widget properly shows up if the URL in the selected column is "https://embedded-widget.placer.ai/widgets/v1/zip-code-map/?zipCode=10011&address=75+9th+Ave%2C+New+York%2C+NY+10011&utm_source=https%3A%2F%2Fwww.placer.ai%2Fexplore%2Fpoints-of-interest"
+    As you can see in that example, it is specific for this address: 75 9th Ave, New York, NY 10011
+    So can you just turn this url into a formula to dynamically update to the property/row:
+    For the structure of each column IN the table, reference this is from the code view:
+
+    Property_Address = grist.Text()
+    City = grist.Choice()
+    State = grist.Text()
+    Zip = grist.Int()
+    ```
+
+    To create a dynamic URL in Grist that updates based on property details, use this formula in a **Text** column:
+
+    ```python
+    "https://embedded-widget.placer.ai/widgets/v1/zip-code-map/?zipCode=" + str($Zip) + "&address=" + ($Property_Address + ", " + $City + ", " + $State + " " + str($Zip)).replace(" ", "+").replace(",", "%2C") + "&utm_source=https%3A%2F%2Fwww.placer.ai%2Fexplore%2Fpoints-of-interest"
+    ```
+
+    **Components explained:**
+
+    * `zipCode` uses the numeric `Zip` column directly
+
+    * `address` combines `Property_Address`, `City`, `State`, and `Zip`, with:
+
+      * Spaces replaced by `+`
+
+      * Commas replaced by URL-encoded `%2C`
+
+    * `utm_source` hardcodes the encoded version of `https://www.placer.ai/explore/points-of-interest`
+
+
+  </Accordion>
+
+  <Accordion title="New Accordion" defaultOpen="false">
+
+  </Accordion>
+</AccordionGroup>
