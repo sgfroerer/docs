@@ -1,12 +1,30 @@
 ---
 title: "CRM"
-description: "Description of your new file."
+description: "02/16"
 ---
 
 # CRM Prospects:
 
 <AccordionGroup>
-  <Accordion title="02/16" defaultOpen={false} />
+  <Accordion title="Joget" defaultOpen={false} icon="star">
+    > Open Source Platform to Easily Build, Run and Maintain Apps
+
+    http://localhost:8087/
+
+    [Joget on Docker](https://dev.joget.org/community/display/DX8/Joget+on+Docker)     |     [Docker Hub](https://hub.docker.com/r/jogetworkflow/joget-community)
+
+    ## Option 1: Run Joget with Embedded MySQL
+
+    The easiest way is to run a Joget container which also contains a MySQL database:
+
+    ```
+    docker run -d -p 8087:8080 -v /var/lib/mysql --name joget jogetworkflow/joget-community
+    ```
+
+    With just a single command, you will have an entire running installation of Joget. Browse to the installation at [http://your\_docker\_host:8080/jw](http://your_docker_host:8080/jw)
+
+    Community
+  </Accordion>
 
   <Accordion title="Flowlu" defaultOpen={false}>
     [Pricing](https://www.flowlu.com/pricing/)   -   1 Project Template  &  1 Knowledge Base
@@ -74,8 +92,10 @@ description: "Description of your new file."
     ![](/ProductivitybyRep.webp)
   </Accordion>
 
-  <Accordion title="AirTable" defaultOpen={false}>
+  <Accordion title="AirTable" defaultOpen={false} icon="star">
     [Pricing](https://airtable.com/pricing)   |   `1,000 records per base`
+
+    `https://airtable.com/`
 
     # [`Competitor Research`](https://www.airtable.com/templates/competitor-research/expJaiVLxQA8ZpMch)
 
@@ -90,6 +110,16 @@ description: "Description of your new file."
     [Sales CRM](https://www.airtable.com/templates/sales-crm/expaRDyCNa7YNZQoO)
 
     ![](/image.png)
+  </Accordion>
+
+  <Accordion title="Convertigo" defaultOpen={false}>
+    [Download](https://www.convertigo.com/developers/download-low-code-studio)     |     [Github](https://github.com/convertigo/convertigo)
+
+    [API-Connectors](https://www.convertigo.com/platform/features/data-api-connectors)
+
+    * Rest API, Apex Charts, Drive
+
+    ## Connect to your tools and servicesBoost your app’s capabilities with Convertigo’s seamless connectors. Consume REST API, instantly connect with any database and automate workflows with minimal effort.
   </Accordion>
 </AccordionGroup>
 

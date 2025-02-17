@@ -7,6 +7,12 @@ mode: "wide"
 
 ### Chat [GPT](https://dashboard.mintlify.com/kickzdontstopinv-9f466998/kickzdontstopinv-9f466998/editor/main#overview-of-myself) - Project Manager
 
+```
+file:///C:/Users/Admin/Downloads/chatgpt.com-GRIST%20REVAMP.pdf
+```
+
+###
+
 <AccordionGroup>
   <Accordion title="Overview of Myself" defaultOpen={false}>
     ```
@@ -102,6 +108,80 @@ mode: "wide"
     * **Visualize Your Data:** Consider using Grist’s charts and summary tables to visualize key data like the number of soon-to-expire listings, or how many buyers are waiting for certain property types.
 
     > These steps will help you integrate your existing system into a more dynamic and proactive tool that better matches listings to buyers, helps you keep track of news and opportunities, and improves your follow-up processes.
+  </Accordion>
+
+  <Accordion title="Airtable - On Markets" defaultOpen={false}>
+    Since you're using **Airtable** with the **CoBuilder**, you should provide clear structure and key functionalities to make it work efficiently for tracking on-market listings.
+
+    ### **1. Data Source & Integration**
+
+    * **Connect to Google Sheets** instead of uploading CSVs weekly. This keeps your data live and eliminates manual uploads.
+
+    * Ensure your Google Sheet has structured columns like:
+
+      * **Property Name**
+
+      * **Address**
+
+      * **City**
+
+      * **State**
+
+      * **Listing Status (On-Market, Off-Market, Soon to Expire, etc.)**
+
+      * **Listing Date**
+
+      * **Days on Market** *(Auto-calculate from Listing Date)*
+
+      * **Expiration Date** *(If applicable)*
+
+      * **Property Type (STNL, Multi-Tenant, Shopping Center, etc.)**
+
+      * **Price & Cap Rate**
+
+      * **Broker Contact**
+
+      * **Owner (If known, link to CRM)**
+
+      * **Buyer Interest Match** *(Auto-link buyers from CRM if criteria match)*
+
+    ### **2. Views & Organization**
+
+    * **Kanban View** → Organize by status: “New Listings,” “180+ Days,” “Soon to Expire,” “Under Contract,” etc.
+
+    * **Gallery View** → Display key property details visually.
+
+    * **Grid View** → For quick filtering & sorting by cap rate, days on market, or property type.
+
+    * **Calendar View** → Track listing expiration dates.
+
+    * **Map View** → If location data is included, visualize listings geographically.
+
+    ### **3. Automations & Alerts**
+
+    * **"Expiring Soon" Alert:** Set up automatic notifications when a listing reaches 30 days from expiration.
+
+    * **Color-Coding:**
+
+      * Red for “Expiring Soon”
+
+      * Yellow for “180+ Days on Market”
+
+      * Green for “New Listing”
+
+    * **Matching System:** Auto-link properties to potential buyers in your CRM based on search criteria.
+
+    * **Daily Digest Email:** Send yourself a summary of new listings & expiring properties each morning.
+
+    ### **4. Future Enhancements**
+
+    * **Embed Images**: Pull in photos for each listing.
+
+    * **Mobile Optimization**: Ensure it’s easy to view & update while on the go.
+
+    * **Collaboration**: If you work with a team, allow shared notes and task assignments.
+
+    Would you like a step-by-step guide for setting this up in Airtable?
   </Accordion>
 </AccordionGroup>
 
