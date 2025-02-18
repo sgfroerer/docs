@@ -5,17 +5,162 @@ description: "Description of your new file."
 
 <AccordionGroup>
   <Accordion title="Images" defaultOpen={false}>
+    https://openapp.work/
 
+    https://ocode.dev/
 
 
   </Accordion>
 
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="Zillow-based Real Estate Map" defaultOpen={false} icon="map">
+    ![](/images/zillowtemplate.png)
 
+    ````
+    Create detailed components with these requirements:
+    1. Use 'use client' directive for client-side components
+    2. Style with Tailwind CSS utility classes for responsive design
+    3. Use Lucide React for icons (from lucide-react package). Do NOT use other UI libraries unless requested
+    4. Use stock photos from picsum.photos where appropriate, only valid URLs you know exist
+    5. Configure next.config.js image remotePatterns to enable stock photos from picsum.photos
+    6. Create root layout.tsx page that wraps necessary navigation items to all pages
+    7. MUST implement the navigation elements items in their rightful place i.e. Left sidebar, Top header
+    8. Accurately implement necessary grid layouts
+    9. Follow proper import practices:
+       - Use @/ path aliases
+       - Keep component imports organized
+       - Update current src/app/page.tsx with new comprehensive code
+       - Don't forget root route (page.tsx) handling
+       - You MUST complete the entire prompt before stopping
+    <summary_title>
+    Real Estate Property Listing Interface with Map Integration
+    </summary_title>
+
+    <image_analysis>
+
+    1. Navigation Elements:
+    - Top search bar with address input field
+    - Filter controls: "Price", "Home Type", "More"
+    - Map navigation controls (+/-) on right side
+    - Property listing navigation on left panel
+
+    2. Layout Components:
+    - Split view layout: Listings (60%) | Map (40%)
+    - Container width: 100% viewport
+    - Listing cards grid: 2 columns
+    - Vertical spacing between cards: 16px
+    - Horizontal spacing: 20px
+    - Card height: approximately 280px
+
+    3. Content Sections:
+    - Property listing cards showing:
+      - Property image (16:9 ratio)
+      - Price ($775,000 - $1,200,000)
+      - Address information
+      - Property details
+    - Interactive map section with:
+      - Property markers
+      - Price bubbles
+      - Zoom controls
+
+    4. Interactive Controls:
+    - Search input field with icon
+    - Filter dropdown buttons
+    - Map zoom controls (+/-)
+    - Interactive property cards
+    - "Off market" badges on listings
+
+    5. Colors:
+    - Primary: #3377FF (Map UI elements)
+    - Secondary: #FF6B00 (Off market badges)
+    - Text: #2A2A2A
+    - Background: #FFFFFF
+    - Border: #E0E0E0
+
+    6. Grid/Layout Structure:
+    - 2-column card grid for desktop
+    - Fluid-width container
+    - Responsive breakpoints:
+      - Desktop: 1200px+
+      - Tablet: 768px-1199px
+      - Mobile: <768px
+    - Card grid collapses to single column on mobile
+
+    </image_analysis>
+
+    <development_planning>
+
+    1. Project Structure:
+    ```
+    src/
+    ├── components/
+    │   ├── layout/
+    │   │   ├── SplitView.tsx
+    │   │   ├── ListingGrid.tsx
+    │   │   ├── MapView.tsx
+    │   ├── features/
+    │   │   ├── PropertyCard.tsx
+    │   │   ├── SearchBar.tsx
+    │   │   ├── FilterControls.tsx
+    │   └── shared/
+    │       ├── Badge.tsx
+    │       ├── PriceTag.tsx
+    ```
+
+    2. Key Features:
+    - Property listing display with grid view
+    - Interactive map integration
+    - Property filtering system
+    - Search functionality
+    - Responsive layout adaptation
+
+    3. State Management:
+    ```typescript
+    interface AppState {
+      listings: {
+        items: Property[]
+        loading: boolean
+        filters: FilterOptions
+      }
+      map: {
+        center: LatLng
+        zoom: number
+        selectedProperty: string | null
+      }
+      search: {
+        query: string
+        results: Property[]
+      }
+    }
+    ```
+
+    4. Routes:
+    ```typescript
+    const routes = [
+      '/',
+      '/search',
+      '/property/:id',
+      '/map'
+    ];
+    ```
+
+    5. Component Architecture:
+    - Shared components: Badge, PriceTag, Icon
+    - Layout components: SplitView, ListingGrid, MapView
+    - Feature components: PropertyCard, SearchBar, FilterControls
+    - Page components: HomePage, SearchResults, PropertyDetail
+
+    6. Responsive Breakpoints:
+    ```scss
+    $breakpoints: (
+      'mobile': 768px,
+      'tablet': 1199px,
+      'desktop': 1200px
+    );
+    ```
+    </development_planning>
+    ````
   </Accordion>
 </AccordionGroup>
-
-
 
 ```
 best store locator map screenshot list view
@@ -23,12 +168,8 @@ best store locator map screenshot list view
 
 ```
 
-
-
 <AccordionGroup>
   <Accordion title="Copycoder Screenshot > Prompt Alternative" defaultOpen={false}>
-
-
     * Cursor, v0 (from Replit)
 
     * Bolt (from Figma)
@@ -66,13 +207,9 @@ best store locator map screenshot list view
   <Accordion title="No Code Map App" defaultOpen={false} icon="Map">
     [Website](https://www.nocodemapapp.com/)
 
-
-
     ![](/images/nocodemap.png)
 
     ### Customize like a pro with clicks & text prompts
-
-
 
     **Map marker**&#x20;
 
@@ -131,6 +268,49 @@ best store locator map screenshot list view
     * Set your own zoom level
 
     * Set initial map area
+  </Accordion>
+
+  <Accordion title="Deepseek" defaultOpen={false} icon="docker">
+    Please optimize this prompt:
+
+    ```
+    I am a commercial real estate broker that specializes in Retail properties. I want to create an app for organizing and seeing all on-markets that I can add. I track all properties for sale in my market that I upload as a csv each week. I also track ones that may be expiring soon and have been on market for 180+ days. I want it to be a very intuitive and clean/modern design, visually appealing with different views like card gallery and kanban. I want to easily filter and sort through the on-markets so I can pull up information about and talk about some of them while I'm on phone calls with buyers. 
+    An idea for this Listings/On-Markets project is also that I could sort by STNL, Multi tenant, Centers, Off-Markets, properties I've done Proposals on that would consider looking at offers, "Bring me an offer", Soon to Expire, etc.
+
+    I would like to better match owners in my crm that tell me what they are looking to buy, to properties that come on market for sale that matches their criteria. Here are some other ideas:
+
+
+    Tracking Expiring Listings:
+
+    - Add a "Countdown to Expiration" field that calculates the days remaining before a listing expires, helping you focus on soon-to-expire opportunities.
+    - Set alerts or color-code properties that are about to expire, so you can target them for potential proposals or off-market opportunities.
+    ```
+
+
+
+
+
+    ```
+    I am going to use Claude Sonnet and Deepseek to build me an app.
+    Please optimize AND GIVE ME THE BEST prompt based on my following notes:
+     
+    I am a commercial real estate broker that specializes in Retail properties. I want to create an app for organizing and seeing all on-markets that I can add. I track all properties for sale in my market that I upload as a csv each week. I also track ones that may be expiring soon and have been on market for 180+ days. I want it to be a very intuitive and clean/modern design, visually appealing with different views like card gallery and kanban. I want to easily filter and sort through the on-markets so I can pull up information about and talk about some of them while I'm on phone calls with buyers. 
+    An idea for this Listings/On-Markets project is also that I could sort by STNL, Multi tenant, Centers, Off-Markets, properties I've done Proposals on that would consider looking at offers, "Bring me an offer", Soon to Expire, etc.
+
+    I would like to better match owners in my crm that tell me what they are looking to buy, to properties that come on market for sale that matches their criteria. Here are some other ideas:
+
+
+    Tracking Expiring Listings:
+
+    - Add a "Countdown to Expiration" field that calculates the days remaining before a listing expires, helping you focus on soon-to-expire opportunities.
+    - Set alerts or color-code properties that are about to expire, so you can target them for potential proposals or off-market opportunities.
+    ```
+
+
+
+
+
+
 
 
   </Accordion>
