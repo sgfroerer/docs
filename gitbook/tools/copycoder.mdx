@@ -8,8 +8,6 @@ description: "Description of your new file."
     https://openapp.work/
 
     https://ocode.dev/
-
-
   </Accordion>
 
   <Accordion title="Zillow-based Real Estate Map" defaultOpen={false} icon="map">
@@ -163,9 +161,8 @@ description: "Description of your new file."
 </AccordionGroup>
 
 ```
-best store locator map screenshot list view
-
-
+https://chatgpt.com/c/67b4248f-63fc-800c-aac3-d0c1440c15de
+(kickzdontstop)
 ```
 
 <AccordionGroup>
@@ -286,32 +283,46 @@ best store locator map screenshot list view
     - Set alerts or color-code properties that are about to expire, so you can target them for potential proposals or off-market opportunities.
     ```
 
-
-
-
-
     ```
     I am going to use Claude Sonnet and Deepseek to build me an app.
     Please optimize AND GIVE ME THE BEST prompt based on my following notes:
      
-    I am a commercial real estate broker that specializes in Retail properties. I want to create an app for organizing and seeing all on-markets that I can add. I track all properties for sale in my market that I upload as a csv each week. I also track ones that may be expiring soon and have been on market for 180+ days. I want it to be a very intuitive and clean/modern design, visually appealing with different views like card gallery and kanban. I want to easily filter and sort through the on-markets so I can pull up information about and talk about some of them while I'm on phone calls with buyers. 
-    An idea for this Listings/On-Markets project is also that I could sort by STNL, Multi tenant, Centers, Off-Markets, properties I've done Proposals on that would consider looking at offers, "Bring me an offer", Soon to Expire, etc.
 
-    I would like to better match owners in my crm that tell me what they are looking to buy, to properties that come on market for sale that matches their criteria. Here are some other ideas:
+    I am a commercial real estate broker that specializes in Retail properties.
+
+    I want to build a custom standalone map application that displays the properties in a list view, with the ability to click a property and have it open the property details, then click again and you go back to the list view. The list needs to sync with the properties on screen. I want to be able to filter by different attributes like Property type and secondary type. I also want to be able to draw a polygon on the map to restrict the list view/markers to just properties within the polygon. This would make it much easier to use during the day and for cold call lists. I've attached a screenshot from nocodemapapp for reference, there are so many options for what I'm talking about but they're all paid. I use grist locally with Docker, so it needs to be able to connect to the rest api for Grist to get the properties. 
+
+    I've also attached two screenshots of a map I made in Mapifator, to use as reference for the click to open profile feature I'm talking about in the list view. 
 
 
-    Tracking Expiring Listings:
-
-    - Add a "Countdown to Expiration" field that calculates the days remaining before a listing expires, helping you focus on soon-to-expire opportunities.
-    - Set alerts or color-code properties that are about to expire, so you can target them for potential proposals or off-market opportunities.
     ```
+  </Accordion>
 
+  <Accordion title="optimized prompt" defaultOpen={false}>
+    ```
+    **Optimized Prompt:**  
 
+    I am a commercial real estate broker specializing in retail properties. I want to build a **custom standalone map application** that displays a list of properties on the left and a map on the right.  
 
+    ### **Core Features:**  
+    - The **property list syncs with the map**, updating as I move or zoom.  
+    - Clicking a property in the list **opens a details panel**. Clicking again returns to the list view.  
+    - **Filter options** for property type, secondary type, and other attributes.  
+    - A **polygon drawing tool** to restrict the list to properties within a selected area.  
+    - The app **fetches property data from a Grist database** via its REST API.  
+    - I **cannot use Google Maps** due to cost—use **Leaflet, MapLibre, or MapTiler** instead.  
+    - The UI should be clean, easy to navigate, and optimized for desktop use during cold calls.  
 
+    ### **Tech Stack & Simplicity:**  
+    - I prefer **just HTML, CSS, and JS** (no complex frameworks like React unless necessary).  
+    - A **single `index.html` file** with an `app.js` script for logic and a `styles.css` for design.  
+    - Use **vanilla JavaScript (`fetch`, event listeners, simple state management)** instead of complex dependencies.  
 
+    ### **Reference Images:**  
+    - The first two images show a map app I made in **Mapifator** with a similar UI.  
+    - The third image is from a **real estate listing template** that reflects the layout style I want.  
 
-
-
+    **Generate structured, well-commented code in simple HTML, CSS, and JS. Prioritize clarity and ease of modification.**
+    ```
   </Accordion>
 </AccordionGroup>
