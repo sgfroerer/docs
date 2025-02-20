@@ -751,6 +751,51 @@ file:///C:/Users/Admin/Downloads/chatgpt.com-GRIST%20REVAMP.pdf
 
     A
   </Accordion>
+
+  <Accordion title="Super Dashboards with iFrames and HTML widget!" defaultOpen={false}>
+    a
+
+    a
+
+    ```
+    Super Dashboards with iFrames and HTML widget!
+    ```
+
+    Explanation… Grist does not allow your pages to be scrollable. You can have widgets that are scrollable, if their content is larger than their page space. So you can NOT have daskboard pages with dozens of graphics, tables, etc.
+
+    Even with like 6 charts, they already get so small that they are somewhat unusable.
+
+    HOWEVER, widgets in a page occupy a proportion of a screen. So if you have widgets each one occupying 10% of a 1000 pixels tall screen, you can´t see NOTHING. But if the screen is 3000 pixels tall, the widgets will be resized…
+
+    So what is a solution? To fill a page with widgets, then show the page as an iframe inside a Grist HTML widget!!!
+
+    More than that, as the iframe URL can be created by record, and you can make the HTML read those records, you can have a table with a list of Dashboards, each one with the page URL of a dashboard full of widgets.
+
+    Then as you just change records in the page, you select a new dashboard, all of them SCROLLABLE, because they are pages being shown INSIDE widgets (which are scrollable, unlike pages)
+
+    a
+  </Accordion>
+
+  <Accordion title="Grist + matplotlib, plotly, Seaborn" defaultOpen={false}>
+    [**Grist + Seaborn library**](https://community.getgrist.com/t/grist-seaborn-library/2387)
+
+    **User's post for help:**
+
+    ```
+    Hello, something happened that was supposed to happen, I taught my wife, a mathematician, how to use Grist.
+    For me, it was Grist who opened the way to Python.
+    My wife started with https://colab.research.google.com
+    Today I asked her to talk about how she uses Grist in her statistical data analysis work for her research paper.
+    And it turned out that she uses Grist only as a data provider, then exports it to colab to .CSV
+    Guys, this is a shock, in addition to many other libraries, I saw the Seaborn library at work.
+    Dozens of different graphics in the project is a strength.
+    It should be in Grist.
+    ```
+
+    **Response:**
+
+    > The newly [announced](https://community.getgrist.com/t/october-2023-newsletter-new-formula-shortcuts-two-experimental-widgets-colorful-calendar-events-and-much-more/3444) Jupyterlite notebook widget lets you embed notebooks (very similar to what colab provides) in a Grist document where they can directly access data without having to use CSVs or anything. You can use the Seaborn library as well as many other Python plotting libraries, although I’ve found the Seaborn library specifically to not work nicely inside a `@grist.on_records` callback so it’s not great if you want the chart to automatically update when data changes. But matplotlib, plotly, altair, and probably others work well, or you can just use Seaborn and rerun the cell manually.
+  </Accordion>
 </AccordionGroup>
 
 ***
@@ -3467,15 +3512,11 @@ API
   ```
 </Accordion>
 
-
-
 # Custom Widget Builder
 
 <AccordionGroup>
-  <Accordion title="New Accordion" defaultOpen="false">
-
-
-    ````
+  <Accordion title="Intro & Code View" defaultOpen={false}>
+    ```
     I use Grist as a CRM with two tables, one for property owners and one for the properties. The Custom Widget Builder allows you to build custom widgets with HTML and JavaScript, right inside Grist. 
     [New community widget - Custom widget builder](https://community.getgrist.com/t/new-community-widget-custom-widget-builder/6803)
     Some technical notes:
@@ -3492,279 +3533,11 @@ API
 
     Properties_:
     Name = grist.ReferenceList('Owners_', reverse_of='Properties_') ImageURLs = grist.Text() Property_Id = grist.Text() Property_Address = grist.Text() City = grist.Choice() State = grist.Text() Zip = grist.Int() County_Name = grist.Choice() Parcel = grist.Text() Secondary_Type = grist.ChoiceList() Property_Type = grist.Choice() Last_Sale_Price = grist.Numeric() Last_Sale_Date = grist.Date() RBA = grist.Numeric() Land = grist.Numeric() Tenancy = grist.Choice() YearB = grist.Text() YearR = grist.Text() Building_Park = grist.Text() Property_Name = grist.Text() Tenants = grist.ChoiceList() Latitude = grist.Numeric() Longitude = grist.Numeric()
-
-
-    Now this is from an example titled [Santa’s Workshop Dashboard](https://community.getgrist.com/t/tutorial-building-santas-workshop-dashboard-with-custom-widget-builder-a-step-by-step-guide-to-advanced-visualization-in-grist/7478)
-
-    ###### Here is the HTML:
     ```
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <meta charset="UTF-8">
-      <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
-      <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-[#B9DFF8] min-h-screen">
-      <div class="w-full max-w-5xl mx-auto p-4 pt-8">
-        <!-- Header Banner -->
-        <div class="bg-[#408095] rounded-lg p-4 text-white sticky top-0 z-50 backdrop-filter backdrop-blur shadow-lg">
-          <!-- Line 1: Child Name -->
-          <div class="mb-5">
-            <h1 id="child_name" class="text-3xl font-bold"></h1>
-          </div>
-    <!-- Line 2: Reference + Type + Status -->
-      <div class="flex items-center gap-4 text-left mb-3">
-        <div>
-          <span class="text-yellow-200">🎅</span>
-          <span id="order_id" class="text-yellow-200 font-bold"></span>
-        </div>
-        <div>
-          <span class="text-yellow-200"></span>
-          <span id="gift_type" class="px-3 py-1 rounded-md text-sm font-medium"></span>
-        </div>
-        <div>
-          <span class="text-yellow-200"></span>
-          <span id="status" class="px-3 py-1 rounded-md text-sm font-medium"></span>
-        </div>
-      </div>
-
-      <!-- Line 3: Workshop + Zone + Deadline -->
-      <div class="mt-2 pt-2 border-t border-blue-300">
-        <div class="grid grid-cols-3 gap-4 mb-3">
-          <div>
-            <span class="text-yellow-200">🏭 Workshop</span>
-            <div id="workshop" class="font-medium"></div>
-          </div>
-          <div>
-            <span class="text-yellow-200">🌍 Delivery Zone</span>
-            <div id="delivery_zone" class="font-medium"></div>
-          </div>
-          <div class="text-right">
-            <span class="text-yellow-200">📅 Deadline</span>
-            <div id="deadline" class="font-medium"></div>
-          </div>
-        </div>
-      
-        <!-- Dates bottom right -->
-        <div class="flex justify-end text-xs text-yellow-200/80">
-          <div class="text-right">
-            <div>Letter received on <span id="received_date"></span></div>
-            <div>Last update on <span id="last_update"></span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Delivery Priorities -->
-    <div class="bg-[#DAEBF1] rounded-lg shadow p-4 mt-4 text-[#1B4D3E] border-2 border-[#90CDF4]">
-      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
-        🎄 Delivery Priorities
-      </h2>
-      <div class="space-y-2">
-        <div class="p-2 bg-green-50 rounded">
-          <div class="text-sm text-gray-600 mb-1">Priority Level</div>
-          <div id="priority_level" class="font-medium"></div>
-        </div>
-        <div class="p-2 bg-green-50 rounded">
-          <div class="text-sm text-gray-600 mb-1">Transport Type</div>
-          <div id="transport" class="font-medium"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Nice Level Evaluation -->
-    <div class="bg-[#DAEBF1] rounded-lg shadow p-4 mt-4 text-[#1B4D3E] border-2 border-[#90CDF4]">
-      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
-        😇 Nice Level Assessment
-      </h2>
-      <div class="grid grid-cols-2 gap-6">
-        <div>
-          <div class="flex justify-between p-2 bg-green-50 rounded">
-            <span>Nice Level</span>
-            <span id="nice_level" class="font-medium"></span>
-          </div>
-        </div>
-        <div>
-          <div class="flex justify-between p-2 bg-green-50 rounded">
-            <span>Bonus Points</span>
-            <span id="bonus_points" class="font-medium"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Documents -->
-    <div class="bg-[#DAEBF1] rounded-lg shadow p-4 mt-4 text-[#1B4D3E] border-2 border-[#90CDF4]">
-      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
-        📜 Documents
-      </h2>
-      <div class="grid grid-cols-2 gap-6">
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
-            <span class="text-[#8B0000]">✉️</span>
-            <span>Santa's Letter</span>
-            <span id="santa_letter" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
-          </div>
-          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
-            <span class="text-[#8B0000]">🎨</span>
-            <span>Drawing</span>
-            <span id="child_drawing" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
-          </div>
-          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
-            <span class="text-[#8B0000]">📋</span>
-            <span>Detailed List</span>
-            <span id="gift_list" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
-          </div>
-        </div>
-        <div class="space-y-3">
-          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
-            <span class="text-[#8B0000]">📝</span>
-            <span>Elf Notes</span>
-            <span id="elf_notes" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
-          </div>
-          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
-            <span class="text-[#8B0000]">⭐</span>
-            <span>Nice Certificate</span>
-            <span id="nice_certificate" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
-          </div>
-          <div class="mt-6">
-            <a id="file_link" href="#" target="_blank" 
-               class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 rounded transition-colors text-[#8B0000]">
-              🎄 <span class="underline">View Complete File</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-    ```
-
-    ###### Here is the JavaScript:
-    ```
-    function formatDate(date) {
-      if (!date) return '';
-      return new Date(date).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-      });
-    }
-
-    function formatMoney(amount) {
-      if (!amount) return '0 🎄';
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-        minimumFractionDigits: 0
-      }).format(amount).replace('$', '🎄');
-    }
-
-    function getStateColor(state) {
-      const stateColors = {
-        'Letter Received': 'bg-[#FFD700]',
-        'Under Review': 'bg-[#1B4D3E]',
-        'In Production': 'bg-[#8B0000]',
-        'Quality Check': 'bg-[#B8860B]',
-        'Ready to Wrap': 'bg-[#228B22]',
-        'Ready for Delivery': 'bg-[#4169E1]',
-        'Delivered': 'bg-[#9B0000]'
-      };
-      return stateColors[state] || 'bg-[#90CDF4]';
-    }
-
-    function getTypeColor(type) {
-      const typeColors = {
-        'Simple Gift': 'bg-[#228B22]',
-        'Electronic Toy': 'bg-[#4169E1]',
-        'Book/Culture': 'bg-[#8B4513]',
-        'Plush/Cuddle': 'bg-[#FF69B4]',
-        'Outdoor Game': 'bg-[#32CD32]',
-        'Creative Activity': 'bg-[#FF8C00]'
-      };
-      return typeColors[type] || 'bg-[#90CDF4]';
-    }
-
-    grist.ready({
-      requiredTables: ['Santa_Orders']
-    });
-
-    grist.onRecord(function(record) {
-      if (!record) return;
-      
-      // Order status
-      const statusElement = document.getElementById('status');
-      statusElement.textContent = record.status || '';
-      statusElement.className = 'px-3 py-1 rounded-full text-sm font-medium text-white ' + getStateColor(record.status);
-
-      // Gift type
-      const typeElement = document.getElementById('gift_type');
-      typeElement.textContent = record.gift_type || '';
-      typeElement.className = 'px-3 py-1 rounded-full text-sm font-medium text-white ' + getTypeColor(record.gift_type);
-
-      // Header
-      document.getElementById('order_id').textContent = record.order_id || '';
-      document.getElementById('child_name').textContent = record.child_name || '';
-      document.getElementById('workshop').textContent = record.workshop || '';
-      document.getElementById('delivery_zone').textContent = record.delivery_zone || '';
-      document.getElementById('deadline').textContent = record.deadline || '';
-      document.getElementById('received_date').textContent = formatDate(record.received_date);
-      document.getElementById('last_update').textContent = formatDate(record.last_update);
-
-      // Priorities
-      document.getElementById('priority_level').textContent = record.priority_level || '';
-      document.getElementById('transport').textContent = record.transport || '';
-
-      // Nice level assessment
-      document.getElementById('nice_level').textContent = record.nice_level || '';
-      document.getElementById('bonus_points').textContent = record.bonus_points || '';
-
-      // Team
-      const reindeerElement = document.getElementById('reindeer_assigned');
-      const reindeerValue = record.reindeer_assigned;
-      if (reindeerValue === 'Yes') {
-        reindeerElement.textContent = '✅ Assigned';
-        reindeerElement.className = 'font-medium text-green-600';
-      } else {
-        reindeerElement.textContent = '❌ Not Assigned';
-        reindeerElement.className = 'font-medium text-red-600';
-      }
-      
-      document.getElementById('head_elf').textContent = record.head_elf || '';
-      document.getElementById('assistant_elf').textContent = record.assistant_elf || '';
-
-      // Documents
-      ['santa_letter', 'child_drawing', 'gift_list', 'elf_notes', 'nice_certificate'].forEach(id => {
-        const element = document.getElementById(id);
-        if (element) {
-          if (record[id]) {
-            element.textContent = 'Document Present';
-            element.className = 'ml-2 px-2 py-1 text-xs rounded-full bg-green-100 text-green-800';
-          } else {
-            element.textContent = 'Missing';
-            element.className = 'ml-2 px-2 py-1 text-xs rounded-full bg-red-100 text-red-800';
-          }
-        }
-      });
-
-      // File link
-      const linkElement = document.getElementById('file_link');
-      if (record.file_link) {
-        linkElement.href = record.file_link || '#';
-        linkElement.target = '_blank';
-      }
-    });
-    ```
-
-    Can you please use this template but make it applicable for my Grist use case, to show information for the property owner that I have selected, and the properties they own.
-    ````
-
-
-
-
   </Accordion>
 
   <Accordion title="Pygrister" defaultOpen={false}>
-    a
+    [Pygrister](https://github.com/ricpol/pygrister) - a Python wrapper for the Grist API
 
     ```
     Pygrister: a Python client for the Grist API
@@ -3789,14 +3562,11 @@ API
 
     * [API Console](https://docs.getgrist.com/apiconsole) allows you to make API calls from the browser.
 
-
     August 2024:
 
     Oh well, after [much debate and self-doubt](https://community.getgrist.com/t/grist-type-system/5830/2), I finally figured out a way to provide type support in Pygrister.
     It’s committed to the repo, but not yet released on PyPI… so if you want to try it out, you’ll have to install directly from GitHub.
     Writing [the documentation](https://pygrister.readthedocs.io/en/latest/types.html) is the part that took me the longest, and it says a lot about my doubts about all this…feedback is always appreciated!
-
-
 
     > This 'documentation' goes over advanced Grist differences from Sqlite
     > https://pygrister.readthedocs.io/en/latest/types.html
@@ -3804,11 +3574,7 @@ API
     For Example:
     GUI and the API will behave in a subtly different way. For instance, a Grist “date” is stored as an integer in Sqlite. In fact, if you use the API, you should pass an integer timestamp. However, if you just write a number in the GUI cell, that will be treated as *text*, since you didn’t use the widget to select a date… but wait! You can’t actually store a *numerical string* in an integer Sqlite column, because it will be converted (and thus interpreted as a timestamp). To circumvent Sqlite type affinity, Grist will silently convert any *numerical string* in a *date* column to an *exadecimal blob* and store it in this format. As a result, you can put a number in a date column using the GUI, but not with the API. (The same goes with a boolean column.)
 
-
-
     d
-
-
   </Accordion>
 
   <Accordion title="Grist Data Format" defaultOpen={false}>
@@ -3847,8 +3613,6 @@ API
     &#x20;     colinfo: \[ColInfo…],
     &#x20;     columns: ColData
     &#x20;  }
-
-
 
     The `name` is the name of the table. The `colinfo` array has an item to describe each column, and `columns` is the actual table data in column-oriented layout.
 
@@ -4159,10 +3923,249 @@ API
     &#x20;  repeated Value value = 1;
     }
 
-
-
     a
+  </Accordion>
+
+  <Accordion title="Development" defaultOpen={false}>
+    ## Develop widgets
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/develop.md#develop-widgets)
+
+    Check out this repository: [https://github.com/gristlabs/grist-widget#readme](https://github.com/gristlabs/grist-widget#readme)
+
+    ## Documentation
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/develop.md#documentation)
+
+    Some documentation to help you starting developing:
+
+    * [Overview of Grist Components](https://github.com/gristlabs/grist-core/blob/main/documentation/overview.md)
+
+    * [The database](https://github.com/gristlabs/grist-core/blob/main/documentation/database.md)
+
+    * [GrainJS & Grist Front-End Libraries](https://github.com/gristlabs/grist-core/blob/main/documentation/grainjs.md)
+
+    * [GrainJS Documentation](https://github.com/gristlabs/grainjs/) (The library used to build the DOM)
+
+    * [The user support documentation](https://support.getgrist.com/)
+
+    Code Migration - `https://github.com/gristlabs/grist-core/blob/main/documentation/migrations.md`
+
+    ### Overview
+
+    `https://github.com/gristlabs/grist-core/blob/main/documentation/overview.md`
+
+    `Python Data Engine, GrainJS, Codebase Overview, Libraries`
+
+    `server-side | client-side JS bundle`
+
+    Grist Labs runs Grist as two primary kinds of servers: Home Servers and Doc Workers.
+
+    * **Home Servers:** handle most user requests around documents, such as listing documents, checking access and sharing, handling API requests (forwarding to Doc Worker if needed), and more.
+
+    * **Doc Workers:** responsible for in-document interactions. Each open document is assigned to a single Doc Worker. This Doc Worker has a local copy of the corresponding SQLite file containing the document data, and spawns a sandboxed python interpreter responsible for evaluating formulas in the document (the “data engine”).
+
+    For load balancing, Application Load Balancer (ALB) is used.
+
+    * **ALB:** Application Load Balancer handles SSL, and forwards HTTP requests to Home Servers and in some cases (mainly for websockets) to Doc Workers.
+
+    For storage, Home Servers and Doc Workers rely on HomeDB, Redis, and S3.
+
+    * **Home DB:** Postgres database (AWS RDS) containing information about users, orgs, workspaces, documents, sharing, and billing.
+
+    * **S3:** used for long-term storage of documents. It is primarily used by Doc Workers, which fetch SQLite files from S3 when a doc gets opened, and sync back SQLite files regularly as the document is modified by the user. Grist also supports other S3-compatible stores through [MinIO](https://support.getgrist.com/install/cloud-storage/#s3-compatible-stores-via-minio-client).
+
+    * **Redis:** Redis instance (AWS ElastiCache) keeps track of which Doc Workers are available, and which open documents are assigned to which Doc Workers.
+
+    ### Home Servers
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/overview.md#home-servers)
+
+    Home Servers have just one node process. They communicate with HomeDB, Redis, and Doc Workers. They don’t open documents or start subprocesses. Browser clients interact with them using plain HTTP requests.
+
+    Home Servers also serve static files (e.g. the JS bundle with the entirety of the client-side app), and can be configured to serve assets from an external source (e.g. AWS CloudFront and S3).
+
+    # Internationalization and Localization
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/translations.md#internationalization-and-localization)
+
+    https://github.com/gristlabs/grist-core/blob/main/documentation/translations.md
   </Accordion>
 </AccordionGroup>
 
 #
+
+<Accordion title="New Accordion" defaultOpen="false">
+  This is really fantastic. We are using this to offer free tools related to our domain. You can see examples of [Contract Management Spreadsheet](https://www.berkmansolutions.com/free-tools/contract-management/), [Entity Management Spreadsheet](https://www.berkmansolutions.com/free-tools/entity-management/), and [Business Ownership Spreadsheet](https://www.berkmansolutions.com/free-tools/ownership/).
+
+  We even made YouTube videos demonstrating how to use these great spreadsheets. See the Watch Demo links on those pages.
+
+  2 suggestions related to the `singlePage: true` option:
+
+  1. Right click on column heading still shows “Column options” but the column options does not open.
+
+  2. Would be nice to still have the ability to download the entire grist file as an XLSX instead of just the individual tables one at a time.
+</Accordion>
+
+#
+
+# grist-static
+
+A standalone viewer for `.grist` (and `.csv`) files on your website
+
+<AccordionGroup>
+  <Accordion title="New Accordion" defaultOpen="false">
+    Use [Grist](https://getgrist.com/) as the PDF of data:
+
+    * Publish your annual report and interactive spreadsheets side by side, on your site, without any special services needed.
+
+    * Have the data behind your article on hand for readers to explore.
+
+    No special server is needed for `grist-static`, it works straight from a CDN or any standard web server.
+
+    Grist can also view `.csv` files: products.csv
+
+    Learn more: [github.com/gristlabs/grist-static](https://github.com/gristlabs/grist-static)
+  </Accordion>
+
+  <Accordion title="Grist Static HTML" defaultOpen={false}>
+    Full docs on their [Github](https://github.com/gristlabs/grist-static)
+
+    a
+
+    ```
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>grist-static examples</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+      <script src="https://grist-static.com/csv-viewer.js"></script>
+    </head>
+    <body>
+
+    <div class="jumbotron text-center">
+      <h1>grist-static</h1>
+      <p>A standalone viewer for <code>.grist</code> (and <code>.csv</code>) files on your website</p>
+    </div>
+
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-sm-4">
+          <h3>Example 1</h3>
+          <p><a data-name="Investment Research" data-grist-doc-open href="investment-research.grist"><img class="img-fluid" src="https://grist-static.com/icons/investment-research.jpg"></a></p>
+          <p><a data-name="Investment Research" data-grist-doc-open href="investment-research.grist">investment-research.grist</a>, drill down, summarize data.</p>
+        </div>
+        <div class="col-sm-4">
+          <h3>Example 2</h3>
+          <p><a data-single-page data-name="Flash Cards" data-grist-doc-open href="flashcards.grist"><img class="img-fluid" src="https://grist-static.com/icons/flashcards.jpg"></a></p>
+          <p><a data-single-page data-name="Flash Cards" data-grist-doc-open href="flashcards.grist">flashcards.grist</a>, using custom widgets.</p>
+        </div>
+        <div class="col-sm-4">
+          <h3>Example 3</h3>
+          <p style="border: 1px solid black;"><a href="blank-slate.html"><img class="img-fluid" src="https://grist-static.com/icons/health-insurance-comparison.jpg" style="opacity: 0.0;"></a></p>
+          <p>A tabula rasa, a <a href="blank-slate.html">blank slate</a> to scribble on.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          Use <a href="https://getgrist.com">Grist</a> as the PDF of data:
+          <ul>
+            <li>
+              Publish your annual report and
+              interactive spreadsheets side by side,
+              on your site, without any special services needed.
+            </li>
+            <li>
+              Have the data behind your article on hand for readers
+              to explore.
+            </li>
+          </ul>
+          <p>
+            No special server is needed for <code>grist-static</code>,
+            it works straight from a CDN or any standard web server.
+          </p>
+          <p>
+            Grist can also view <code>.csv</code> files: <button data-grist-csv-open="products.csv" data-single-page class="btn btn-primary">products.csv</button>
+          </p>
+          <p>
+            Learn more: <a href="https://github.com/gristlabs/grist-static">github.com/gristlabs/grist-static</a>
+          </p>
+        </div>
+
+        <div class="col mb-5">
+          <pre id="were-div"><code class="language-html">&lt;!doctype html&gt;
+    &lt;html&gt;
+      &lt;head&gt;
+        &lt;meta charset=&quot;utf8&quot;&gt;
+        &lt;script src=&quot;https://grist-static.com/latest.js&quot;&gt;&lt;/script&gt;
+        &lt;title&gt;100% browser-based Grist&lt;/title&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;div id="were-div"&gt;&lt;/div&gt;
+        &lt;script&gt;
+          bootstrapGrist({
+            initialFile: 'weresheet.grist',   // optional path to .grist
+            name: 'Werewolf Fact Sheet',      // optional name
+            elementId: 'were-div',            // optional element name
+            singlePage: true                  // optional minimalist style
+          });
+        &lt;/script&gt;
+      &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+          <button id="were-click" class="btn btn-primary">Run this code</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      hljs.highlightAll();
+      document.getElementById('were-click').addEventListener('click', function() {
+        const div = document.getElementById('were-div');
+        div.style.height = '500px';
+        div.style.padding = '0';
+        div.style.border = 'none';
+        div.style.overflow = 'hidden';
+        bootstrapGrist({
+          initialFile: 'weresheet.grist',
+          name: 'Werewolf Fact Sheet',
+          elementId: 'were-div',
+          singlePage: true
+        });
+        document.getElementById('were-click').style.display = 'none';
+        return false;
+      });
+    </script>
+
+    </body>
+    </html>
+    ```
+
+    a
+  </Accordion>
+
+  <Accordion title="Embedding Grist" defaultOpen={false}>
+    [Docs](https://support.getgrist.com/embedding/)
+
+    Perhaps you’d like to list your product, prices and quantities on your website, or you want to display a pie chart of voting results that updates live. With [public access](https://support.getgrist.com/sharing/#public-access-and-link-sharing) turned on, you may embed your Grist document on your own site.
+
+    To do that, you first need to make it [public](https://support.getgrist.com/sharing/#public-access-and-link-sharing) and have access to your website’s code in order to place some HTML code in the desired location.
+
+    If your site is hosted on some popular cloud CMS platform (like Blogger or WordPress), you may find HTML code blocks in your theme editor, or may need to use a [plugin](https://wordpress.org/plugins/wp-coder/) to access your site’s code. If you have any problems editing your site, feel free to ask us or post a question on our [Community Forum](https://community.getgrist.com/).
+
+    Once you have decided where to embed your document, paste this code snippet in your HTML file:
+
+    ```
+    <iframe src="https://templates.getgrist.com/6D8E2h2DQNwS/Task-Management/p/6?embed=true" 
+            height="250px" width="100%" frameborder="0">
+    </iframe>
+    ```
+
+    The `src` attribute points to the URL of the page you want to embed. To get the `URL` for your document, simply navigate to the page you want to share and copy the URL from the browser’s address bar. Appending the `?embed=true` parameter at the end tells Grist that it should show only the content of your page, removing any elements that are not necessary for the embedded version. You may wish to adjust `height` and `width` attributes to make it look better on your site.
+  </Accordion>
+</AccordionGroup>
