@@ -2441,11 +2441,7 @@ API
 
 #
 
-
-
 <Accordion title="Entire Claude-Map  |  Fix Grist interaction" defaultOpen={false}>
-
-
   ```
   These are the main files for a Custom Map widget in Grist. It is hosted in my github repo and I use it from within Grist as a custom widget via Custom Url. Unfortunately, the interactivity between the map and other widgets in Grist isn't working properly. I should be able to connect other card widgets for example to the map, so when I click a property on the map, it will update the property information in the card to match the selected property. Another usecase is I should be able to click different rows in the properties data table widget, and then the map automatically goes that that marker. Please correct/fix the integration with Grist. Here are my main 4 files, please output the entire updated file for each one that you make changes too, and keep the functionality but improve/optimize the code as well to remove duplicates or error-prone methods, etc.:
 
@@ -3469,8 +3465,704 @@ API
   ]
   }
   ```
-
-
-
-
 </Accordion>
+
+
+
+# Custom Widget Builder
+
+<AccordionGroup>
+  <Accordion title="New Accordion" defaultOpen="false">
+
+
+    ````
+    I use Grist as a CRM with two tables, one for property owners and one for the properties. The Custom Widget Builder allows you to build custom widgets with HTML and JavaScript, right inside Grist. 
+    [New community widget - Custom widget builder](https://community.getgrist.com/t/new-community-widget-custom-widget-builder/6803)
+    Some technical notes:
+    - The widget itself is iframe inside an iframe, so some things (like locale) don’t get sent to your widget at the moment.
+    - The “Open configuration” button won’t work for your widget, as the editor is intercepting it to open itself.
+    - Since the editor intercepts certain messages, some development servers/browser extensions might cause issues if they are doing similar things.
+
+    Here is the Grist documentation for Custom Widgets:
+    https://support.getgrist.com/widget-custom/
+
+    Here is the code view for my owners table so you can see what the column names and types are:
+    Owners_:
+    Call_Relationship = grist.ChoiceList() Constant_Call_VM_s = grist.Bool() Tranche = grist.ChoiceList() Profile_Image = grist.Text() Objection = grist.ChoiceList() Last_Call_Segment = grist.Choice() Opportunity = grist.ChoiceList() Past_Contact_ = grist.Bool() LinkedIn = grist.Text() Reminder_Note = grist.Text() Name = grist.Text() Owner_Full_Name = grist.Text() Accounts = grist.Text() Other_Owners = grist.Text() Email = grist.Text() Owner_Address = grist.Text() Age = grist.Text() Segment = grist.ChoiceList() Gender = grist.Choice() Title = grist.Text() Pref = grist.Text() Owner_Personality = grist.ChoiceList() Activity = grist.ChoiceList() VM_s = grist.Text() Call_no_VM = grist.Text() Date = grist.Date() Contact_1 = grist.Text() Contact_2 = grist.Text() Contact_3 = grist.Text() Extra_Notes = grist.Text() Concat = grist.Text() Next_Steps = grist.ChoiceList() Classify = grist.ChoiceList() Contact_4 = grist.Text() Plans_to_Buy = grist.Text() Plans_to_Sell = grist.Text() Phone_1_Notes = grist.Text() Phone_2_Notes = grist.Text() Phone_3_Notes = grist.Text() Phone_4_Notes = grist.Text() Phone = grist.Text() Phone_2 = grist.Text() Phone_3 = grist.Text() Phone_4 = grist.Text() Shit_ = grist.Bool() Other_Props = grist.Text() Buyer_Needs = grist.ChoiceList() Wrong_Phone = grist.Text() Spouse = grist.Text() Prop_Rate = grist.Choice() Properties_ = grist.ReferenceList('Properties_', reverse_of='Name')
+
+    Properties_:
+    Name = grist.ReferenceList('Owners_', reverse_of='Properties_') ImageURLs = grist.Text() Property_Id = grist.Text() Property_Address = grist.Text() City = grist.Choice() State = grist.Text() Zip = grist.Int() County_Name = grist.Choice() Parcel = grist.Text() Secondary_Type = grist.ChoiceList() Property_Type = grist.Choice() Last_Sale_Price = grist.Numeric() Last_Sale_Date = grist.Date() RBA = grist.Numeric() Land = grist.Numeric() Tenancy = grist.Choice() YearB = grist.Text() YearR = grist.Text() Building_Park = grist.Text() Property_Name = grist.Text() Tenants = grist.ChoiceList() Latitude = grist.Numeric() Longitude = grist.Numeric()
+
+
+    Now this is from an example titled [Santa’s Workshop Dashboard](https://community.getgrist.com/t/tutorial-building-santas-workshop-dashboard-with-custom-widget-builder-a-step-by-step-guide-to-advanced-visualization-in-grist/7478)
+
+    ###### Here is the HTML:
+    ```
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-[#B9DFF8] min-h-screen">
+      <div class="w-full max-w-5xl mx-auto p-4 pt-8">
+        <!-- Header Banner -->
+        <div class="bg-[#408095] rounded-lg p-4 text-white sticky top-0 z-50 backdrop-filter backdrop-blur shadow-lg">
+          <!-- Line 1: Child Name -->
+          <div class="mb-5">
+            <h1 id="child_name" class="text-3xl font-bold"></h1>
+          </div>
+    <!-- Line 2: Reference + Type + Status -->
+      <div class="flex items-center gap-4 text-left mb-3">
+        <div>
+          <span class="text-yellow-200">🎅</span>
+          <span id="order_id" class="text-yellow-200 font-bold"></span>
+        </div>
+        <div>
+          <span class="text-yellow-200"></span>
+          <span id="gift_type" class="px-3 py-1 rounded-md text-sm font-medium"></span>
+        </div>
+        <div>
+          <span class="text-yellow-200"></span>
+          <span id="status" class="px-3 py-1 rounded-md text-sm font-medium"></span>
+        </div>
+      </div>
+
+      <!-- Line 3: Workshop + Zone + Deadline -->
+      <div class="mt-2 pt-2 border-t border-blue-300">
+        <div class="grid grid-cols-3 gap-4 mb-3">
+          <div>
+            <span class="text-yellow-200">🏭 Workshop</span>
+            <div id="workshop" class="font-medium"></div>
+          </div>
+          <div>
+            <span class="text-yellow-200">🌍 Delivery Zone</span>
+            <div id="delivery_zone" class="font-medium"></div>
+          </div>
+          <div class="text-right">
+            <span class="text-yellow-200">📅 Deadline</span>
+            <div id="deadline" class="font-medium"></div>
+          </div>
+        </div>
+      
+        <!-- Dates bottom right -->
+        <div class="flex justify-end text-xs text-yellow-200/80">
+          <div class="text-right">
+            <div>Letter received on <span id="received_date"></span></div>
+            <div>Last update on <span id="last_update"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delivery Priorities -->
+    <div class="bg-[#DAEBF1] rounded-lg shadow p-4 mt-4 text-[#1B4D3E] border-2 border-[#90CDF4]">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        🎄 Delivery Priorities
+      </h2>
+      <div class="space-y-2">
+        <div class="p-2 bg-green-50 rounded">
+          <div class="text-sm text-gray-600 mb-1">Priority Level</div>
+          <div id="priority_level" class="font-medium"></div>
+        </div>
+        <div class="p-2 bg-green-50 rounded">
+          <div class="text-sm text-gray-600 mb-1">Transport Type</div>
+          <div id="transport" class="font-medium"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nice Level Evaluation -->
+    <div class="bg-[#DAEBF1] rounded-lg shadow p-4 mt-4 text-[#1B4D3E] border-2 border-[#90CDF4]">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        😇 Nice Level Assessment
+      </h2>
+      <div class="grid grid-cols-2 gap-6">
+        <div>
+          <div class="flex justify-between p-2 bg-green-50 rounded">
+            <span>Nice Level</span>
+            <span id="nice_level" class="font-medium"></span>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between p-2 bg-green-50 rounded">
+            <span>Bonus Points</span>
+            <span id="bonus_points" class="font-medium"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Documents -->
+    <div class="bg-[#DAEBF1] rounded-lg shadow p-4 mt-4 text-[#1B4D3E] border-2 border-[#90CDF4]">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2">
+        📜 Documents
+      </h2>
+      <div class="grid grid-cols-2 gap-6">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
+            <span class="text-[#8B0000]">✉️</span>
+            <span>Santa's Letter</span>
+            <span id="santa_letter" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
+            <span class="text-[#8B0000]">🎨</span>
+            <span>Drawing</span>
+            <span id="child_drawing" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
+            <span class="text-[#8B0000]">📋</span>
+            <span>Detailed List</span>
+            <span id="gift_list" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
+            <span class="text-[#8B0000]">📝</span>
+            <span>Elf Notes</span>
+            <span id="elf_notes" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
+          </div>
+          <div class="flex items-center gap-2 p-3 bg-green-50 rounded">
+            <span class="text-[#8B0000]">⭐</span>
+            <span>Nice Certificate</span>
+            <span id="nice_certificate" class="ml-2 px-2 py-1 text-xs rounded-full"></span>
+          </div>
+          <div class="mt-6">
+            <a id="file_link" href="#" target="_blank" 
+               class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 rounded transition-colors text-[#8B0000]">
+              🎄 <span class="underline">View Complete File</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    ```
+
+    ###### Here is the JavaScript:
+    ```
+    function formatDate(date) {
+      if (!date) return '';
+      return new Date(date).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+
+    function formatMoney(amount) {
+      if (!amount) return '0 🎄';
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0
+      }).format(amount).replace('$', '🎄');
+    }
+
+    function getStateColor(state) {
+      const stateColors = {
+        'Letter Received': 'bg-[#FFD700]',
+        'Under Review': 'bg-[#1B4D3E]',
+        'In Production': 'bg-[#8B0000]',
+        'Quality Check': 'bg-[#B8860B]',
+        'Ready to Wrap': 'bg-[#228B22]',
+        'Ready for Delivery': 'bg-[#4169E1]',
+        'Delivered': 'bg-[#9B0000]'
+      };
+      return stateColors[state] || 'bg-[#90CDF4]';
+    }
+
+    function getTypeColor(type) {
+      const typeColors = {
+        'Simple Gift': 'bg-[#228B22]',
+        'Electronic Toy': 'bg-[#4169E1]',
+        'Book/Culture': 'bg-[#8B4513]',
+        'Plush/Cuddle': 'bg-[#FF69B4]',
+        'Outdoor Game': 'bg-[#32CD32]',
+        'Creative Activity': 'bg-[#FF8C00]'
+      };
+      return typeColors[type] || 'bg-[#90CDF4]';
+    }
+
+    grist.ready({
+      requiredTables: ['Santa_Orders']
+    });
+
+    grist.onRecord(function(record) {
+      if (!record) return;
+      
+      // Order status
+      const statusElement = document.getElementById('status');
+      statusElement.textContent = record.status || '';
+      statusElement.className = 'px-3 py-1 rounded-full text-sm font-medium text-white ' + getStateColor(record.status);
+
+      // Gift type
+      const typeElement = document.getElementById('gift_type');
+      typeElement.textContent = record.gift_type || '';
+      typeElement.className = 'px-3 py-1 rounded-full text-sm font-medium text-white ' + getTypeColor(record.gift_type);
+
+      // Header
+      document.getElementById('order_id').textContent = record.order_id || '';
+      document.getElementById('child_name').textContent = record.child_name || '';
+      document.getElementById('workshop').textContent = record.workshop || '';
+      document.getElementById('delivery_zone').textContent = record.delivery_zone || '';
+      document.getElementById('deadline').textContent = record.deadline || '';
+      document.getElementById('received_date').textContent = formatDate(record.received_date);
+      document.getElementById('last_update').textContent = formatDate(record.last_update);
+
+      // Priorities
+      document.getElementById('priority_level').textContent = record.priority_level || '';
+      document.getElementById('transport').textContent = record.transport || '';
+
+      // Nice level assessment
+      document.getElementById('nice_level').textContent = record.nice_level || '';
+      document.getElementById('bonus_points').textContent = record.bonus_points || '';
+
+      // Team
+      const reindeerElement = document.getElementById('reindeer_assigned');
+      const reindeerValue = record.reindeer_assigned;
+      if (reindeerValue === 'Yes') {
+        reindeerElement.textContent = '✅ Assigned';
+        reindeerElement.className = 'font-medium text-green-600';
+      } else {
+        reindeerElement.textContent = '❌ Not Assigned';
+        reindeerElement.className = 'font-medium text-red-600';
+      }
+      
+      document.getElementById('head_elf').textContent = record.head_elf || '';
+      document.getElementById('assistant_elf').textContent = record.assistant_elf || '';
+
+      // Documents
+      ['santa_letter', 'child_drawing', 'gift_list', 'elf_notes', 'nice_certificate'].forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          if (record[id]) {
+            element.textContent = 'Document Present';
+            element.className = 'ml-2 px-2 py-1 text-xs rounded-full bg-green-100 text-green-800';
+          } else {
+            element.textContent = 'Missing';
+            element.className = 'ml-2 px-2 py-1 text-xs rounded-full bg-red-100 text-red-800';
+          }
+        }
+      });
+
+      // File link
+      const linkElement = document.getElementById('file_link');
+      if (record.file_link) {
+        linkElement.href = record.file_link || '#';
+        linkElement.target = '_blank';
+      }
+    });
+    ```
+
+    Can you please use this template but make it applicable for my Grist use case, to show information for the property owner that I have selected, and the properties they own.
+    ````
+
+
+
+
+  </Accordion>
+
+  <Accordion title="Pygrister" defaultOpen={false}>
+    a
+
+    ```
+    Pygrister: a Python client for the Grist API
+
+    Index page of Pygrister docs: https://pygrister.readthedocs.io/en/latest/index.html
+
+    Grist is a relational spreadsheet with tons of batteries included. The Grist API allows you to programmatically retrieve/update your data stored on Grist, and manipulate most of the basic Grist objects, such as workspaces, documents, user permissions and so on.
+
+    Pygrister is a basic Grist client that covers all the documented APIs. Pygrister keeps track of certain configuration for you, remembering your team site, workspace, working document, so that you don’t have to type in the boring stuff every time. Apart from that and little else, Pygrister is rather low-level: usually, it will call the api and retrieve the response “as is”. If the api call is malformed, you will simply receive a bad HTTP status code.
+
+    In addition, Pygrister will not attempt to convert sent and received data types: however, it will execute custom converter functions, if provided.
+
+    This document covers the basic Pygrister concepts, patterns and configurations. However, the api call functions themselves are not documented in Pygrister: see the Grist API reference documentation for details about each api signature, and browse the Pygrister test suite for more usage examples.
+
+    Grist API Reference - https://support.getgrist.com/api/
+
+
+
+    ```
+
+    * [API Usage](https://support.getgrist.com/rest-api/) is an introduction to using the API.
+
+    * [API Console](https://docs.getgrist.com/apiconsole) allows you to make API calls from the browser.
+
+
+    August 2024:
+
+    Oh well, after [much debate and self-doubt](https://community.getgrist.com/t/grist-type-system/5830/2), I finally figured out a way to provide type support in Pygrister.
+    It’s committed to the repo, but not yet released on PyPI… so if you want to try it out, you’ll have to install directly from GitHub.
+    Writing [the documentation](https://pygrister.readthedocs.io/en/latest/types.html) is the part that took me the longest, and it says a lot about my doubts about all this…feedback is always appreciated!
+
+
+
+    > This 'documentation' goes over advanced Grist differences from Sqlite
+    > https://pygrister.readthedocs.io/en/latest/types.html
+
+    For Example:
+    GUI and the API will behave in a subtly different way. For instance, a Grist “date” is stored as an integer in Sqlite. In fact, if you use the API, you should pass an integer timestamp. However, if you just write a number in the GUI cell, that will be treated as *text*, since you didn’t use the widget to select a date… but wait! You can’t actually store a *numerical string* in an integer Sqlite column, because it will be converted (and thus interpreted as a timestamp). To circumvent Sqlite type affinity, Grist will silently convert any *numerical string* in a *date* column to an *exadecimal blob* and store it in this format. As a result, you can put a number in a date column using the GUI, but not with the API. (The same goes with a boolean column.)
+
+
+
+    d
+
+
+  </Accordion>
+
+  <Accordion title="Grist Data Format" defaultOpen={false}>
+    [Github](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#value-types)
+
+    a
+
+    Grist Data Format is used to send and receive data from a Grist document. For example, an implementer of an import module would need to translate data to Grist Data Format. A user of Grist Basket APIs would fetch and upload data in Grist Data Format.
+
+    The format is optimized for tabular data. A table consists of rows and columns, containing a single value for each row for each column. Various types are supported for the values.
+
+    Each column has a name and a type. The type is not strict: a column may contain values of other types. However, the type is the intended type of the value for that column, and allows those values to be represented more efficiently.
+
+    Grist Data Format is readily serialized to JSON. Other serializations are possible, for example, see below for a .proto file that allows to serialize Grist Data Format as a protocol buffer.
+
+    ## Format Specification
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#format-specification)
+
+    ### Document
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#document)
+
+    At the top, Grist Data Format is a Document object with a single key “tables” mapping to an array of Tables:
+
+    &#x20;   \{
+    &#x20;      tables: \[Tables…]
+    &#x20;   }
+
+    ### Table
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#table)
+
+    &#x20;  \{
+    &#x20;     name: "TableName",
+    &#x20;     colinfo: \[ColInfo…],
+    &#x20;     columns: ColData
+    &#x20;  }
+
+
+
+    The `name` is the name of the table. The `colinfo` array has an item to describe each column, and `columns` is the actual table data in column-oriented layout.
+
+    ### ColInfo
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#colinfo)
+
+    &#x20;  \{
+    &#x20;     name: "ColName",
+    &#x20;     type: "ColType",
+    &#x20;     options: \<arbitrary options>
+    &#x20;  }
+
+    The `name` is the name of the column, and `type` is its type. The field `options` optionally specifies type-specific options that affect the column (e.g. the number of decimal places to display for a floating-point number).
+
+    ### ColData
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#coldata)
+
+    &#x20;  \{
+    &#x20;         \<colName1>: ColValues,
+    &#x20;         \<colName2>: ColValues,
+    &#x20;         ...
+    &#x20;  }
+
+    The data in the table is represented as an object mapping a column name to an array of values for the column. This column-oriented representation allows for the representation of data to be more concise.
+
+    ### ColValues
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#colvalues)
+
+    &#x20;  \[CellValue, CellValue, ...]
+
+    ColValues is an array of all values for the column. We'll refer to the type of each value as `CellValue`. ColValues has an entry for each row in the table. In particular, each ColValues array in a ColData object has the same number of entries.
+
+    ### CellValue
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#cellvalue)
+
+    CellValue represents the value in one cell. We support various types of values, documented below. When represented as JSON, CellValue is one of the following JSON types:
+
+    * string
+
+    * number
+
+    * bool
+
+    * null
+
+    * array of the form `[typeCode, args...]`
+
+    The interpretation of CellValue is affected by the column’s type, and described in more detail below.
+
+    ## JSON Schema
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#json-schema)
+
+    The description above can be summarized by this JSON Schema:
+
+    \{
+    &#x20; "definitions": \{
+    &#x20;   "Table": \{
+    &#x20;     "type": "object",
+    &#x20;     "properties": \{
+    &#x20;       "name":    \{ "type": "string" },
+    &#x20;       "colinfo": \{ "type": "array", "items": \{ "$ref": "#/definitions/ColInfo" } }
+    &#x20;       "columns": \{ "$ref": "#/definitions/ColData" }
+    &#x20;     }
+    &#x20;   },
+    &#x20;   "ColInfo": \{
+    &#x20;     "type": "object",
+    &#x20;     "properties": \{
+    &#x20;       "name":     \{ "type": "string" },
+    &#x20;       "type":     \{ "type": "string" },
+    &#x20;       "options":  \{ "type": "object" }
+    &#x20;     }
+    &#x20;   },
+    &#x20;   "ColData": \{
+    &#x20;     "type": "object",
+    &#x20;     "additionalProperties": \{ "$ref": "#/definitions/ColValues" }
+    &#x20;   },
+    &#x20;   "ColValues": \{
+    &#x20;     "type": "array",
+    &#x20;     "items": \{ "type": "CellValue" }
+    &#x20;   }
+    &#x20; },
+
+    &#x20; "type": "object",
+    &#x20; "properties": \{
+    &#x20;   "tables": \{ "type": "array", "items": \{ "$ref": "#/definitions/Table" } }
+    &#x20; }
+    }
+
+    ## Record identifiers
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#record-identifiers)
+
+    Each table should have a column named `id`, whose values should be unique across the table. It is used to identify records in queries and actions. Its details, including its type, are left for now outside the scope of this specification, because the format isn't affected by them.
+
+    ## Naming
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#naming)
+
+    Names for tables and columns must consist of alphanumeric ASCII characters or underscore (i.e. `[0-9a-zA-Z_]`). They may not start with an underscore or a digit. Different tables and different columns within a table must have unique names case-insensitively (i.e. they cannot differ in case only).
+
+    Certain names (`id` being one of them) may be reserved, e.g. by Grist, for internal purposes, and would not be usable for user data. Such restrictions are outside the scope of this specification.
+
+    Note that this combination of rules allows tables and column names to be valid identifiers in pretty much every programming language (including Python and Javascript), as well as valid names of columns in databases.
+
+    ## Value Types
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#value-types)
+
+    Warning
+
+    This section is out of date.
+
+    The format supports a number of data types. Some types have a short representation (e.g. `Numeric` as a JSON `number`, and `Text` as a JSON `string`), but all types have an explicit representation as well.
+
+    The explicit representation of a value is an array `[typeCode, args...]`. The first member of the array is a string code that defines the type of the value. The rest of the elements are arguments used to construct the actual value.
+
+    The following table lists currently supported types and their short and explicit representations.
+
+    **Type NameShort Repr\[Type Code, Args...]Description**
+
+    `Numeric`
+
+    `number`\*
+
+    `['n',number]`
+
+    double-precision floating point number
+
+    `Text`
+
+    `string`\*
+
+    `['s',string]`
+
+    Unicode string
+
+    `Bool`
+
+    `bool`\*
+
+    `['b',bool]`
+
+    Boolean value (true or false)
+
+    `Null`
+
+    `null`\*
+
+    `null`
+
+    Null value (no special explicit representation)
+
+    `Int`
+
+    `number`
+
+    `['i',number]`
+
+    32-bit integer
+
+    `Date`
+
+    `number`
+
+    `['d',number]`
+
+    Calendar date, represented as seconds since Epoch to 00:00 UTC on that date.
+
+    `DateTime`
+
+    `number`
+
+    `['D',number]`
+
+    Instance in time, represented as seconds since Epoch
+
+    `Reference`
+
+    `number`
+
+    `['R',number]`
+
+    Identifier of a record in a table.
+
+    `ReferenceList`
+
+    `['L',number,...]`
+
+    List of record identifiers
+
+    `Choice`
+
+    `string`
+
+    `['C',string]`
+
+    Unicode string selected from a list of choices.
+
+    `PositionNumber`
+
+    `number`
+
+    `['P',number]`
+
+    a double used to order records relative to each other.
+
+    `Image`
+
+    `['I',string]`
+
+    Binary data representing an image, encoded as base64
+
+    `List`
+
+    `['l',values,...]`
+
+    List of values of any type.
+
+    `JSON`
+
+    `['J',object]`
+
+    JSON-serializable object
+
+    `Error`
+
+    `['E',string,string?,value?]`
+
+    Exception, with first argument exception type, second an optional message, and optionally a third containing additional info.
+
+    An important goal is to represent data efficiently in the common case. When a value matches the column's type, the short representation is used. For example, in a Numeric column, a Numeric value is represented as a `number`, and in a Date column, a Date value is represented as a `number`.
+
+    If a value does not match the column's type, then the short representation is used when it's one of the starred types in the table AND the short type is different from the column's short type.
+
+    For example:
+
+    * In a Numeric column, Numeric is `number`, Text is `string` (being a starred type), but a Date is `['d',number]`.
+
+    * In a Date column, Date is `number`, and Numeric value is `['n',number]`, because even though it's starred, it conflicts with Date's own short type.
+
+    * In a Text column, Text is `string`, Numeric is `number` (starred), and Date is `['d',number]` (not starred).
+
+    Note how for the common case of a value matching the column's type, we can always use the short representation. But the format still allows values to have an explicit type that's different from the specified one.
+
+    Note also that columns of any of the starred types use the same interpretation for contained values.
+
+    The primary use case is to allow, for example, storing a value like "N/A" or "TBD" or "Ask Bob" in a column of type Numeric or Date. Another important case is to store errors produced by a computation.
+
+    Other complex types may be added in the future.
+
+    ## Column Types
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#column-types)
+
+    Any of the types listed in the table above may be specified as a column type.
+
+    In addition, a column type may specify type `Any`. For the purpose of type interpretations, it works the same as any of the starred types, but it does not convey anything about the expected type of value for the column.
+
+    ## Other serializations
+
+    [](https://github.com/gristlabs/grist-core/blob/main/documentation/grist-data-format.md#other-serializations)
+
+    Grist Data Format is naturally serialized to JSON, which is fast and convenient to use in Javascript code. It is also possible to serialize it in other ways, e.g. as a Google protobuf.
+
+    Here is a `.proto` definition file that allows for efficient protobuf representation of data in Grist Data Format.
+
+    message Document \{
+    &#x20;  repeated Table tables = 1;
+    }
+    message Table \{
+    &#x20;  string name = 1;
+    &#x20;  repeated ColInfo colinfo = 2;
+    &#x20;  repeated ColData columns = 3;
+    }
+    message ColInfo \{
+    &#x20;  string name = 1;
+    &#x20;  string type = 2;
+    &#x20;  string options = 3;
+    }
+    message ColData \{
+    &#x20; repeated Value value = 1;
+    }
+    message Value \{
+    &#x20; oneof value \{
+    &#x20;   double vNumeric = 1;
+    &#x20;   string vText = 2;
+    &#x20;   bool vBool = 3;
+    &#x20;   // Absence of a set field represents a null
+    &#x20;   int32 vInt = 5;
+    &#x20;   double vDate = 6;
+    &#x20;   double vDateTime = 7;
+    &#x20;   int32 vReference = 8;
+    &#x20;   List vReferenceList = 9;
+    &#x20;   string vChoice = 10;
+    &#x20;   double vPositionNumber = 11;
+    &#x20;   bytes vImage = 12;
+    &#x20;   List vList = 13;
+    &#x20;   string vJSON = 14;
+    &#x20;   List vError = 15;
+    &#x20; }
+    }
+    message ValueList \{
+    &#x20;  repeated Value value = 1;
+    }
+
+
+
+    a
+  </Accordion>
+</AccordionGroup>
+
+#
