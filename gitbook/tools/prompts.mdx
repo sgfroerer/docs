@@ -1070,8 +1070,6 @@ file:///C:/Users/Admin/Downloads/chatgpt.com-GRIST%20REVAMP.pdf
   </Accordion>
 
   <Accordion title="CORS issues" defaultOpen={false}>
-
-
     **GPT:**
 
     Since you're running **Baserow** in a Docker container and encountering a CORS issue, it’s likely that Baserow's API isn't configured to allow requests from your frontend (`http://localhost:8080`).
@@ -1119,14 +1117,6 @@ file:///C:/Users/Admin/Downloads/chatgpt.com-GRIST%20REVAMP.pdf
 
     Then, rerun the updated command.
 
-
-
-
-
-
-
-
-
     ```
     You might also need to configure CORS on your local Grist instance. Add these headers to your Grist server configuration:
 
@@ -1135,18 +1125,6 @@ file:///C:/Users/Admin/Downloads/chatgpt.com-GRIST%20REVAMP.pdf
     Access-Control-Allow-Headers: Authorization, Content-Type, Accept
     Access-Control-Allow-Credentials: true
     ```
-
-
-
-
-
-
-
-
-
-
-
-
   </Accordion>
 </AccordionGroup>
 
