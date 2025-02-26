@@ -826,7 +826,7 @@ file:///C:/Users/Admin/Downloads/chatgpt.com-GRIST%20REVAMP.pdf
 
   <Accordion title="This is the prompt I gave chatGPT" defaultOpen={false}>
     ```
-    This is the prompt I gave chatGPT: I use Grist as a CRM, and have made several custom widgets that I host in a GitHub repo. I am trying to get this map widget working, I have two separate folders/projects/widgets for the map widget as I tried different functionality and such. These two are Dropbox-Embed and Grist-GIS. I've attached both of their JavaScript files so you can see what works great in one that is lacking in the other. (I've titled the JavaScript files by their names rather than "page.js"). Here is a breakdown of what either of them do well and poorly: 
+    I use Grist as a CRM, and have made several custom widgets that I host in a GitHub repo. I am trying to get this map widget working, I have two separate folders/projects/widgets for the map widget as I tried different functionality and such. These two are Dropbox-Embed and Grist-GIS. I've attached both of their JavaScript files so you can see what works great in one that is lacking in the other. (I've titled the JavaScript files by their names rather than "page.js"). Here is a breakdown of what either of them do well and poorly: 
 
     Grist-GIS
 
@@ -1070,7 +1070,64 @@ file:///C:/Users/Admin/Downloads/chatgpt.com-GRIST%20REVAMP.pdf
   </Accordion>
 
   <Accordion title="CORS issues" defaultOpen={false}>
-    ```javascript
+
+
+    **GPT:**
+
+    Since you're running **Baserow** in a Docker container and encountering a CORS issue, it’s likely that Baserow's API isn't configured to allow requests from your frontend (`http://localhost:8080`).
+
+    ### **Fix: Set CORS Headers in Baserow**
+
+    Baserow allows setting allowed origins via environment variables. You need to **set `BASEROW_CORS_ALLOWED_ORIGINS`** to allow requests from your frontend.
+
+    #### **Modify Your Docker Run Command**
+
+    Try running your container with the following **additional environment variable**:
+
+    ```
+    docker run \
+      -d \
+      --name baserow \
+      -e BASEROW_PUBLIC_URL=http://localhost \
+      -e BASEROW_CORS_ALLOWED_ORIGINS=http://localhost:8080 \
+      -v baserow_data:/baserow/data \
+      -p 80:80 \
+      -p 443:443 \
+      --restart unless-stopped \
+      baserow/baserow:1.31.1
+    ```
+
+    ### **Explanation of the Fix**
+
+    * `BASEROW_CORS_ALLOWED_ORIGINS=http://localhost:8080`
+
+      * This tells Baserow to allow API requests from `http://localhost:8080`, which is where your frontend is running.
+
+    ```
+    -e BASEROW_CORS_ALLOWED_ORIGINS=http://localhost:8080,http://127.0.0.1:8080
+    ```
+
+    * If your frontend runs from other origins, separate them with commas:
+
+    ### **Restart Your Container**
+
+    If you already have Baserow running, stop and remove it first:
+
+    ```
+    docker stop baserow && docker rm baserow
+    ```
+
+    Then, rerun the updated command.
+
+
+
+
+
+
+
+
+
+    ```
     You might also need to configure CORS on your local Grist instance. Add these headers to your Grist server configuration:
 
     Access-Control-Allow-Origin: http://localhost:3000
@@ -1078,6 +1135,18 @@ file:///C:/Users/Admin/Downloads/chatgpt.com-GRIST%20REVAMP.pdf
     Access-Control-Allow-Headers: Authorization, Content-Type, Accept
     Access-Control-Allow-Credentials: true
     ```
+
+
+
+
+
+
+
+
+
+
+
+
   </Accordion>
 </AccordionGroup>
 
