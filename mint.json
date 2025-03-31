@@ -20,8 +20,8 @@
     { "name": "Projects", "url": "/gitbook/projects" }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "HTML Widgets",
+    "url": "HTMLwidgets"
   },
   "tabs": [
     { "name": "API Reference", "url": "api-reference" },
