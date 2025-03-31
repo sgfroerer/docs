@@ -21,7 +21,7 @@
   ],
   "topbarCtaButton": {
     "name": "HTML Widgets",
-    "url": "HTMLwidgets"
+    "url": "HTMLwidgets.mdx"
   },
   "tabs": [
     { "name": "API Reference", "url": "api-reference" },
