@@ -7,48 +7,45 @@ mode: "wide"
 # Pictures
 
 <AccordionGroup>
-  <Accordion title="Map | Store List & Filters" defaultOpen={false}>
+  <Accordion title="Map | Store List & Filters" defaultOpen="false">
     ![](/image.png)
   </Accordion>
+  <Accordion title="Website Breakdown" defaultOpen="false">
+    **Development\+**
 
-  <Accordion title="Website Breakdown" defaultOpen={false}>
-    **Development+**
-
-    * `Discover real setate development projects across the U.S. to forecast impact & future potential`
+    - `Discover real setate development projects across the U.S. to forecast impact & future potential`
 
     ![](/image.png)
 
     **Site Selection**
 
-    * `Find the ideal sites for your chain with just a few clicks, to expand your chain and optimize reach`
+    - `Find the ideal sites for your chain with just a few clicks, to expand your chain and optimize reach`
 
     ![](/Screenshot2025-02-15170954.png)
 
     **Brand Dominance Map**
 
-    * `This data shows the top-performing brands by foot traffic in each location and is updated monthly`
+    - `This data shows the top-performing brands by foot traffic in each location and is updated monthly`
 
     ![](/images/Screenshot2025-02-15171603.png)
 
-    **Points of Interest**&#x20;
+    **Points of Interest** 
 
-    * `Search Any Property in the IJS - Free`
-
-    * `Analyze foot traffic trends and view visitor metrics for any property over the last month`
+    - `Search Any Property in the IJS - Free`
+    - `Analyze foot traffic trends and view visitor metrics for any property over the last month`
   </Accordion>
-
-  <Accordion title="Placer 100" defaultOpen={false}>
-    &#x20;**Retail & Dining Index**
+  <Accordion title="Placer 100" defaultOpen="false">
+     **Retail & Dining Index**
 
     `Discover the performance of leading retail and dining brands across the U.S. Compare growth industry-wide by chain & geography`
 
-    * Index Performance Overview
+    - Index Performance Overview
   </Accordion>
 </AccordionGroup>
 
 # Website Breakdown:
 
-**Development+**
+**Development\+**
 
 ` Discover real setate development projects across the U.S. to forecast impact & future potential`
 
@@ -56,22 +53,20 @@ mode: "wide"
 
 <script src="https://embedded-widget.placer.ai/ew.js" async />
 
-[](https://analytics.placer.ai/labs/industry-trends)
-
 [Industry Trends](https://analytics.placer.ai/labs/industry-trends)
 
 <script src="https://embedded-widget.placer.ai/ew.js" async />
 
 <AccordionGroup>
-  <Accordion title="Prompts" defaultOpen={false}>
+  <Accordion title="Prompts" defaultOpen="false">
     ```
     Ok you know what, that didn't work but I found out that my custom widget: https://sgfroerer.github.io/gmaps-grist-widgets/webframe/
-
+    
     The webframe widget properly shows up if the URL in the selected column is "https://embedded-widget.placer.ai/widgets/v1/zip-code-map/?zipCode=10011&address=75+9th+Ave%2C+New+York%2C+NY+10011&utm_source=https%3A%2F%2Fwww.placer.ai%2Fexplore%2Fpoints-of-interest"
     As you can see in that example, it is specific for this address: 75 9th Ave, New York, NY 10011
     So can you just turn this url into a formula to dynamically update to the property/row:
     For the structure of each column IN the table, reference this is from the code view:
-
+    
     Property_Address = grist.Text()
     City = grist.Choice()
     State = grist.Text()
@@ -86,26 +81,17 @@ mode: "wide"
 
     **Components explained:**
 
-    * `zipCode` uses the numeric `Zip` column directly
-
-    * `address` combines `Property_Address`, `City`, `State`, and `Zip`, with:
-
-      * Spaces replaced by `+`
-
-      * Commas replaced by URL-encoded `%2C`
-
-    * `utm_source` hardcodes the encoded version of `https://www.placer.ai/explore/points-of-interest`
+    - `zipCode` uses the numeric `Zip` column directly
+    - `address` combines `Property_Address`, `City`, `State`, and `Zip`, with:
+      - Spaces replaced by `+`
+      - Commas replaced by URL-encoded `%2C`
+    - `utm_source` hardcodes the encoded version of `https://www.placer.ai/explore/points-of-interest`
   </Accordion>
-
-  <Accordion title="New Accordion" defaultOpen="false">
+  <Accordion title="HTML" defaultOpen={false}>
     1. Paste article into Obsidian
-
     2. [Free Markdown to HTML Converter](https://markdowntohtml.com/)
-
     3. [HTML Formatter](https://www.freeformatter.com/html-formatter.html#before-output)
-
     4. Flem.io
-
     5. Insert each Embed chart
 
     https://github.com/copilot/c/aff79295-d081-4651-9773-efa8146daf1b
