@@ -4,7 +4,7 @@ description: "Streamlit"
 ---
 
 <AccordionGroup>
-  <Accordion title="Streamlit-Dashboard" defaultOpen={false}>
+  <Accordion title="Streamlit-Dashboard" defaultOpen="false">
     ```python
     streamlit run app.py
     ```
@@ -15,8 +15,7 @@ description: "Streamlit"
 
     `http://localhost:8501/`
   </Accordion>
-
-  <Accordion title="Tabler" defaultOpen={false}>
+  <Accordion title="Tabler" defaultOpen="false">
     Dashboard   |   http://localhost:3000/
 
     BrowserSync   |   http://localhost:3001/
@@ -29,71 +28,68 @@ description: "Streamlit"
   </Accordion>
 </AccordionGroup>
 
-<Card title="Streamlit" icon="bolt" href="Streamlit" />
+<Card title="Streamlit" icon="bolt" href="Streamlit">
+  
+</Card>
 
 # Charts & Components
 
 <AccordionGroup>
-  <Accordion title="Last Call Segment" defaultOpen={false} icon="chart-pie">
+  <Accordion title="Last Call Segment" defaultOpen="false" icon="chart-pie">
     **Metric:** 
 
-    * Bar/Donut chart showing distribution of owners across “Last Call Segment” values (e.g., 🗣️ Contact 🗣️, ✖️ No VM ✖️). 
+    - Bar/Donut chart showing distribution of owners across “Last Call Segment” values (e.g., 🗣️ Contact 🗣️, ✖️ No VM ✖️). 
 
     **Why:** 
 
-    * Understanding how contacts are segmented based on engagement can help identify the effectiveness of outreach efforts and highlight which segment needs more attention.
+    - Understanding how contacts are segmented based on engagement can help identify the effectiveness of outreach efforts and highlight which segment needs more attention.
   </Accordion>
-
-  <Accordion title="Property Portfolio Analysis" defaultOpen={false} icon="building">
+  <Accordion title="Property Portfolio Analysis" defaultOpen="false" icon="building">
     **Metric:** 
 
-    * Map visualization with markers for properties grouped by locations (e.g., Salem, North Bend, Hillsboro). 
+    - Map visualization with markers for properties grouped by locations (e.g., Salem, North Bend, Hillsboro). 
 
     **Why:** 
 
-    * Visualizing the geographic distribution of properties provides insights into market coverage and helps identify areas with potential opportunities or overrepresentation.
+    - Visualizing the geographic distribution of properties provides insights into market coverage and helps identify areas with potential opportunities or overrepresentation.
   </Accordion>
-
-  <Accordion title="Age Demographics of Owners" defaultOpen={false} icon="children">
+  <Accordion title="Age Demographics of Owners" defaultOpen="false" icon="children">
     **Metric:** 
 
-    * Histogram or bar chart showing the age distribution of property owners (e.g., “Tranche” or “Age”). 
+    - Histogram or bar chart showing the age distribution of property owners (e.g., “Tranche” or “Age”). 
 
     **Why:** 
 
-    * Age demographics can reveal patterns in investment or selling behavior and help tailor communication strategies for different age groups.
+    - Age demographics can reveal patterns in investment or selling behavior and help tailor communication strategies for different age groups.
   </Accordion>
-
-  <Accordion title="Engagement History" defaultOpen={false} icon="timeline">
+  <Accordion title="Engagement History" defaultOpen="false" icon="timeline">
     **Metric:** 
 
-    * Timeline or heatmap of “Date” vs. “Past Contact?” 
+    - Timeline or heatmap of “Date” vs. “Past Contact?” 
 
     **Why:** 
 
-    * This allows you to track historical contact frequency and identify periods of inactivity, enabling targeted follow-ups to maintain relationships.
+    - This allows you to track historical contact frequency and identify periods of inactivity, enabling targeted follow-ups to maintain relationships.
   </Accordion>
-
-  <Accordion title="Objection & Opportunity Analysis" defaultOpen={false} icon="table-list">
+  <Accordion title="Objection & Opportunity Analysis" defaultOpen="false" icon="table-list">
     **Metric:** 
 
-    * Word cloud or frequency table of common objections and opportunities. 
+    - Word cloud or frequency table of common objections and opportunities. 
 
     **Why:** 
 
-    * Summarizing recurring objections (e.g., “Not Wanting Anything”) and opportunities helps refine the sales approach and prioritize key pain points or areas for potential growth.
+    - Summarizing recurring objections (e.g., “Not Wanting Anything”) and opportunities helps refine the sales approach and prioritize key pain points or areas for potential growth.
   </Accordion>
+  <Accordion title="Owner Engagement & Contact Status (Bar Chart or Pie Chart)" defaultOpen="false">
+    **Why?** 
 
-  <Accordion title="Owner Engagement & Contact Status (Bar Chart or Pie Chart)" defaultOpen={false}>
-    **Why?**&#x20;
+    - This will help visualize how many owners have been contacted, the status of those contacts, and their level of interest. Fields like
 
-    * This will help visualize how many owners have been contacted, the status of those contacts, and their level of interest. Fields like
-
-      **"Last\_Call\_Segment"**
+      **"Last_Call_Segment"**
 
       ,
 
-      **"Past\_Contact\_"**
+      **"Past_Contact\_"**
 
       , and
 
@@ -101,15 +97,14 @@ description: "Streamlit"
 
       (e.g., Not Interested, Never, Not Primary) can be used to categorize responses.
 
-    **How to use it?**&#x20;
+    **How to use it?** 
 
-    * A pie chart can show the distribution of engagement status, while a bar chart can break it down further by segment.
+    - A pie chart can show the distribution of engagement status, while a bar chart can break it down further by segment.
   </Accordion>
+  <Accordion title="Properties by Type & Tenancy (Stacked Bar or Tree Map)" defaultOpen="false">
+    **Why?** 
 
-  <Accordion title="Properties by Type & Tenancy (Stacked Bar or Tree Map)" defaultOpen={false}>
-    **Why?**&#x20;
-
-    * Understanding the mix of property types (e.g.,
+    - Understanding the mix of property types (e.g.,
 
       **"Freestanding Retail"**
 
@@ -119,9 +114,9 @@ description: "Streamlit"
 
       ) and their tenancy status (single vs. multi-tenant) can help focus marketing efforts.
 
-    **How to use it?**&#x20;
+    **How to use it?** 
 
-    * A
+    - A
 
       **stacked bar chart**
 
@@ -131,19 +126,18 @@ description: "Streamlit"
 
       can show property categories based on size (e.g., land area or rentable building area).
   </Accordion>
+  <Accordion title="Owner Portfolio Size & Concentration (Histogram or Bubble Chart)" defaultOpen="false">
+    **Why?** 
 
-  <Accordion title="Owner Portfolio Size & Concentration (Histogram or Bubble Chart)" defaultOpen={false}>
-    **Why?**&#x20;
-
-    * Some owners hold multiple properties (as seen in the
+    - Some owners hold multiple properties (as seen in the
 
       **"Properties\_"**
 
       field), so visualizing the number of properties per owner can identify high-value prospects.
 
-    **How to use it?**&#x20;
+    **How to use it?** 
 
-    * A
+    - A
 
       **histogram**
 
@@ -158,19 +152,13 @@ description: "Streamlit"
 # Daily Stats
 
 <AccordionGroup>
-  <Accordion title="Call #" defaultOpen={false}>
+  <Accordion title="Call #" defaultOpen="false">
     Show running count of every row in which the "Date" column shows today's date
-
-
   </Accordion>
-
-  <Accordion title="Segment Breakdown" defaultOpen={false}>
+  <Accordion title="Segment Breakdown" defaultOpen="false">
     A breakdown of the Last Call Segments for calls made today
   </Accordion>
-
-  <Accordion title="Map View" defaultOpen={false}>
+  <Accordion title="Map View" defaultOpen="false">
     A map view that shows the locations of properties - for owners that I called today
   </Accordion>
 </AccordionGroup>
-
-#
