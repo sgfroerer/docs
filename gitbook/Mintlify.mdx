@@ -7,18 +7,15 @@ icon: "leaf"
 ### Logo's
 
 <AccordionGroup>
-  <Accordion title="Charts" defaultOpen={false} icon="chart">
-    * chart-pie
-
-
+  <Accordion title="Charts" defaultOpen="false" icon="chart">
+    - chart-pie
   </Accordion>
-
   <Accordion title="New Accordion" defaultOpen="false">
-
+    
   </Accordion>
 </AccordionGroup>
 
-### <Icon icon="chart-pie" size={25} />  chart-pie
+### <Icon icon="chart-pie" size="25" />  chart-pie
 
 ### <Icon icon="chart-area" size="25" />  chart-area
 
@@ -32,9 +29,7 @@ icon: "leaf"
 
 ### <Icon icon="chart-simple-horizontal" size="25" />  chart-simple-horizontal
 
-
-
-<Accordion title="Gitbook Scrape" defaultOpen={false} icon="scraper">
+<Accordion title="Gitbook Scrape" defaultOpen="false" icon="scraper">
   ```
   npx @mintlify/scraping@latest section https://cre-1.gitbook.io/tgg-docs/news/daily-or-news
   ```
@@ -42,31 +37,32 @@ icon: "leaf"
 
 <i class="fa-brands fa-docker" />
 
-<Accordion title="Migration" defaultOpen={false}>
+<Accordion title="Migration" defaultOpen="false">
   <Note>
     [@mintlify/scraping](https://dashboard.mintlify.com/kickzdontstopinv-9f466998/kickzdontstopinv-9f466998/editor/main#migration)
   </Note>
-
   ### Commands
 
-  * `mintlify-scrape section [url]` - Scrapes multiple pages in a site.
-
-  * `mintlify-scrape page [url]` - Scrapes a single page in a site.
+  - `mintlify-scrape section [url]` - Scrapes multiple pages in a site.
+  - `mintlify-scrape page [url]` - Scrapes a single page in a site.
 
   ### One-time use:
 
   <CodeGroup>
-    ```typescript Section
-    npx @mintlify/scraping@latest section [url]
-    ```
 
-    ```typescript Page
-    npx @mintlify/scraping@latest page [url]
-    ```
+  ```typescript Section
+  npx @mintlify/scraping@latest section [url]
+  ```
+
+  
+  ```typescript Page
+  npx @mintlify/scraping@latest page [url]
+  ```
+
   </CodeGroup>
 </Accordion>
 
-<Accordion title="JS & CSS Libraries" defaultOpen={false}>
+<Accordion title="JS & CSS Libraries" defaultOpen="false">
   To add custom JavaScript (JS) and CSS libraries to a Mintlify project synced with GitHub, you can follow these steps:
 
   ### Use External Libraries
@@ -74,40 +70,36 @@ icon: "leaf"
   <Tip>
     If you're adding an external library (like jQuery, Tailwind, or Chart.js), include their CDN links
   </Tip>
-
   ```markdown
   <!-- In the <head> -->
   <link href="https://cdn.jsdelivr.net/npm/library-name@version/library.min.css" rel="stylesheet">
-
+  
   <!-- Before </body> -->
   <script src="https://cdn.jsdelivr.net/npm/library-name@version/library.min.js"></script>
   ```
 
-  <Accordion title="Custom Components/Scripts" defaultOpen={false}>
+  <Accordion title="Custom Components/Scripts" defaultOpen="false">
     <Tip>
       If you're using React (Mintlify's default framework), you can import libraries directly in your React components
     </Tip>
-
     <Tabs>
       <Tab title="Install">
-        *Install the library via npm*
+        _Install the library via npm_
 
         ```
         npm install library-name
         ```
       </Tab>
-
       <Tab title="Import">
-        *Import it in your React files*
+        _Import it in your React files_
 
         ```markdown
         import 'library-name/dist/library.css';
         import LibraryName from 'library-name';
         ```
       </Tab>
-
       <Tab title="Sync">
-        *Sync Changes to GitHub*
+        _Sync Changes to GitHub_
 
         ```bash
         git add .
@@ -119,13 +111,12 @@ icon: "leaf"
   </Accordion>
 </Accordion>
 
-<Accordion title="Adding External CSS & JavaScript Libraries" defaultOpen={false}>
-  **Add the CSS Library to `headLinks`:**
+<Accordion title="Adding External CSS & JavaScript Libraries" defaultOpen="false">
+  **`Add the CSS Library to headLinks:`**
 
   <Tip>
     In your `mint.json`, include the `link` tag as an object in the `headLinks` array
   </Tip>
-
   ```json
   "headLinks": [
       {
@@ -135,12 +126,11 @@ icon: "leaf"
   ]
   ```
 
-  **Add the JavaScript Library to `headScripts`:**
+  **`Add the JavaScript Library to headScripts:`**
 
   <Tip>
     In your `mint.json`, include the `script` tag as an object in the `headScripts` array
   </Tip>
-
   ```json
   "headScripts": [
       {
@@ -156,7 +146,6 @@ icon: "leaf"
     <Tab title="CSS">
       CSS libraries should typically go in `headLinks` since they are loaded in the `<head>`
     </Tab>
-
     <Tab title="JavaScript">
       JavaScript libraries should be added to `headScripts`, which places them near the end of the body, just before `</body>`
     </Tab>
