@@ -60,6 +60,7 @@
       "group": "Tools",
       "pages": [
         "gitbook/tools/index",
+        "gitbook/tools/ckeditor",
         "gitbook/tools/TableauPublic",
         "gitbook/tools/ai-builders",
         "gitbook/tools/copycoder",
