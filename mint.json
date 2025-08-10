@@ -16,34 +16,35 @@
     }
   },
   "topbarLinks": [
-    { "name": "Gitbook", "url": "https://app.gitbook.com/" },
-    { "name": "Projects", "url": "/gitbook/projects" }
+    { "name": "Gitbook", "url": "https://app.gitbook.com/" }
   ],
   "topbarCtaButton": {
     "name": "HTML Widgets",
     "url": "https://kickzdontstopinv-9f466998.mintlify.app/HTMLwidgets"
   },
   "tabs": [
-    { "name": "API Reference", "url": "api-reference" },
+    
     { "name": "Tools", "url": "gitbook/tools" },
     { "name": "M&M", "url": "gitbook/MM" },
-    { "name": "Projects", "url": "gitbook/projects" },
     { "name": "Docs", "url": "gitbook/docs" },
-    { "name": "Gitbook", "url": "gitbook" }
+    { "name": "Gitbook", "url": "gitbook" },
+    { "name": "API Reference", "url": "api-reference" },
+    { "name": "Documentation", "icon": "book-open-cover", "url": "https://mintlify.com/docs" }
   ],
   "anchors": [
     {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    }
+        "name": "Projects",
+        "icon": "hammer",
+        "url": "gitbook/projects"
+    }    
   ],
   "navigation": [
     {
       "group": "Get Started",
       "pages": [
         "introduction",
-        "quickstart"
+        "quickstart",
+        "HTMLwidgets"
       ]
     },
     {
