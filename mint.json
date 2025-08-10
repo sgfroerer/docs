@@ -60,16 +60,13 @@
       "group": "Tools",
       "pages": [
         "gitbook/tools/index",
-        "gitbook/tools/ckeditor",
         "gitbook/tools/TableauPublic",
         "gitbook/tools/ai-builders",
         "gitbook/tools/copycoder",
         "gitbook/tools/static-web-server",
-        "gitbook/tools/codepen",
         "gitbook/tools/apexcharts",
         "gitbook/tools/prompts",
-        "gitbook/tools/libraries",
-        "gitbook/tools/lobehub"
+        "gitbook/tools/libraries"
       ]
     },
     {
@@ -81,8 +78,7 @@
         "gitbook/projects/gristmaps",
         "gitbook/projects/projects-download",
         "gitbook/projects/Server-Projects",
-        "gitbook/projects/vanilla-dash",
-        "gitbook/projects"
+        "gitbook/projects/vanilla-dash"
       ]
     },
     {
@@ -93,11 +89,9 @@
         "gitbook/docs/grist",
         "gitbook/docs/react",
         "gitbook/docs/maptiler",
-        "gitbook/docs/maptiler",
         "gitbook/docs/AzureMaps",
         "gitbook/docs/ArcGIS",
         "gitbook/docs/crm",
-        "gitbook/docs/docker",
         "gitbook/docs/documentationAI",
         "gitbook/docs/placerai",
         "gitbook/docs/Aide/Aide"
@@ -109,15 +103,15 @@
         "gitbook/index",
         "gitbook/Mintlify",
         "gitbook/ai-llms",
-        "gitbook/streamlit",
         "gitbook/dashboard",
-        "gitbook/projects",
-        "gitbook/annual-report"
+        "gitbook/projects"
       ]
     },
     {
       "group": "Essentials",
       "pages": [
+        "essentials/code",
+        "essentials/images",
         "essentials/markdown",
         "essentials/settings",
         "essentials/navigation",
