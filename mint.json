@@ -19,19 +19,12 @@
     { "name": "Gitbook", "url": "https://app.gitbook.com/" }
   ],
   "tabs": [
-    
-    { "name": "Tools", "url": "gitbook/tools" },
-    { "name": "M&M", "url": "gitbook/MM" },
-    { "name": "Docs", "url": "gitbook/docs" },
-    { "name": "Gitbook", "url": "gitbook" },
+    { "name": "Projects", "icon": "hammer", "url": "gitbook/projects" },
+    { "name": "Tools", "icon": "toolbox", "url": "gitbook/tools" },
+    { "name": "M&M", "icon": "building", "url": "gitbook/MM" },
+    { "name": "Docs", "icon": "book", "url": "gitbook/docs" },
+    { "name": "Gitbook", "icon": "code-branch", "url": "gitbook" },
     { "name": "API Reference", "url": "api-reference" }
-  ],
-  "anchors": [
-    {
-        "name": "Projects",
-        "icon": "hammer",
-        "url": "gitbook/projects"
-    }
   ],
   "navigation": [
     {
